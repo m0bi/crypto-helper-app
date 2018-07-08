@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "deep-diff": "^1.0.1",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "fetch": "^1.1.0",
+    "get-json": "^1.0.0",
+    "js-combinatorics": "^0.5.3",
+    "jsonp": "^0.2.1",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.1",
+    "node-fetch": "^2.1.2",
+    "request": "^2.87.0"
+  }
+}
