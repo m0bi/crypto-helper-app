@@ -158,7 +158,7 @@ app.get('/', function (req, res) {
 
 
 app.get('/api', function (req, res) {
-  res.status(200).send('API works.');
+  res.status(200).send('./news ./usd ./usd/:id ./bibox ./bibox/:id ./bibox/c/:id ./binance ./binance/:id ./binance/c/:id ./cryptopia ./cryptopia/:id ./cryptopia/c/:id ./kucoin ./kucoin/:id ./kucoin/c/:id');
 });
 
 var UserController = require(__root + 'user/UserController');
