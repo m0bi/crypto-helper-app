@@ -20,7 +20,7 @@ let promiseKucoin = resolve.kucoin();
 let promiseBinance = resolve.binance();
 let promiseCryptopia = resolve.cryptopia();
 recall();
-setInterval(() => recall(), 300000);
+setInterval(() => recall(), 400000);
 function recall() {
   Promise.all([promiseNews, promiseUsd, promiseBibox, promiseKucoin, promiseBinance, promiseCryptopia]).then(([newsData, usdData, biboxData, kucoinData, binanceData, cryptopiaData]) => {
 
@@ -152,6 +152,10 @@ function recall() {
 // } else {
 //   app.use(express.static("client/public"));
 // }
+app.get('/', function (req, res) {
+  res.status(200).send('This is an API.');
+});
+
 
 app.get('/api', function (req, res) {
   res.status(200).send('API works.');
@@ -189,6 +193,7 @@ app.get("/api/bibox/", (req, res) => {
 });
 app.get("/api/bibox/c/:id", (req, res) => {
   const id = req.params.id
+  let doubledata;
   Bibox.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
     res.json(data1);
   })
