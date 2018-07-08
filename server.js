@@ -25,19 +25,19 @@ function recall() {
   Promise.all([promiseNews, promiseUsd, promiseBibox, promiseKucoin, promiseBinance, promiseCryptopia]).then(([newsData, usdData, biboxData, kucoinData, binanceData, cryptopiaData]) => {
 
     for (var i = 0; i < newsData.length; i++) {
-      News.create(newsData[i]).then((dbNews) => { console.log("write: news"); }).catch((err) => console.log(err));
+      News.create(newsData[i]).then((dbNews) => {  }).catch((err) => console.log(err));
     }
     for (var i = 0; i < usdData.length; i++) {
-      Usd.create(usdData[i]).then((dbUsd) => { console.log("write: usd"); }).catch((err) => console.log(err));
+      Usd.create(usdData[i]).then((dbUsd) => {  }).catch((err) => console.log(err));
     }
     for (var i = 0; i < biboxData.length; i++) {
-      Bibox.create(biboxData[i]).then((dbBibox) => { console.log("write: bibox"); }).catch((err) => console.log(err));
+      Bibox.create(biboxData[i]).then((dbBibox) => {  }).catch((err) => console.log(err));
     }
     for (var i = 0; i < kucoinData.length; i++) {
-      Kucoin.create(kucoinData[i]).then((dbKucoin) => { console.log("write: kucoin"); }).catch((err) => console.log(err));
+      Kucoin.create(kucoinData[i]).then((dbKucoin) => {  }).catch((err) => console.log(err));
     }
     var binanceValue;
-    for (var i=0; i< binanceData.length; i++) {
+    for (var i = 0; i < binanceData.length; i++) {
       let val1;
       let val2;
       val1 = binanceData[i].symbol;
@@ -45,22 +45,24 @@ function recall() {
       val1 = val1.slice(0, 3);
       val2 = val2.slice(-3);
       binanceValue = { "coin": val1, "currency": val2, "value": binanceData[i].price };
-      Binance.create(binanceValue).then((dbBinance) => { console.log("write: binance"); }).catch((err) => console.log(err));
+      Binance.create(binanceValue).then((dbBinance) => {  }).catch((err) => console.log(err));
     }
     var cryptopiaValue = {};
-    for (var i=0; i< cryptopiaData.length; i++) {
+    for (var i = 0; i < cryptopiaData.length; i++) {
       let val1;
       let val2;
       val1 = cryptopiaData[i].label;
       val2 = cryptopiaData[i].label;
       val1 = val1.slice(0, 3);
       val2 = val2.slice(-3);
-      console.log(cryptopiaData[i]);
-      console.log(val1);
-      console.log(val2);
+      //console.log(cryptopiaData[i]);
+      //console.log(val1);
+      //console.log(val2);
       cryptopiaValue = { "coin": val1, "currency": val2, "value": cryptopiaData[i].last };
-      Cryptopia.create(cryptopiaValue).then((dbCryptopia) => { console.log("write: cryptopia"); }).catch((err) => console.log(err));
+      Cryptopia.create(cryptopiaValue).then((dbCryptopia) => { }).catch((err) => console.log(err));
     }
+
+
 
 
     //console.log(lastData);
@@ -168,9 +170,87 @@ app.get("/api/news", (req, res) => {
   });
 });
 
-app.get("/api/data", VerifyToken, (req, res) => {
-  Combo.find({}).sort({ date: -1 }).limit(50).then((data) => {
-    res.json(data.filter(a => +a.usddiff > 5.00 ? true : false).sort((a, b) => b.usddiff - a.usddiff));
+app.get("/api/usd/", (req,res) => {
+  Usd.find({ }).sort({date: -1 }).then(data1 => {
+    res.json(data1);
+  });
+});
+app.get("/api/usd/:id", (req,res) => {
+  const id = req.params.id
+  Usd.find({ "coin": id }).sort({date: -1 }).then(data1 => {
+    res.json(data1);
+  });
+});
+
+app.get("/api/bibox/", (req, res) => {
+  Bibox.find({ }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/bibox/c/:id", (req, res) => {
+  const id = req.params.id
+  Bibox.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/bibox/:id", (req, res) => {
+  const id = req.params.id
+  Bibox.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/binance/", (req, res) => {
+  Binance.find({ }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/binance/:id", (req, res) => {
+  const id = req.params.id;
+  Binance.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/binance/c/:id", (req, res) => {
+  const id = req.params.id;
+  Binance.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/cryptopia/", (req, res) => {
+  Cryptopia.find({ }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/cryptopia/:id", (req, res) => {
+  const id = req.params.id;
+  Cryptopia.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/cryptopia/c/:id", (req, res) => {
+  const id = req.params.id;
+  Cryptopia.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+app.get("/api/kucoin/", (req, res) => {
+  const id = req.params.id;
+  Kucoin.find({ }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+
+app.get("/api/kucoin/:id", (req, res) => {
+  const id = req.params.id;
+  Kucoin.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
+  })
+});
+
+app.get("/api/kucoin/c/:id", (req, res) => {
+  const id = req.params.id;
+  Kucoin.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
+    res.json(data1);
   })
 });
 
