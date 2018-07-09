@@ -25,16 +25,16 @@ function recall() {
   Promise.all([promiseNews, promiseUsd, promiseBibox, promiseKucoin, promiseBinance, promiseCryptopia]).then(([newsData, usdData, biboxData, kucoinData, binanceData, cryptopiaData]) => {
 
     for (var i = 0; i < newsData.length; i++) {
-      News.create(newsData[i]).then((dbNews) => {  }).catch((err) => console.log(err));
+      News.create(newsData[i]).then((dbNews) => { }).catch((err) => console.log(err));
     }
     for (var i = 0; i < usdData.length; i++) {
-      Usd.create(usdData[i]).then((dbUsd) => {  }).catch((err) => console.log(err));
+      Usd.create(usdData[i]).then((dbUsd) => { }).catch((err) => console.log(err));
     }
     for (var i = 0; i < biboxData.length; i++) {
-      Bibox.create(biboxData[i]).then((dbBibox) => {  }).catch((err) => console.log(err));
+      Bibox.create(biboxData[i]).then((dbBibox) => { }).catch((err) => console.log(err));
     }
     for (var i = 0; i < kucoinData.length; i++) {
-      Kucoin.create(kucoinData[i]).then((dbKucoin) => {  }).catch((err) => console.log(err));
+      Kucoin.create(kucoinData[i]).then((dbKucoin) => { }).catch((err) => console.log(err));
     }
     var binanceValue;
     for (var i = 0; i < binanceData.length; i++) {
@@ -45,7 +45,7 @@ function recall() {
       val1 = val1.slice(0, 3);
       val2 = val2.slice(-3);
       binanceValue = { "coin": val1, "currency": val2, "value": binanceData[i].price };
-      Binance.create(binanceValue).then((dbBinance) => {  }).catch((err) => console.log(err));
+      Binance.create(binanceValue).then((dbBinance) => { }).catch((err) => console.log(err));
     }
     var cryptopiaValue = {};
     for (var i = 0; i < cryptopiaData.length; i++) {
@@ -173,90 +173,191 @@ app.get("/api/news", (req, res) => {
     res.json(data);
   });
 });
-
-app.get("/api/usd/", (req,res) => {
-  Usd.find({ }).sort({date: -1 }).then(data1 => {
-    res.json(data1);
-  });
+var test;
+app.get("/api/usd/", (req, res) => {
+  async function usd() {
+    await Usd.find({}).sort({ date: -1 }).then(data1 => {
+      test = data1;
+    });
+    res.json(test);
+  }
+  usd();
 });
-app.get("/api/usd/:id", (req,res) => {
+app.get("/api/usd/:id", (req, res) => {
   const id = req.params.id
-  Usd.find({ "coin": id }).sort({date: -1 }).then(data1 => {
+  Usd.find({ "coin": id }).sort({ date: -1 }).then(data1 => {
     res.json(data1);
   });
 });
 
+var data;
 app.get("/api/bibox/", (req, res) => {
-  Bibox.find({ }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+    await Bibox.find({}).sort({ date: -1 }).then((data1) => {
+      data = data1;
+    })
+    res.json(data);
+  }
+  derive();
 });
+
+var data;
+var usData;
 app.get("/api/bibox/c/:id", (req, res) => {
   const id = req.params.id
-  let doubledata;
-  Bibox.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Bibox.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
+    data = data1;
+  });
+
+  await Usd.find({ "coin": id }).sort({ date: -1 }).limit(1).then(data1 => {
+    usData = data1;
+  });
+  usData.push(data);
+  res.json(usData);
+}
+derive();
 });
+
+var data;
+var usData;
 app.get("/api/bibox/:id", (req, res) => {
   const id = req.params.id
-  Bibox.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Bibox.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    data = data1;
+  });
+  await Usd.find({ "coin": id }).sort({ date: -1 }).limit(1).then(data1 => {
+    usData = data1;
+  });
+  usData.push(data);
+  res.json(usData);
+}
+derive();
 });
+
 app.get("/api/binance/", (req, res) => {
-  Binance.find({ }).sort({ date: -1 }).then((data1) => {
+  Binance.find({}).sort({ date: -1 }).then((data1) => {
     res.json(data1);
   })
 });
+
+var data;
+var usData;
 app.get("/api/binance/:id", (req, res) => {
   const id = req.params.id;
-  Binance.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Binance.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    data = data1;
+  });
+  await Usd.find({ "coin": id }).sort({ date: -1 }).limit(1).then(data1 => {
+    usData = data1;
+  });
+  usData.push(data);
+  res.json(usData);
+}
+derive();
 });
+
+var data; 
+var usData;
 app.get("/api/binance/c/:id", (req, res) => {
   const id = req.params.id;
-  Binance.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Binance.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
+    data = data1;
+  });
+  await Usd.find({ "coin": id }).sort({ date: -1 }).limit(1).then(data1 => {
+    usData = data1;
+  });
+  usData.push(data);
+  res.json(usData);
+}
+derive();
 });
+
 app.get("/api/cryptopia/", (req, res) => {
-  Cryptopia.find({ }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Cryptopia.find({}).sort({ date: -1 }).then((data1) => {
+    res.json(data1);  
+  });
+}
+derive();
 });
+
+var data;
+var usData;
 app.get("/api/cryptopia/:id", (req, res) => {
   const id = req.params.id;
-  Cryptopia.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Cryptopia.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    data = data1;
+  });
+  await Usd.find({ "coin": id }).sort({ date: -1 }).limit(1).then(data1 => {
+    usData = data1;
+  });
+  usData.push(data);
+  res.json(usData);
+}
+derive();
 });
+
+var data;
+var usData;
 app.get("/api/cryptopia/c/:id", (req, res) => {
   const id = req.params.id;
-  Cryptopia.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Cryptopia.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
+    data = data1;
+  });
+  await Usd.find({ "coin": id }).sort({ date: -1 }).limit(1).then(data1 => {
+    usData = data1;
+  });
+  usData.push(data);
+  res.json(usData);
+}
+derive();
 });
+
 app.get("/api/kucoin/", (req, res) => {
   const id = req.params.id;
-  Kucoin.find({ }).sort({ date: -1 }).then((data1) => {
+  Kucoin.find({}).sort({ date: -1 }).then((data1) => {
     res.json(data1);
   })
 });
 
+var data;
+var usData;
 app.get("/api/kucoin/:id", (req, res) => {
   const id = req.params.id;
-  Kucoin.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Kucoin.find({ "coin": id }).sort({ date: -1 }).then((data1) => {
+    data = data1;
+  });
+  await Usd.find({ "coin": id }).sort({ date: -1 }).limit(1).then(data1 => {
+    usData = data1;
+  });
+  usData.push(data);
+  res.json(usData);
+}
+derive();
 });
 
+var data;
+var usData;
 app.get("/api/kucoin/c/:id", (req, res) => {
   const id = req.params.id;
-  Kucoin.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
-    res.json(data1);
-  })
+  async function derive() {
+  await Kucoin.find({ "currency": id }).sort({ date: -1 }).then((data1) => {
+    data = data1;
+  });
+  await Usd.find({ "coin": id }).sort({ date: -1 }).limit(1).then(data1 => {
+    usData = data1;
+  });
+  usData.push(data);
+  res.json(usData);
+}
+derive();
 });
 
 // app.get("*", function (req, res) {
