@@ -5,6 +5,7 @@ const biboxSchema = new Schema({
   coin: String,
   currency: String,
   value: Number,
+  usdval: { type: Number, default: 0 },
   date: { type: Date, default: Date.now }
 });
 
