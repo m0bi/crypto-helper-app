@@ -4,6 +4,7 @@ const app = express();
 
 const diff = require('deep-diff').diff; //finding differences between objects
 const axios = require('axios');
+const curl = require('curl');
 const request = require('request');
 var Combinatorics = require('js-combinatorics');
 
@@ -116,7 +117,17 @@ module.exports = {
         } catch (err) {
             console.log(err);
         }
-    }
+    },
+    // tokenspread: async function tokenspread() {
+    //     try{
+    //         let response = await axios('https://www.tokenspread.com/data/streams/pair_data', {"authorization":64ba9faae1b7096d87c83b5a06889b8f7b5e67a819654850});
+
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+
+    // }
+
 }
 
 
