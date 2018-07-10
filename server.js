@@ -22,8 +22,8 @@ let promiseCryptopia = resolve.cryptopia();
 recall();
 interval();
 function interval() {
-  setInterval(() => drop(), 400000);
-  setInterval(() => recall(), 400500);
+  setInterval(() => drop(), 600000);
+  setInterval(() => recall(), 600500);
 }
 async function drop() {
   await mongoose.connection.collections['biboxes'].drop(function (err) {
@@ -239,14 +239,14 @@ app.get("/api/bibox/c/:id", (req, res) => {
       usData = data1;
     });
     var dataVals;
-   
+
   }
   async function derive() {
     loop();
     await Bibox.find({ "currency": id }).sort({ date: 1 }).then((data1) => {
-        res.json(data1);
+      res.json(data1);
     });
-    
+
 
   }
   derive();
@@ -412,7 +412,7 @@ app.get("/api/kucoin/c/:id", (req, res) => {
 
 app.get("/api/kucoin/c/", (req, res) => {
   async function derive() {
-  await Kucoin.find({}).sort({ currency: 1, date: 1 }).then(data1 => { res.json(data1); });
+    await Kucoin.find({}).sort({ currency: 1, date: 1 }).then(data1 => { res.json(data1); });
   }
   derive();
 });
@@ -437,6 +437,7 @@ app.get("/api/:id", (req, res) => {
       XTC.push(data1);
     });
     res.json(XTC);
+    XTC = [];
   }
   derive();
 });
@@ -460,10 +461,18 @@ app.get("/api/c/:id", (req, res) => {
     await Kucoin.find({ "currency": id }).sort({ data: 1 }).then((data1) => {
       XTC.push(data1);
     });
+    var usd;
+    console.log(XTC[0][0].value);
+    for (let i = 1; i < XTC.length; i++) {
+      XTC[i].map((value, j) => {
+        usd = XTC[i][j].value * XTC[0][0].value;
+        XTC[i][j].usdval = usd;
+      });
+    }
     res.json(XTC);
+    XTC = [];
   }
   derive();
-  XTC = [];
 });
 // app.get("*", function (req, res) {
 //     res.sendFile(path.join(__dirname, "./client/build/index.html"));
