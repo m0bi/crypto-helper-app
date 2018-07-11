@@ -4,9 +4,11 @@ const app = express();
 
 const diff = require('deep-diff').diff; //finding differences between objects
 const axios = require('axios');
-const curl = require('curl');
+const curl = require('curlrequest');
 const request = require('request');
 var Combinatorics = require('js-combinatorics');
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -118,19 +120,50 @@ module.exports = {
             console.log(err);
         }
     },
-    // tokenspread: async function tokenspread() {
-    //     try{
-    //         let response = await axios('https://www.tokenspread.com/data/streams/pair_data', {"authorization":64ba9faae1b7096d87c83b5a06889b8f7b5e67a819654850});
+    tokenspread: async function tokenspread() {
+        try{
+            console.log("called");
 
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
+            var options = {
+                url: 'https://www.tokenspread.com/data/streams/pair_data',
+                headers: "authorization: 64ba9faae1b7096d87c83b5a06889b8f7b5e67a819654850"
+            }
+            let response = await curl.request(options);
+                //handle response type: stream
+                //maybe don't return response, catch the stream and return the container.
+            return response;
 
-    // }
+
+            // var oReq = new XMLHttpRequest();
+            
+            // oReq.onreadystatechange = function() {
+            //     if(this.readyState == 4 && this.status == 200) {
+            //         console.log(this.responseText);
+            //     }
+            //     console.log(this.status);
+            // }
+
+            // oReq.open("GET", "https://www.tokenspread.com/data/streams/pair_data");
+            // oReq.setRequestHeader("authorization", "64ba9faae1b7096d87c83b5a06889b8f7b5e67a819654850");
+            // oReq.send();
+
+
+
+
+            // let response = await axios({
+            //     method:'get',
+            //     url:'https://www.tokenspread.com/data/streams/pair_data',
+            //     responseType:'stream',
+            //     headers: {"authorization":""}
+            //   });
+
+        } catch (err) {
+            console.log("Error: " + err);
+        }
+
+    }
 
 }
-
-
 // var coins = [];
 // for (var i = 3; i < values.length; i++) {
 //     coins.push(Object.keys(values[i].val()));

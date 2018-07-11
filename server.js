@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const fs = require("fs");
 const bodyParser = require("body-parser");
 var resolve = require("./logic.js");
 var { Combo, Exchange, News, Usd, Bibox, Binance, Cryptopia, Kucoin } = require('./models');
@@ -19,7 +20,14 @@ let promiseBibox = resolve.bibox();
 let promiseKucoin = resolve.kucoin();
 let promiseBinance = resolve.binance();
 let promiseCryptopia = resolve.cryptopia();
-//let promiseToken = resolve.tokenspread();
+let promiseToken = resolve.tokenspread();
+
+promiseToken.then((data)=>console.log("Data: " + data));
+
+
+// promiseToken.then((response)=>{
+//   response.data.pipe(fs.createWriteStream('ada_lovelace.json'));
+//   }); //this is the nonworking stuff
 recall();
 interval();
 function interval() {
