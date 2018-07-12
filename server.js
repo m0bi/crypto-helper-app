@@ -224,14 +224,13 @@ app.get("/api/usd/:id", (req, res) => {
 
 
 app.get("/api/bibox/", (req, res) => {
-  async function derive1() {
+  (async function derive1() {
     let data;
     await Bibox.find({}).sort({ date: 1 }).then((data1) => {
       data = data1;
     }).catch(()=> console.log(err));
     res.json(data);
-  }
-  derive1();
+  })();
 });
 
 //not working - full set
@@ -265,7 +264,7 @@ app.get("/api/bibox/c/", (req, res) => {
 
 app.get("/api/bibox/:id", (req, res) => {
   const id = req.params.id
-  async function derive3() {
+  (async function derive3() {
     let data;
     let usData;
     await Bibox.find({ "coin": id }).sort({ date: 1 }).then((data1) => {
@@ -276,8 +275,7 @@ app.get("/api/bibox/:id", (req, res) => {
     }).catch(()=> console.log(err));
     usData.push(data);
     res.json(usData);
-  }
-  derive3();
+  })();
 });
 
 app.get("/api/binance/", (req, res) => {
@@ -288,7 +286,7 @@ app.get("/api/binance/", (req, res) => {
 
 app.get("/api/binance/:id", (req, res) => {
   const id = req.params.id;
-  async function derive4() {
+  (async function derive4() {
     let data;
     let usData;
     await Binance.find({ "coin": id }).sort({ date: 1 }).then((data1) => {
@@ -299,13 +297,12 @@ app.get("/api/binance/:id", (req, res) => {
     }).catch(()=> console.log(err));
     usData.push(data);
     res.json(usData);
-  }
-  derive4();
+  })();
 });
 
 app.get("/api/binance/c/:id", (req, res) => {
   const id = req.params.id;
-  async function derive5() {
+  (async function derive5() {
     let data;
     let usData;
     await Binance.find({ "currency": id }).sort({ date: 1 }).then((data1) => {
@@ -316,8 +313,7 @@ app.get("/api/binance/c/:id", (req, res) => {
     }).catch(()=> console.log(err));
     usData.push(data);
     res.json(usData);
-  }
-  derive5();
+  })();
 });
 
 //not working
@@ -326,17 +322,16 @@ app.get("/api/binance/c/", (req, res) => {
 });
 
 app.get("/api/cryptopia/", (req, res) => {
-  async function derive6() {
+  (async function derive6() {
     await Cryptopia.find({}).sort({ date: 1 }).then((data1) => {
       res.json(data1);
     }).catch(()=> console.log(err));
-  }
-  derive6();
+  })();
 });
 
 app.get("/api/cryptopia/:id", (req, res) => {
   const id = req.params.id;
-  async function derive7() {
+  (async function derive7() {
     let data;
     let usData;
     await Cryptopia.find({ "coin": id }).sort({ date: 1 }).then((data1) => {
@@ -347,13 +342,12 @@ app.get("/api/cryptopia/:id", (req, res) => {
     }).catch(()=> console.log(err));
     usData.push(data);
     res.json(usData);
-  }
-  derive7();
+  })();
 });
 
 app.get("/api/cryptopia/c/:id", (req, res) => {
   const id = req.params.id;
-  async function derive8() {
+  (async function derive8() {
     let data;
     let usData;
     await Cryptopia.find({ "currency": id }).sort({ date: 1 }).then((data1) => {
@@ -364,8 +358,7 @@ app.get("/api/cryptopia/c/:id", (req, res) => {
     }).catch(()=> console.log(err));
     usData.push(data);
     res.json(usData);
-  }
-  derive8();
+  })();
 });
 
 app.get("/api/cryptopia/c/", (req, res) => {
@@ -381,7 +374,7 @@ app.get("/api/kucoin/", (req, res) => {
 
 app.get("/api/kucoin/:id", (req, res) => {
   const id = req.params.id;
-  async function derive9() {
+  (async function derive9() {
     let data;
     let usData;
     await Kucoin.find({ "coin": id }).sort({ date: 1 }).then((data1) => {
@@ -392,13 +385,12 @@ app.get("/api/kucoin/:id", (req, res) => {
     }).catch(()=> console.log(err));
     usData.push(data);
     res.json(usData);
-  }
-  derive9();
+  })();
 });
 
 app.get("/api/kucoin/c/:id", (req, res) => {
   const id = req.params.id;
-  async function derive10() {
+  (async function derive10() {
     let data;
     let usData;
     await Kucoin.find({ "currency": id }).sort({ date: 1 }).then((data1) => {
@@ -409,8 +401,7 @@ app.get("/api/kucoin/c/:id", (req, res) => {
     }).catch(()=> console.log(err));
     usData.push(data);
     res.json(usData);
-  }
-  derive10();
+  })();
 });
 
 app.get("/api/kucoin/c/", (req, res) => {
@@ -419,7 +410,7 @@ app.get("/api/kucoin/c/", (req, res) => {
 
 app.get("/api/:id", (req, res) => {
   const id = req.params.id
-  async function derive11() {
+  (async function derive11() {
     const XTC = [];
     await Usd.find({ "coin": id }).sort({ date: 1 }).limit(1).then(data1 => {
       XTC.push(data1);
@@ -437,13 +428,11 @@ app.get("/api/:id", (req, res) => {
       XTC.push(data1);
     }).catch(()=> console.log(err));
     res.json(XTC);
-    XTC = [];
-  }
-  derive11();
+  })();
 });
 
 app.get("/api/c/:id", (req, res) => {
-  async function derive12() {
+  (async function derive12() {
     const XTC = [];
     const id = req.params.id
     await Usd.find({ "coin": id }).sort({ date: 1 }).limit(1).then(data1 => {
@@ -470,9 +459,7 @@ app.get("/api/c/:id", (req, res) => {
       });
     }
     res.json(XTC);
-  }
-  derive12();
-  XTC=[];
+  })();
 });
 // app.get("*", function (req, res) {
 //     res.sendFile(path.join(__dirname, "./client/build/index.html"));
