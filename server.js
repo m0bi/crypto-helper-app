@@ -28,34 +28,34 @@ promiseToken.then((data)=>console.log("Data: " + data));
 // promiseToken.then((response)=>{
 //   response.data.pipe(fs.createWriteStream('ada_lovelace.json'));
 //   }); //this is the nonworking stuff
-recall();
-interval();
-function interval() {
-  setInterval(() => drop(), 600000);
-  setInterval(() => recall(), 600500);
-}
+//recall();
+// interval();
+// function interval() {
+//   setInterval(() => drop(), 600000);
+//   setInterval(() => recall(), 600500);
+// }
 async function drop() {
   await mongoose.connection.collections['biboxes'].drop(function (err) {
-    console.log('collection dropped');
+    console.log('biboxes dropped');
   }).catch(()=> console.log(err));
   await mongoose.connection.collections['binances'].drop(function (err) {
-    console.log('collection dropped');
+    console.log('binances dropped');
   }).catch(()=> console.log(err));
   await mongoose.connection.collections['cryptopias'].drop(function (err) {
-    console.log('collection dropped');
+    console.log('cryptopias dropped');
   }).catch(()=> console.log(err));
   await mongoose.connection.collections['kucoins'].drop(function (err) {
-    console.log('collection dropped');
+    console.log('kucoins dropped');
   }).catch(()=> console.log(err));
   await mongoose.connection.collections['news'].drop(function (err) {
-    console.log('collection dropped');
+    console.log('news dropped');
   }).catch(()=> console.log(err));
   await mongoose.connection.collections['usds'].drop(function (err) {
-    console.log('collection dropped');
+    console.log('usds dropped');
   }).catch(()=> console.log(err));
 }
 
-function recall() {
+(function recall() {
   Promise.all([promiseNews, promiseUsd, promiseBibox, promiseKucoin, promiseBinance, promiseCryptopia]).then(([newsData, usdData, biboxData, kucoinData, binanceData, cryptopiaData]) => {
 
     for (var i = 0; i < newsData.length; i++) {
@@ -173,7 +173,7 @@ function recall() {
   });
 
 
-}
+})();
 
 
 
