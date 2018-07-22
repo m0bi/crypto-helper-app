@@ -2,6 +2,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
+    "ccxt": "^1.16.86",
     "curl": "^0.1.4",
     "curlrequest": "^1.0.1",
     "deep-diff": "^1.0.1",

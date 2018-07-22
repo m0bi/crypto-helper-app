@@ -4,12 +4,16 @@ const app = express();
 
 const diff = require('deep-diff').diff; //finding differences between objects
 const axios = require('axios');
-const curl = require('curlrequest');
 const request = require('request');
 var Combinatorics = require('js-combinatorics');
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
+//here I get exchange data.
+
+const ccxt = require('ccxt');
 
 
+
+//start of middleware stack
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
@@ -50,8 +54,8 @@ module.exports = {
     news: async function getNews() {
         try {
             const response = await axios('https://cryptopanic.com/api/posts/?auth_token=518dacbc2f54788fcbd9e182521851725a09b4fa&public=true');
-             var news = [];
-             response.data.results.forEach((results) => {
+            var news = [];
+            response.data.results.forEach((results) => {
 
                 news.push({
                     title: results.title,
@@ -78,91 +82,72 @@ module.exports = {
             console.log(error);
         }
     },
-    bibox: async function bibox() {
-        try {
-            let response = await axios('https://api.bibox.com/v1/mdata?cmd=marketAll');
-            //console.log(response.data.result);
-            var biboxData = response.data.result.map(coin=>({ "coin": coin.coin_symbol, "currency": coin.currency_symbol, "value": coin.last}));
-            //console.log(biboxData);
-            return biboxData;
-        } catch (err) {
-            console.log(err);
-        }
+    exchanges: async function printExchange() {
+        let ccxtcontainer = await ccxt.exchanges;
+        return ccxtcontainer;
     },
-    kucoin: async function kucoin() {
-        try {
-            let response = await axios('https://api.kucoin.com/v1/open/tick');
-            //console.log(response.data.data);
-            var kucoinData = response.data.data.map(coin=>({"coin": coin.coinType, "currency": coin.coinTypePair, "value": coin.lastDealPrice}))
-            //console.log(kucoinData);
-            return kucoinData;
-        } catch (err) {
-            console.log(err);
-        }
+    bibox: async function printBibox() {
+        let bibox = new ccxt.bibox({ verbose: true });
+        return await bibox.fetch_markets();
     },
-    binance: async function binance() {
-        try {
-            let response = await axios('https://api.binance.com/api/v3/ticker/price');
-            //console.log(response.data);
-            return response.data;
-        } catch (err) {
-            console.log(err);
-        }
+    binance: async function printBinance() {
+        let binance = new ccxt.binance({ verbose: true });
+        return binance.fetch_markets();;
     },
-    cryptopia: async function cryptopia() {
-        try {
-            let response = await axios('https://www.cryptopia.co.nz/api/GetMarkets');
-            //console.log(response.data.Data);
-            var cryptopiaData = response.data.Data.map(coin=>({"label": coin.Label, "last": coin.LastPrice}))
-            //console.log(cryptopiaData);
-            return cryptopiaData;
-        } catch (err) {
-            console.log(err);
-        }
+    bitflyer: async function printBitflyer() {
+        let bitflyer = new ccxt.bitflyer({ verbose: true });
+        return await bitflyer.fetch_markets();
     },
-    tokenspread: async function tokenspread() {
-        try{
-            console.log("called");
-
-            var options = {
-                url: 'https://www.tokenspread.com/data/streams/pair_data',
-                headers: "authorization: 64ba9faae1b7096d87c83b5a06889b8f7b5e67a819654850"
-            }
-            let response = await curl.request(options);
-                //handle response type: stream
-                //maybe don't return response, catch the stream and return the container.
-            return response;
-
-
-            // var oReq = new XMLHttpRequest();
-            
-            // oReq.onreadystatechange = function() {
-            //     if(this.readyState == 4 && this.status == 200) {
-            //         console.log(this.responseText);
-            //     }
-            //     console.log(this.status);
-            // }
-
-            // oReq.open("GET", "https://www.tokenspread.com/data/streams/pair_data");
-            // oReq.setRequestHeader("authorization", "64ba9faae1b7096d87c83b5a06889b8f7b5e67a819654850");
-            // oReq.send();
-
-
-
-
-            // let response = await axios({
-            //     method:'get',
-            //     url:'https://www.tokenspread.com/data/streams/pair_data',
-            //     responseType:'stream',
-            //     headers: {"authorization":""}
-            //   });
-
-        } catch (err) {
-            console.log("Error: " + err);
-        }
-
-   }
-
+    bithumb: async function printBithumb() {
+        let bithumb = new ccxt.bithumb({ verbose: true });
+        return await bithumb.fetch_markets();
+    },
+    bitstamp: async function printBitstamp() {
+        let bitstamp = new ccxt.bitstamp ({verbose: true});
+        return await bitstamp.fetch_markets();
+    },
+    bittrex: async function printBittrex() {
+        let bittrex = new ccxt.bittrex ({verbose: true});
+        return await bittrex.fetch_markets();
+    },
+    ccex: async function printCcex() {
+        let ccex = new ccxt.ccex ({verbose: true});
+        return await ccex.fetch_markets();
+    },
+    coinbasepro: async function printCoinbasepro() {
+        let coinbasepro = new ccxt.coinbasepro ({verbose: true});
+        return await coinbasepro.fetch_markets();
+    },
+    cryptopia: async function printCryptopia() {
+        let cryptopia = new ccxt.cryptopia ({verbose: true});
+        return await cryptopia.fetch_markets();
+    },
+    gateio: async function printGateio() {
+        let gateio = new ccxt.gateio ({verbose: true});
+        return await gateio.fetch_markets();
+    },
+    gdax: async function printGdax() {
+        let gdax = new ccxt.gdax ({verbose: true});
+        return await gdax.fetch_markets();
+    },
+    kraken: async function printKraken() {
+        let kraken = new ccxt.kraken({ verbose: true }) // log HTTP requests
+        return await kraken.fetch_markets() // request markets
+        //console.log (kraken.id, kraken.markets)    // output a full list of all loaded markets
+        // console.log (Object.keys (kraken.markets)) // output a short list of market symbols
+        // console.log (kraken.markets['BTC/USD'])    // output single market details
+        // await kraken.fetch_markets () // return a locally cached version, no reload
+        // let reloadedMarkets = await kraken.fetch_markets (true) // force HTTP reload = true
+        // console.log (reloadedMarkets['ETH/BTC'])
+    },
+    kucoin: async function printKucoin() {
+        let kucoin = new ccxt.kucoin ({verbose: true});
+        return await kucoin.fetch_markets();
+    },
+    liqui: async function printLiqui() {
+        let liqui = new ccxt.liqui ({verbose: true});
+        return await liqui.fetch_markets();
+    }
 }
 // var coins = [];
 // for (var i = 3; i < values.length; i++) {
@@ -175,11 +160,11 @@ module.exports = {
 // mysteryKeys = Object.keys(mystery2);
 // mysteryValues = Object.values(mystery2);
 
-// var binance = {};
-// var hitb = {};
-// var bittrex = {};
+// var Binancece = {};
+// vabinanceb =binance// var bittrex = {};
 // var kraken = {};
-// var cryptopia = {};
+// var cryptopia = {}; async ftBit2cn printBibox() {
+
 // var liqui = {};
 
 // mysteryValues.forEach((val, i, container) => {
