@@ -75,161 +75,280 @@ module.exports = {
         let ccxtcontainer = await ccxt.exchanges;
         return ccxtcontainer;
     },
-    _1btcxe: async function print1btcxe() {
-        let _1btcxe = new ccxt._1btcxe();
-        return await _1btcxe.fetch_markets();
-    },
-    acx: async function printAcx() {
-        let acx = new ccxt.acx();
-        return await acx.fetch_markets();
-    },
     anxpro: async function printAnx() {
-        let anxpro = new ccxt.anxpro();
-        return await anxpro.fetch_markets();
+        let anxpro = new ccxt.anxpro({
+            'enableRateLimit': true,
+        });
+        await anxpro.loadMarkets();
+        return anxpro.symbols;
+        
+        //return await anxpro.fetch_markets();
     },
     anybits: async function printAnybits() {
-        let anybits = new ccxt.anybits();
-        return await anybits.fetch_markets();
+        let anybits = new ccxt.anybits({
+            'enableRateLimit': true,
+        });
+        await anybits.loadMarkets();
+        return anybits.symbols;
+        
+        //return await anybits.fetch_markets();
     },
-    bibox: async function printBibox() {
-        let bibox = new ccxt.bibox();
+    bibox: async function printBibox() { //has last price
+        let bibox = new ccxt.bibox({
+            'enableRateLimit': true,
+        });
         return await bibox.fetch_markets();
     },
     binance: async function printBinance() {
-        let binance = new ccxt.binance();
-        return await binance.fetch_markets();
+        let binance = new ccxt.binance({
+            'enableRateLimit': true,
+        });
+        await binance.loadMarkets();
+        return binance.symbols;
+        
+        //return await binance.fetch_markets();
     },
     bitbay: async function printBitbay() {
-        let bitbay = new ccxt.bitbay();
-        return await bitbay.fetch_markets();
+        let bitbay = new ccxt.bitbay({
+            'enableRateLimit': true,
+        });
+        await bitbay.loadMarkets();
+        return bitbay.symbols;
+        
+        //return await bitbay.fetch_markets();
     },
     bitfinex2: async function printBitfinex2(){
-        let bitfinex2 = new ccxt.bitfinex2();
-        return await bitfinex2.fetch_markets();
+        let bitfinex2 = new ccxt.bitfinex2({
+            'enableRateLimit': true,
+        });
+        await bitfinex2.loadMarkets();
+        return bitfinex2.symbols;
+        
+
+        //return await bitfinex2.fetch_markets();
     },
     bitflyer: async function printBitflyer() {
-        let bitflyer = new ccxt.bitflyer();
-        return await bitflyer.fetch_markets();
-    },
-    bithumb: async function printBithumb() {
-        let bithumb = new ccxt.bithumb();
-        return await bithumb.fetch_markets();
+        let bitflyer = new ccxt.bitflyer({
+            'enableRateLimit': true,
+        });
+        await bitflyer.loadMarkets();
+        return bitflyer.symbols;
+        
+        //return await bitflyer.fetch_markets();
     },
     bitlish: async function printBitlish() {
-        let bitlish = new ccxt.bitlish();
-        return await bitlish.fetch_markets();
+        let bitlish = new ccxt.bitlish({
+            'enableRateLimit': true,
+        });
+        await bitlish.loadMarkets();
+        return bitlish.symbols;
+        
+        //return await bitlish.fetch_markets();
     },
     bitstamp: async function printBitstamp() {
-        let bitstamp = new ccxt.bitstamp ();
-        return await bitstamp.fetch_markets();
+        let bitstamp = new ccxt.bitstamp ({
+            'enableRateLimit': true,
+        });
+        await bitstamp.loadMarkets();
+        return bitstamp.symbols;
+        
+
+        //return await bitstamp.fetch_markets();
     },
     bittrex: async function printBittrex() {
-        let bittrex = new ccxt.bittrex ();
-        return await bittrex.fetch_markets();
+        let bittrex = new ccxt.bittrex ({
+            'enableRateLimit': true,
+        });
+        await bittrex.loadMarkets();
+        return bittrex.symbols;
+        
+        //return await bittrex.fetch_markets();
     },
     btcalpha: async function printBtcalpha() {
-        let btcalpha = new ccxt.btcalpha();
-        return await btcalpha.fetch_markets();
+        let btcalpha = new ccxt.btcalpha({
+            'enableRateLimit': true,
+        });
+        await btcalpha.loadMarkets();
+        return btcalpha.symbols;
+        
+        //return await btcalpha.fetch_markets();
     },
     btcmarkets: async function printBtcmarkets() {
-        let btcmarkets = new ccxt.btcmarkets();
-        return await btcmarkets.fetch_markets();
+        let btcmarkets = new ccxt.btcmarkets({
+            'enableRateLimit': true,
+        });
+        await btcmarkets.loadMarkets();
+        return btcmarkets.symbols;
+        
+        //return await btcmarkets.fetch_markets();
     },
     btctradeim: async function printBtctradeim() {
-        let btctradeim = new ccxt.btctradeim();
-        return await btctradeim.fetch_markets();
+        let btctradeim = new ccxt.btctradeim({
+            'enableRateLimit': true,
+        });
+        await btctradeim.loadMarkets();
+        return btctradeim.symbols;
+        
+        //return await btctradeim.fetch_markets();
     },
     cex: async function printCex(){
-        let cex = new ccxt.cex();
-        return await cex.fetch_markets();
+        let cex = new ccxt.cex({
+            'enableRateLimit': true,
+        });
+        await cex.loadMarkets();
+        return cex.symbols;
+        
+        //return await cex.fetch_markets();
     },
     cobinhood: async function printCobinhood() {
-        let cobinhood = new ccxt.cobinhood();
-        return await cobinhood.fetch_markets();
+        let cobinhood = new ccxt.cobinhood({
+            'enableRateLimit': true,
+        });
+        await cobinhood.loadMarkets();
+        return cobinhood.symbols;
+        
+        //return await cobinhood.fetch_markets();
     },
     coinbasepro: async function printCoinbasepro() {
-        let coinbasepro = new ccxt.coinbasepro();
-        return await coinbasepro.fetch_markets();
+        let coinbasepro = new ccxt.coinbasepro({
+            'enableRateLimit': true,
+        });
+        await coinbasepro.loadMarkets();
+        return coinbasepro.symbols;
+        
+        //return await coinbasepro.fetch_markets();
     },
     coinegg: async function printCoinegg() {
-        let coinegg = new ccxt.coinegg();
-        return await coinegg.fetch_markets();
+        let coinegg = new ccxt.coinegg({
+            'enableRateLimit': true,
+        });
+        await coinegg.loadMarkets();
+        return coinegg.symbols;
+        
+        //return await coinegg.fetch_markets();
     },
     coinex: async function printCoinex() {
-        let coinex = new ccxt.coinex();
-        return await coinex.fetch_markets();
+        let coinex = new ccxt.coinex({
+            'enableRateLimit': true,
+        });
+        await coinex.loadMarkets();
+        return coinex.symbols;
+        
+        //return await coinex.fetch_markets();
     },
-    coinexchange: async function printCoinexchange() {
-        let coinexchange = new ccxt.coinexchange();
+    coinexchange: async function printCoinexchange() { //has price data
+        let coinexchange = new ccxt.coinexchange({
+            'enableRateLimit': true,
+        });
         return await coinexchange.fetch_markets();
     },
     coinfalcon: async function printCoinfalcon() {
-        let coinfalcon = new ccxt.coinfalcon();
-        return await coinfalcon.fetch_markets();
-    },
-    coinfloor: async function printCoinfloor() {
-        let coinfloor = new ccxt.coinfloor();
-        return await coinfloor.fetch_markets();
+        let coinfalcon = new ccxt.coinfalcon({
+            'enableRateLimit': true,
+        });
+        await coinfalcon.loadMarkets();
+        return coinfalcon.symbols;
+        
+        //return await coinfalcon.fetch_markets();
     },
     coinmate: async function printcoinmate() {
-        let coinmate = new ccxt.coinmate();
-        return await coinmate.fetch_markets();
-    },
-    coinspot: async function printcoinspot() {
-        let coinspot = new ccxt.coinspot();
-        return await coinspot.fetch_markets();
+        let coinmate = new ccxt.coinmate({
+            'enableRateLimit': true,
+        });
+        await coinmate.loadMarkets();
+        return coinmate.symbols;
+        
+        //return await coinmate.fetch_markets();
     },
     crypton: async function printcrypton(){
-        let crypton = new ccxt.crypton();
-        return await crypton.fetch_markets();
+        let crypton = new ccxt.crypton({
+            'enableRateLimit': true,
+        });
+        await crypton.loadMarkets();
+        return crypton.symbols;
+        
+        //return await crypton.fetch_markets();
     },
     cryptopia: async function printCryptopia() {
-        let cryptopia = new ccxt.cryptopia();
-        return await cryptopia.fetch_markets();
+        let cryptopia = new ccxt.cryptopia({
+            'enableRateLimit': true,
+        });
+        await cryptopia.loadMarkets();
+        return cryptopia.symbols;
+        
+        //return await cryptopia.fetch_markets();
     },
     dsx: async function printDsx() {
-        let dsx = new ccxt.dsx();
-        return await dsx.fetch_markets();
-    },
-    deribit: async function printDeribit() {
-        let deribit = new ccxt.deribit();
-        return await deribit.fetch_markets();
+        let dsx = new ccxt.dsx({
+            'enableRateLimit': true,
+        });
+        await dsx.loadMarkets();
+        return dsx.symbols;
+        
+        //return await dsx.fetch_markets();
     },
     exmo: async function printExmo() {
-        let exmo = new ccxt.exmo();
-        return await exmo.fetch_markets();
+        let exmo = new ccxt.exmo({
+            'enableRateLimit': true,
+        });
+        await exmo.loadMarkets();
+        return exmo.symbols;
+        
+        //return await exmo.fetch_markets();
     },
     gatecoin: async function printGatecoin() {
-        let gatecoin = new ccxt.gatecoin();
-        return await gatecoin.fetch_markets();
+        let gatecoin = new ccxt.gatecoin({
+            'enableRateLimit': true,
+        });
+        await gatecoin.loadMarkets();
+        return gatecoin.symbols;
+        
+        //return await gatecoin.fetch_markets();
     },
     gateio: async function printGateio() {
-        let gateio = new ccxt.gateio();
-        return await gateio.fetch_markets();
+        let gateio = new ccxt.gateio({
+            'enableRateLimit': true,
+        });
+        await gateio.loadMarkets();
+        return gateio.symbols;
+        
+        //return await gateio.fetch_markets();
     },
     gemini: async function printGemini() {
-        let gemini = new ccxt.gemini();
-        return await gemini.fetch_markets();
-    },
-    getbtc: async function printGetbtc() {
-        let getbtc = new ccxt.getbtc();
-        return await getbtc.fetch_markets();
+        let gemini = new ccxt.gemini({
+            'enableRateLimit': true,
+        });
+        await gemini.loadMarkets();
+        return gemini.symbols;
+        
+        //return await gemini.fetch_markets();
     },
     hitbtc2: async function printHitbtc() {
-        let hitbtc2 = new ccxt.hitbtc2();
-        return await hitbtc2.fetch_markets();
+        let hitbtc2 = new ccxt.hitbtc2({
+            'enableRateLimit': true,
+        });
+        await hitbtc2.loadMarkets();
+        return hitbtc2.symbols;
+        
+        //return await hitbtc2.fetch_markets();
     },
     ice3x: async function printice3x() {
-        let ice3x = new ccxt.ice3x();
-        return await ice3x.fetch_markets();
-    },
-    itbit: async function printItbit() {
-        let itbit = new ccxt.itbit();
-        return await itbit.fetch_markets();
+        let ice3x = new ccxt.ice3x({
+            'enableRateLimit': true,
+        });
+        await ice3x.loadMarkets();
+        return ice3x.symbols;
+        
+        //return await ice3x.fetch_markets();
     },
     kraken: async function printKraken() {
-        let kraken = new ccxt.kraken() // log HTTP requests
-        return await kraken.fetch_markets() // request markets
+        let kraken = new ccxt.kraken({
+            'enableRateLimit': true,
+        }) 
+        await kraken.loadMarkets();
+        return kraken.symbols;
+        
+        //return await kraken.fetch_markets() // request markets
         //console.log (kraken.id, kraken.markets)    // output a full list of all loaded markets
         // console.log (Object.keys (kraken.markets)) // output a short list of market symbols
         // console.log (kraken.markets['BTC/USD'])    // output single market details
@@ -238,88 +357,151 @@ module.exports = {
         // console.log (reloadedMarkets['ETH/BTC'])
     },
     kucoin: async function printKucoin() {
-        let kucoin = new ccxt.kucoin ();
-        return await kucoin.fetch_markets();
+        let kucoin = new ccxt.kucoin ({
+            'enableRateLimit': true,
+        });
+        await kucoin.loadMarkets();
+        return kucoin.symbols;
+        
+        //return await kucoin.fetch_markets();
     },
     kuna: async function printKuna() {
-        let kuna = new ccxt.kuna();
-        return await kuna.fetch_markets();
+        let kuna = new ccxt.kuna({
+            'enableRateLimit': true,
+        });
+        await kuna.loadMarkets();
+        return kuna.symbols;
+        
+        //return await kuna.fetch_markets();
     },
-    lakebtc: async function printLake() {
-        let lakebtc = new ccxt.lakebtc();
+    lakebtc: async function printLake() { // has price data
+        let lakebtc = new ccxt.lakebtc({
+            'enableRateLimit': true,
+        });
         return await lakebtc.fetch_markets();
     },
     lbank: async function printLbank() {
-        let lbank = new ccxt.lbank();
-        return await lbank.fetch_markets();
+        let lbank = new ccxt.lbank({
+            'enableRateLimit': true,
+        });
+        await lbank.loadMarkets();
+        return lbank.symbols;
+        
+        //return await lbank.fetch_markets();
     },
-    livecoin: async function printLivecoin() {
-        let livecoin = new ccxt.livecoin();
+    livecoin: async function printLivecoin() { //has price data
+        let livecoin = new ccxt.livecoin({
+            'enableRateLimit': true,
+        });
         return await livecoin.fetch_markets();
     },
     liqui: async function printLiqui() {
-        let liqui = new ccxt.liqui ();
-        return await liqui.fetch_markets();
+        let liqui = new ccxt.liqui ({
+            'enableRateLimit': true,
+        });
+        await liqui.loadMarkets();
+        return liqui.symbols;
+        
+        //return await liqui.fetch_markets();
     },
     lykke: async function printLykke() {
-        let lykke = new ccxt.lykke();
-        return await lykke.fetch_markets();
+        let lykke = new ccxt.lykke({
+            'enableRateLimit': true,
+        });
+        await lykke.loadMarkets();
+        return lykke.symbols;
+        
+        //return await lykke.fetch_markets();
     },
     mixcoins: async function printMixCoins() {
-        let mixcoins = new ccxt.mixcoins();
-        return await mixcoins.fetch_markets();
+        let mixcoins = new ccxt.mixcoins({
+            'enableRateLimit': true,
+        });
+        await mixcoins.loadMarkets();
+        return mixcoins.symbols;
+        
+        //return await mixcoins.fetch_markets();
     },
-    nova: async function printNova() {
-        let nova = new ccxt.nova();
+    nova: async function printNova() { //has price data
+        let nova = new ccxt.nova({
+            'enableRateLimit': true,
+        });
         return await nova.fetch_markets();
     },
-    okcoinusd: async function printOK() {
-        let okcoinusd = new ccxt.okcoinusd();
-        return await okcoinusd.fetch_markets();
-    },
-    qryptos: async function printQ() {
-        let qryptos = new ccxt.qryptos();
+    qryptos: async function printQ() { //has price data
+        let qryptos = new ccxt.qryptos({
+            'enableRateLimit': true,
+        });
         return await qryptos.fetch_markets();
     },
     quadrigacx: async function printQuad() {
-        let quadrigacx = new ccxt.quadrigacx();
-        return await quadrigacx.fetch_markets();
-    },
-    quoinex: async function printQuo() {
-        let quoinex = new ccxt.quoinex();
-        return await quoinex.fetch_markets();
+        let quadrigacx = new ccxt.quadrigacx({
+            'enableRateLimit': true,
+        });
+        await quadrigacx.loadMarkets();
+        return quadrigacx.symbols;
+        
+        //return await quadrigacx.fetch_markets();
     },
     rightbtc: async function printRight() {
-        let rightbtc = new ccxt.rightbtc();
-        return await rightbtc.fetch_markets();
+        let rightbtc = new ccxt.rightbtc({
+            'enableRateLimit': true,
+        });
+        await rightbtc.loadMarkets();
+        return rightbtc.symbols;
+        
+        //return await rightbtc.fetch_markets();
     },
     southxchange: async function printSouth() {
-        let southxchange = new ccxt.southxchange();
-        return await southxchange.fetch_markets();
+        let southxchange = new ccxt.southxchange({
+            'enableRateLimit': true,
+        });
+        await southxchange.loadMarkets();
+        return southxchange.symbols;
+        
+        //return await southxchange.fetch_markets();
     },
-    therock: async function printRock() {
-        let therock = new ccxt.therock();
+    therock: async function printRock() { //has last price
+        let therock = new ccxt.therock({
+            'enableRateLimit': true,
+        });
         return await therock.fetch_markets();
     },
-    tidebit: async function printTide() {
-        let tidebit = new ccxt.tidebit();
-        return await tidebit.fetch_markets();
-    },
     tidex: async function printTidex() {
-        let tidex = new ccxt.tidex();
-        return await tidex.fetch_markets();
+        let tidex = new ccxt.tidex({
+            'enableRateLimit': true,
+        });
+        await tidex.loadMarkets();
+        return tidex.symbols;
+        
+        //return await tidex.fetch_markets();
     },
     wex: async function printWex() {
-        let wex = new ccxt.wex();
-        return await wex.fetch_markets();
+        let wex = new ccxt.wex({
+            'enableRateLimit': true,
+        });
+        await wex.loadMarkets();
+        return wex.symbols;
+        
+        //return await wex.fetch_markets();
     },
     yobit: async function printYobit() {
-        let yobit = new ccxt.yobit();
-        return await yobit.fetch_markets();
+        let yobit = new ccxt.yobit({
+            'enableRateLimit': true,
+        });
+        await yobit.loadMarkets();
+        return yobit.symbols;
+        
+        //return await yobit.fetch_markets();
     },
     zaif: async function printZaif() {
-        let zaif = new ccxt.zaif();
-        return await zaif.fetch_markets();
+        let zaif = new ccxt.zaif({
+            'enableRateLimit': true,
+        });
+        await zaif.loadMarkets();
+        return zaif.symbols;
+        
+        //return await zaif.fetch_markets();
     }
 }
 // var coins = [];
