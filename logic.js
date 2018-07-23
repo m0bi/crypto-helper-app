@@ -119,10 +119,6 @@ module.exports = {
         let bitlish = new ccxt.bitlish();
         return await bitlish.fetch_markets();
     },
-    bitsane: async function printBitsane() {
-        let bitsane = new ccxt.bitsane();
-        return await bitsane.fetch_markets();
-    },
     bitstamp: async function printBitstamp() {
         let bitstamp = new ccxt.bitstamp ();
         return await bitstamp.fetch_markets();
@@ -130,10 +126,6 @@ module.exports = {
     bittrex: async function printBittrex() {
         let bittrex = new ccxt.bittrex ();
         return await bittrex.fetch_markets();
-    },
-    bitz: async function printBitz() {
-        let bitz = new ccxt.bitz();
-        return await bitz.fetch_markets();
     },
     btcalpha: async function printBtcalpha() {
         let btcalpha = new ccxt.btcalpha();
@@ -146,10 +138,6 @@ module.exports = {
     btctradeim: async function printBtctradeim() {
         let btctradeim = new ccxt.btctradeim();
         return await btctradeim.fetch_markets();
-    },
-    bxinth: async function printBxinth(){
-        let bxinth = new ccxt.bxinth();
-        return await bxinth.fetch_markets();
     },
     cex: async function printCex(){
         let cex = new ccxt.cex();
@@ -182,10 +170,6 @@ module.exports = {
     coinfloor: async function printCoinfloor() {
         let coinfloor = new ccxt.coinfloor();
         return await coinfloor.fetch_markets();
-    },
-    coingi: async function printcoingi() {
-        let coingi = new ccxt.coingi();
-        return await coingi.fetch_markets();
     },
     coinmate: async function printcoinmate() {
         let coinmate = new ccxt.coinmate();
@@ -253,21 +237,89 @@ module.exports = {
         // let reloadedMarkets = await kraken.fetch_markets (true) // force HTTP reload = true
         // console.log (reloadedMarkets['ETH/BTC'])
     },
-    kuna: async function printKuna() {
-        let kuna = new ccxt.kuna();
-        return await kuna.fetch_markets();
-    },
-    lakebtc: async function pintLake() {
-        let lakebtc = new ccxt.lakebtc();
-        return await lakebtc.fetch_markets();
-    },
     kucoin: async function printKucoin() {
         let kucoin = new ccxt.kucoin ();
         return await kucoin.fetch_markets();
     },
+    kuna: async function printKuna() {
+        let kuna = new ccxt.kuna();
+        return await kuna.fetch_markets();
+    },
+    lakebtc: async function printLake() {
+        let lakebtc = new ccxt.lakebtc();
+        return await lakebtc.fetch_markets();
+    },
+    lbank: async function printLbank() {
+        let lbank = new ccxt.lbank();
+        return await lbank.fetch_markets();
+    },
+    livecoin: async function printLivecoin() {
+        let livecoin = new ccxt.livecoin();
+        return await livecoin.fetch_markets();
+    },
     liqui: async function printLiqui() {
         let liqui = new ccxt.liqui ();
         return await liqui.fetch_markets();
+    },
+    lykke: async function printLykke() {
+        let lykke = new ccxt.lykke();
+        return await lykke.fetch_markets();
+    },
+    mixcoins: async function printMixCoins() {
+        let mixcoins = new ccxt.mixcoins();
+        return await mixcoins.fetch_markets();
+    },
+    nova: async function printNova() {
+        let nova = new ccxt.nova();
+        return await nova.fetch_markets();
+    },
+    okcoinusd: async function printOK() {
+        let okcoinusd = new ccxt.okcoinusd();
+        return await okcoinusd.fetch_markets();
+    },
+    qryptos: async function printQ() {
+        let qryptos = new ccxt.qryptos();
+        return await qryptos.fetch_markets();
+    },
+    quadrigacx: async function printQuad() {
+        let quadrigacx = new ccxt.quadrigacx();
+        return await quadrigacx.fetch_markets();
+    },
+    quoinex: async function printQuo() {
+        let quoinex = new ccxt.quoinex();
+        return await quoinex.fetch_markets();
+    },
+    rightbtc: async function printRight() {
+        let rightbtc = new ccxt.rightbtc();
+        return await rightbtc.fetch_markets();
+    },
+    southxchange: async function printSouth() {
+        let southxchange = new ccxt.southxchange();
+        return await southxchange.fetch_markets();
+    },
+    therock: async function printRock() {
+        let therock = new ccxt.therock();
+        return await therock.fetch_markets();
+    },
+    tidebit: async function printTide() {
+        let tidebit = new ccxt.tidebit();
+        return await tidebit.fetch_markets();
+    },
+    tidex: async function printTidex() {
+        let tidex = new ccxt.tidex();
+        return await tidex.fetch_markets();
+    },
+    wex: async function printWex() {
+        let wex = new ccxt.wex();
+        return await wex.fetch_markets();
+    },
+    yobit: async function printYobit() {
+        let yobit = new ccxt.yobit();
+        return await yobit.fetch_markets();
+    },
+    zaif: async function printZaif() {
+        let zaif = new ccxt.zaif();
+        return await zaif.fetch_markets();
     }
 }
 // var coins = [];
