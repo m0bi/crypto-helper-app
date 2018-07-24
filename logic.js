@@ -135,7 +135,12 @@ module.exports = {
         });
         await bitfinex2.loadMarkets();
         return bitfinex2.symbols;
-
+        const prices = {'id':bitfinex2.id};
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC', 'EOS/BTC', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC'];
+        for (let i = 0; i < pairs.length; i++) {
+            prices[pairs[i]] = await bitbay.fetchTicker(pairs[i]);
+        }
+        return prices;
 
         //return await bitfinex2.fetch_markets();
     },

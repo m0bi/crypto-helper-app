@@ -62,12 +62,12 @@ let yobit = resolve.yobit();
 let zaif = resolve.zaif();
 
 
-exchangeValues.then(response => console.log("Values: " + response)); //works
+//exchangeValues.then(response => console.log("Values: " + response)); //works
 //  anxpro.then(response => console.log("Anxpro: " + JSON.stringify(response))); // fees
 //  anybits.then(response => console.log("Anybits: " + JSON.stringify(response))); //
 //  binance.then(response => console.log("Binance: " + JSON.stringify(response))); //
 //  bitbay.then(response => console.log("Bitbay: " + JSON.stringify(response))); // fees
-//  bitfinex2.then(response => console.log("Bitfinex: " + JSON.stringify(response))); //
+bitfinex2.then(response => console.log("Bitfinex: " + JSON.stringify(response))); //
 //  bitflyer.then(response => console.log("Bitflyer: " + JSON.stringify(response))); //
 //  bitlish.then(response => console.log("Bitlish: " + JSON.stringify(response))); //
 //  bitstamp.then(response => console.log("Bitstamp: " + JSON.stringify(response))); //
@@ -104,7 +104,7 @@ exchangeValues.then(response => console.log("Values: " + response)); //works
 //  therock.then(response => console.log("Therock: " + JSON.stringify(response))); //has last price
 //  tidex.then(response => console.log("Tidex: " + JSON.stringify(response))); //includes fees
 //  wex.then(response => console.log("Wex: " + JSON.stringify(response))); //includes fees
-  yobit.then(response => console.log("Yobit: " + JSON.stringify(response))); //includes fees
+ // yobit.then(response => console.log("Yobit: " + JSON.stringify(response))); //includes fees
 //  zaif.then(response => console.log("Zaif: " + JSON.stringify(response))); //
  
 
