@@ -75,7 +75,7 @@ module.exports = {
         });
         await anybits.loadMarkets();
         const prices = {'id':anybits.id};
-        const pairs = ['BCH/BTC', 'LTC/BTC', 'LTC/ETH', 'XRP/BTC', 'ETH/BTC', 'DASH/BTC', 'DASH/ETH'];
+        const pairs = ['LTC/BTC', 'XRP/BTC', 'ETH/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await anybits.fetchTicker(pairs[i]);
         }
@@ -89,7 +89,7 @@ module.exports = {
         });
         await binance.loadMarkets();
         const prices = {'id':binance.id};
-        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'EOS/USDT', 'TRX/BTC', 'TRX/USDT', 'XLM/BTC', 'XMR/BTC'];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'EOS/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await binance.fetchTicker(pairs[i]);
         }
@@ -144,7 +144,7 @@ module.exports = {
         });
         await bitlish.loadMarkets();
         const prices = {'id':bitlish.id};
-        const pairs = ['BCH/BTC', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC'];
+        const pairs = ['BCH/BTC', 'BTC/USDT', 'LTC/BTC', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await bitlish.fetchTicker(pairs[i]);
         }
@@ -322,7 +322,7 @@ module.exports = {
         });
         await exmo.loadMarkets();
         const prices = {'id':exmo.id};
-        const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'ETH/LTC', 'ETH/USDT', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await exmo.fetchTicker(pairs[i]);
         }
@@ -363,7 +363,7 @@ module.exports = {
         });
         await hitbtc2.loadMarkets();
         const prices = {'id':hitbtc2.id};
-        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'TRX/USDT', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/ETH'];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/ETH'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await hitbtc2.fetchTicker(pairs[i]);
         }
@@ -564,7 +564,7 @@ module.exports = {
         });
         await wex.loadMarkets();
         const prices = {'id':wex.id};
-        const pairs = ['BCH/BTC', 'BCH/DASH', 'BCH/ETH', 'BCH/LTC', 'BCH/ZEC', 'DASH/BTC', 'DASH/ETH', 'DASH/LTC', 'DASH/ZEC', 'ETH/BTC', 'ETH/LTC', 'ETH/ZEC', 'LTC/BTC', 'ZEC/BTC', 'ZEC/LTC'];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/ZEC', 'DASH/BTC', 'DASH/ETH', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await wex.fetchTicker(pairs[i]);
         }
