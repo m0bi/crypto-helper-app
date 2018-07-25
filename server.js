@@ -64,273 +64,273 @@ let zaif = resolve.zaif();
 anxpro.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 });
 anybits.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 binance.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 bitbay.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // fees
 bitfinex2.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 bitflyer.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 bitlish.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 bitstamp.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 btcmarkets.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // fees
 btctradeim.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 cex.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // 
 coinbasepro.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // fees
 coinegg.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // 
 coinex.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // fees
 coinexchange.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // last price
 coinfalcon.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // 
 coinmate.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // fees
 dsx.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 exmo.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 gatecoin.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 gemini.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 hitbtc2.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //fees
 ice3x.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // 
 kraken.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // has fees
 kucoin.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // has last deal price
 lakebtc.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); // has last price
 lbank.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 livecoin.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //bid/ask prices
 liqui.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //taker
 lykke.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 qryptos.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //market bid, market ask
 quadrigacx.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //includes fees
 rightbtc.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //
 southxchange.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 });
 therock.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //has last price
 tidex.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
-      console.log(response.id + " " + key + " " + response[key].last);
+      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //includes fees
 wex.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined){
-    console.log(response.id + " " + key + " " + response[key].last);
+    console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //includes fees
 yobit.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined){
-    console.log(response.id + " " + key + " " + response[key].last);
+    console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //includes fees
 zaif.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined){
-    console.log(response.id + " " + key + " " + response[key].last);
+    console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
     }
   }
 }); //

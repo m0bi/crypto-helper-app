@@ -564,7 +564,7 @@ module.exports = {
         });
         await wex.loadMarkets();
         const prices = {'id':wex.id};
-        const pairs = ['BCH/BTC', 'BCH/DASH', 'BCH/ETH', 'BCH/LTC', 'BCH/ZEC', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'DASH/LTC', 'DASH/ZEC', 'ETH/BTC', 'ETH/LTC', 'ETH/ZEC', 'LTC/BTC', 'ZEC/BTC', 'ZEC/LTC'];
+        const pairs = ['BCH/BTC', 'BCH/DASH', 'BCH/ETH', 'BCH/LTC', 'BCH/ZEC', 'DASH/BTC', 'DASH/ETH', 'DASH/LTC', 'DASH/ZEC', 'ETH/BTC', 'ETH/LTC', 'ETH/ZEC', 'LTC/BTC', 'ZEC/BTC', 'ZEC/LTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await wex.fetchTicker(pairs[i]);
         }
