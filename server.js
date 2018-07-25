@@ -35,8 +35,8 @@ let btcmarkets = resolve.btcmarkets();
 let btctradeim = resolve.btctradeim();
 let cex = resolve.cex();
 let coinegg = resolve.coinegg();
- let coinex = resolve.coinex();
- let coinexchange = resolve.coinexchange();
+let coinex = resolve.coinex();
+let coinexchange = resolve.coinexchange();
 let coinfalcon = resolve.coinfalcon();
 let coinmate = resolve.coinmate();
 let dsx = resolve.dsx();
@@ -57,50 +57,284 @@ let therock = resolve.therock();
 let tidex = resolve.tidex();
 let wex = resolve.wex();
 let yobit = resolve.yobit();
- let zaif = resolve.zaif();
+let zaif = resolve.zaif();
 
 
 //exchangeValues.then(response => console.log("Values: " + response)); //works
- anxpro.then(response => console.log("Anxpro: " + JSON.stringify(response))); // fees
- anybits.then(response => console.log("Anybits: " + JSON.stringify(response))); //
- binance.then(response => console.log("Binance: " + JSON.stringify(response))); //
- bitbay.then(response => console.log("Bitbay: " + JSON.stringify(response))); // fees
-bitfinex2.then(response => console.log("Bitfinex: " + JSON.stringify(response))); //
- bitflyer.then(response => console.log("Bitflyer: " + JSON.stringify(response))); //
- bitlish.then(response => console.log("Bitlish: " + JSON.stringify(response))); //
- bitstamp.then(response => console.log("Bitstamp: " + JSON.stringify(response))); //
- btcmarkets.then(response => console.log("BtcMarkets: " + JSON.stringify(response))); // fees
- btctradeim.then(response => console.log("Btctradeim: " + JSON.stringify(response))); //
- cex.then(response => console.log("CEX: " + JSON.stringify(response))); // 
- coinbasepro.then(response => console.log("Coinbasepro: " + JSON.stringify(response))); // fees
-  coinegg.then(response => console.log("Coinegg: " + JSON.stringify(response))); // 
-  coinex.then(response => console.log("Coinex: " + JSON.stringify(response))); // fees
-  coinexchange.then(response => console.log("Coinexchange: " + JSON.stringify(response))); // last price
- coinfalcon.then(response => console.log("Coinfalcon: " + JSON.stringify(response))); // 
- coinmate.then(response => console.log("Coinmate: " + JSON.stringify(response))); // fees
- dsx.then(response => console.log("DSX: " + JSON.stringify(response))); //
- exmo.then(response => console.log("Exmo: " + JSON.stringify(response))); //
- gatecoin.then(response => console.log("Gatecoin: " + JSON.stringify(response))); //
- gemini.then(response => console.log("Gemini: " + JSON.stringify(response))); //
- hitbtc2.then(response => console.log("HitBtc: " + JSON.stringify(response))); //fees
- ice3x.then(response => console.log("Ice3x: " + JSON.stringify(response))); // 
-  kraken.then(response => console.log("Kraken: " + JSON.stringify(response))); // has fees
-  kucoin.then(response => console.log("Kucoin: " + JSON.stringify(response))); // has last deal price
- lakebtc.then(response => console.log("LakeBTC: " + JSON.stringify(response))); // has last price
-  lbank.then(response => console.log("LBank: " + JSON.stringify(response))); //
-  livecoin.then(response => console.log("Livecoin: " + JSON.stringify(response))); //bid/ask prices
-  liqui.then(response => console.log("Liqui: " + JSON.stringify(response))); //taker
-   lykke.then(response => console.log("Lykke: " + JSON.stringify(response))); //
-  qryptos.then(response => console.log("Qryptos: " + JSON.stringify(response))); //market bid, market ask
- quadrigacx.then(response => console.log("Quadriga: " + JSON.stringify(response))); //includes fees
-  rightbtc.then(response => console.log("Rightbtc: " + JSON.stringify(response))); //
-  southxchange.then(response => console.log("Southxchange: " + JSON.stringify(response)));
- therock.then(response => console.log("Therock: " + JSON.stringify(response))); //has last price
- tidex.then(response => console.log("Tidex: " + JSON.stringify(response))); //includes fees
- wex.then(response => console.log("Wex: " + JSON.stringify(response))); //includes fees
- yobit.then(response => console.log("Yobit: " + JSON.stringify(response))); //includes fees
-  zaif.then(response => console.log("Zaif: " + JSON.stringify(response))); //
- 
+anxpro.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+});
+anybits.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+binance.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+bitbay.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // fees
+bitfinex2.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+bitflyer.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+bitlish.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+bitstamp.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+btcmarkets.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // fees
+btctradeim.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+cex.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // 
+coinbasepro.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // fees
+coinegg.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // 
+coinex.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // fees
+coinexchange.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // last price
+coinfalcon.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // 
+coinmate.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // fees
+dsx.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+exmo.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+gatecoin.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+gemini.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+hitbtc2.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //fees
+ice3x.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // 
+kraken.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // has fees
+kucoin.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // has last deal price
+lakebtc.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); // has last price
+lbank.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+livecoin.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //bid/ask prices
+liqui.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //taker
+lykke.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+qryptos.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //market bid, market ask
+quadrigacx.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //includes fees
+rightbtc.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+southxchange.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+});
+therock.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //has last price
+tidex.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //includes fees
+wex.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined){
+    console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //includes fees
+yobit.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined){
+    console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //includes fees
+zaif.then(response => {
+  for (let key in response) {
+    if (response[key].last !== undefined){
+    console.log(response.id + " " + key + " " + response[key].last);
+    }
+  }
+}); //
+
 
 
 // app.get('/', function (req, res) {
