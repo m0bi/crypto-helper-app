@@ -144,7 +144,7 @@ module.exports = {
         });
         await bitlish.loadMarkets();
         const prices = {'id':bitlish.id};
-        const pairs = ['BCH/BTC', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC'];
+        const pairs = ['BCH/BTC', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await bitlish.fetchTicker(pairs[i]);
         }

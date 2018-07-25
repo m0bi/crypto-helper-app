@@ -65,6 +65,7 @@ anxpro.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
       console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
+      console.log(aggregate(key, response.id, response[key].last, new Date(response[key].timestamp)));
     }
   }
 }).catch(err=>console.log(err));
@@ -335,7 +336,45 @@ zaif.then(response => {
   }
 }).catch(err=>console.log(err)); //
 
-
+function aggregate(key, id, price, time) {
+  const pair = ['BCH/BTC', 'BCH/LTC', 'BCH/ETH', 'BCH/USDT', 'BCH/DASH', 'BCH/ZEC', 'BTC/USDT', 'DASH/BTC', 'DASH/LTC', 'DASH/ETH', 'DASH/ZEC', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/LTC', 'ETH/USDT', 'ETH/ZEC', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'TRX/USDT', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/LTC', 'ZEC/ETH'];
+  const pairOBJ = {
+    'BCH/BTC': {},
+    'BCH/LTC': {},
+    'BCH/ETH': {},
+    'BCH/USDT': {},
+    'BCH/DASH': {},
+    'BCH/SEC': {},
+    'BTC/USDT': {},
+    'DASH/BTC': {},
+    'DASH/LTC': {},
+    'DASH/ETH': {},
+    'DASH/ZEC': {},
+    'EOS/BTC': {},
+    'EOS/USDT': {},
+    'ETH/BTC': {},
+    'ETH/LTC': {},
+    'ETH/USDT': {},
+    'ETH/ZEC': {},
+    'LTC/BTC': {},
+    'LTC/ETH': {},
+    'LTC/USDT': {},
+    'TRX/BTC': {},
+    'TRX/USDT': {},
+    'XLM/BTC': {},  
+    'XMR/BTC': {},
+    'XRP/BTC': {},
+    'ZEC/BTC': {},
+    'ZEC/LTC': {},
+    'ZEC/ETH': {}
+  };
+  for(var val in pair){
+    if (val === key) {
+      pairOBJ.val[id] = [price, time]
+    }
+  }
+  return pairOBJ;
+}
 
 // app.get('/', function (req, res) {
 //   res.status(200).send('This is an API.');
