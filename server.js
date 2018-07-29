@@ -7,6 +7,8 @@ const ccxt = require('ccxt');
 const bodyParser = require("body-parser");
 var resolve = require("./logic.js");
 var { Combo, Exchange, News, Usd, Bibox, Binance, Cryptopia, Kucoin } = require('./models');
+//import { observable, autorun, action } from "mobx";
+
 //const keys = require("./keys");
 var VerifyToken = require('./auth/VerifyToken.js');
 global.__root = __dirname + '/';
@@ -59,6 +61,12 @@ let wex = resolve.wex();
 let yobit = resolve.yobit();
 let zaif = resolve.zaif();
 
+const Rebridge = require("rebridge");
+const redis = require("redis");
+
+const client = redis.createClient();
+const db = new Rebridge(client);
+yar
 const pairOBJ = {
   'BCH/BTC': [],
   'BCH/ETH': [],
@@ -401,6 +409,50 @@ function aggregate(coin, id, price, time) {
     }
   }
   return pairOBJ;
+}
+
+Promise.settle([...]).then(function(results) {
+  results.forEach(function(pi, index) {
+      if (pi.isFulfilled()) {
+          console.log("p[" + index + "] is fulfilled with value = ", pi.value());
+      } else {
+          console.log("p[" + index + "] is rejected with reasons = ", pi.reason());
+      }
+  });
+});
+
+Promise.settle = function(promises) {
+  function PromiseInspection(fulfilled, val) {
+      return {
+          isFulfilled: function() {
+              return fulfilled;
+          }, isRejected: function() {
+              return !fulfilled;
+          }, isPending: function() {
+              // PromiseInspection objects created here are never pending
+              return false;
+          }, value: function() {
+              if (!fulfilled) {
+                  throw new Error("Can't call .value() on a promise that is not fulfilled");
+              }
+              return val;
+          }, reason: function() {
+              if (fulfilled) {
+                  throw new Error("Can't call .reason() on a promise that is fulfilled");
+              }
+              return val;
+          }
+      };
+  }
+
+  return Promise.all(promises.map(function(p) {
+      // make sure any values are wrapped in a promise
+      return Promise.resolve(p).then(function(val) {
+          return new PromiseInspection(true, val);
+      }, function(err) {
+          return new PromiseInspection(false, err);
+      });
+  }));
 }
 
 // app.get('/', function (req, res) {
