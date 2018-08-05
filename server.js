@@ -62,12 +62,9 @@ let yobit = resolve.yobit();
 let zaif = resolve.zaif();
 
 
-//I am exploring using redis via redbridge to save the most recent set of results and provide them to a reactive app (the bitcoin repository in my github). From my research, I would like to try using MobX to update this data in real time.
-const Rebridge = require("rebridge");
-const redis = require("redis");
+//I am exploring using redis via ioredis to save the most recent set of results and provide them to a reactive app (the bitcoin repository in my github). From my research, I would like to try using MobX to update this data in real time.
 
-const client = redis.createClient();
-const db = new Rebridge(client);
+
 
 //this is the comparison set. I will be comparing these coin/currency pairs across all exchanges listed below.
 const pairOBJ = {
@@ -416,49 +413,49 @@ function aggregate(coin, id, price, time) {
 
 //these are my promise functions, to make sure I get a full set of results once I reformulate to a promise.all construction (promise.settle here)
 
-Promise.settle([]).then(function(results) {
-  results.forEach(function(pi, index) {
-      if (pi.isFulfilled()) {
-          console.log("p[" + index + "] is fulfilled with value = ", pi.value());
-      } else {
-          console.log("p[" + index + "] is rejected with reasons = ", pi.reason());
-      }
-  });
-});
+// Promise.settle([]).then(function(results) {
+//   results.forEach(function(pi, index) {
+//       if (pi.isFulfilled()) {
+//           console.log("p[" + index + "] is fulfilled with value = ", pi.value());
+//       } else {
+//           console.log("p[" + index + "] is rejected with reasons = ", pi.reason());
+//       }
+//   });
+// });
 
-Promise.settle = function(promises) {
-  function PromiseInspection(fulfilled, val) {
-      return {
-          isFulfilled: function() {
-              return fulfilled;
-          }, isRejected: function() {
-              return !fulfilled;
-          }, isPending: function() {
-              // PromiseInspection objects created here are never pending
-              return false;
-          }, value: function() {
-              if (!fulfilled) {
-                  throw new Error("Can't call .value() on a promise that is not fulfilled");
-              }
-              return val;
-          }, reason: function() {
-              if (fulfilled) {
-                  throw new Error("Can't call .reason() on a promise that is fulfilled");
-              }
-              return val;
-          }
-      };
-  }
+// Promise.settle = function(promises) {
+//   function PromiseInspection(fulfilled, val) {
+//       return {
+//           isFulfilled: function() {
+//               return fulfilled;
+//           }, isRejected: function() {
+//               return !fulfilled;
+//           }, isPending: function() {
+//               // PromiseInspection objects created here are never pending
+//               return false;
+//           }, value: function() {
+//               if (!fulfilled) {
+//                   throw new Error("Can't call .value() on a promise that is not fulfilled");
+//               }
+//               return val;
+//           }, reason: function() {
+//               if (fulfilled) {
+//                   throw new Error("Can't call .reason() on a promise that is fulfilled");
+//               }
+//               return val;
+//           }
+//       };
+//   }
 
-  return Promise.all(promises.map(function(p) {
-      // make sure any values are wrapped in a promise
-      return Promise.resolve(p).then(function(val) {
-          return new PromiseInspection(true, val);
-      }, function(err) {
-          return new PromiseInspection(false, err);
-      });
-  }));
-}
+//   return Promise.all(promises.map(function(p) {
+//       // make sure any values are wrapped in a promise
+//       return Promise.resolve(p).then(function(val) {
+//           return new PromiseInspection(true, val);
+//       }, function(err) {
+//           return new PromiseInspection(false, err);
+//       });
+//   }));
+// }
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
