@@ -416,7 +416,7 @@ function aggregate(coin, id, price, time) {
 
 //these are my promise functions, to make sure I get a full set of results once I reformulate to a promise.all construction (promise.settle here)
 
-Promise.settle([...]).then(function(results) {
+Promise.settle([]).then(function(results) {
   results.forEach(function(pi, index) {
       if (pi.isFulfilled()) {
           console.log("p[" + index + "] is fulfilled with value = ", pi.value());
