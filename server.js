@@ -117,6 +117,7 @@ anybits.then(response => {
     }
   }
   redis.set('anybits', JSON.stringify(anybitsObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 binance.then(response => {
   for (let key in response) {
@@ -126,6 +127,7 @@ binance.then(response => {
     }
   }
   redis.set('binance', JSON.stringify(binanceObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 bitbay.then(response => {
   for (let key in response) {
@@ -135,6 +137,7 @@ bitbay.then(response => {
     }
   }
   redis.set('bitpay', JSON.stringify(bitpayObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 bitfinex2.then(response => {
   for (let key in response) {
@@ -144,6 +147,7 @@ bitfinex2.then(response => {
     }
   }
   redis.set('bitfinex2', JSON.stringify(bitfinex2Obj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 bitflyer.then(response => {
   for (let key in response) {
@@ -153,6 +157,7 @@ bitflyer.then(response => {
     }
   }
   redis.set('bitflyer', JSON.stringify(bitflyerObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 bitlish.then(response => {
   for (let key in response) {
@@ -162,6 +167,7 @@ bitlish.then(response => {
     }
   }
   redis.set('bitlish', JSON.stringify(bitlishObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 bitstamp.then(response => {
   for (let key in response) {
@@ -171,6 +177,7 @@ bitstamp.then(response => {
     }
   }
   redis.set('bitstamp', JSON.stringify(bitstampObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 btcmarkets.then(response => {
   for (let key in response) {
@@ -180,6 +187,7 @@ btcmarkets.then(response => {
     }
   }
   redis.set('btcmarkets', JSON.stringify(btcmarketsObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 btctradeim.then(response => {
   for (let key in response) {
@@ -189,6 +197,7 @@ btctradeim.then(response => {
     }
   }
   redis.set('btctradeim', JSON.stringify(btctradeimObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 cex.then(response => {
   for (let key in response) {
@@ -198,6 +207,7 @@ cex.then(response => {
     }
   }
   redis.set('cex', JSON.stringify(cexObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
 coinbasepro.then(response => {
   for (let key in response) {
@@ -207,6 +217,7 @@ coinbasepro.then(response => {
     }
   }
   redis.set('coinbasepro', JSON.stringify(coinbaseproObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 coinegg.then(response => {
   for (let key in response) {
@@ -216,6 +227,7 @@ coinegg.then(response => {
     }
   }
   redis.set('coinegg', JSON.stringify(coineggObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
 coinex.then(response => {
   for (let key in response) {
@@ -225,6 +237,7 @@ coinex.then(response => {
     }
   }
   redis.set('coinex', JSON.stringify(coinexObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 coinexchange.then(response => {
   for (let key in response) {
@@ -234,6 +247,7 @@ coinexchange.then(response => {
     }
   }
   redis.set('coinexchange', JSON.stringify(coinexchangeObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // last price
 coinfalcon.then(response => {
   for (let key in response) {
@@ -243,6 +257,7 @@ coinfalcon.then(response => {
     }
   }
   redis.set('coinfalcon', JSON.stringify(coinfalconObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
 coinmate.then(response => {
   for (let key in response) {
@@ -252,6 +267,7 @@ coinmate.then(response => {
     }
   }
   redis.set('coinmate', JSON.stringify(coinmateObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 dsx.then(response => {
   for (let key in response) {
@@ -261,6 +277,7 @@ dsx.then(response => {
     }
   }
   redis.set('dsx', JSON.stringify(dsxObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 exmo.then(response => {
   for (let key in response) {
@@ -270,6 +287,7 @@ exmo.then(response => {
     }
   }
   redis.set('exmo', JSON.stringify(exmoObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 gatecoin.then(response => {
   for (let key in response) {
@@ -279,6 +297,7 @@ gatecoin.then(response => {
     }
   }
   redis.set('gatecoin', JSON.stringify(gatecoinObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 gemini.then(response => {
   for (let key in response) {
@@ -288,6 +307,7 @@ gemini.then(response => {
     }
   }
   redis.set('gemini', JSON.stringify(geminiObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 hitbtc2.then(response => {
   for (let key in response) {
@@ -297,6 +317,7 @@ hitbtc2.then(response => {
     }
   }
   redis.set('hitbtc2', JSON.stringify(hitbtc2Obj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //fees
 ice3x.then(response => {
   for (let key in response) {
@@ -306,6 +327,7 @@ ice3x.then(response => {
     }
   }
   redis.set('ice3x', JSON.stringify(ice3xObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
 kraken.then(response => {
   for (let key in response) {
@@ -315,6 +337,7 @@ kraken.then(response => {
     }
   }
   redis.set('kraken', JSON.stringify(krakenObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // has fees
 kucoin.then(response => {
   for (let key in response) {
@@ -324,6 +347,7 @@ kucoin.then(response => {
     }
   }
   redis.set('kucoin', JSON.stringify(kucoinObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // has last deal price
 lakebtc.then(response => {
   for (let key in response) {
@@ -333,6 +357,7 @@ lakebtc.then(response => {
     }
   }
   redis.set('lakebtc', JSON.stringify(lakebtcObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // has last price
 lbank.then(response => {
   for (let key in response) {
@@ -342,6 +367,7 @@ lbank.then(response => {
     }
   }
   redis.set('lbank', JSON.stringify(lbankObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 livecoin.then(response => {
   for (let key in response) {
@@ -351,6 +377,7 @@ livecoin.then(response => {
     }
   }
   redis.set('livecoin', JSON.stringify(livecoinObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //bid/ask prices
 liqui.then(response => {
   for (let key in response) {
@@ -360,6 +387,7 @@ liqui.then(response => {
     }
   }
   redis.set('liqui', JSON.stringify(liquiObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //taker
 lykke.then(response => {
   for (let key in response) {
@@ -369,6 +397,7 @@ lykke.then(response => {
     }
   }
   redis.set('lykke', JSON.stringify(lykkeObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 qryptos.then(response => {
   for (let key in response) {
@@ -378,6 +407,7 @@ qryptos.then(response => {
     }
   }
   redis.set('qryptos', JSON.stringify(qryptosObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //market bid, market ask
 quadrigacx.then(response => {
   for (let key in response) {
@@ -387,6 +417,7 @@ quadrigacx.then(response => {
     }
   }
   redis.set('quadrigacx', JSON.stringify(quadrigacxObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
 rightbtc.then(response => {
   for (let key in response) {
@@ -396,6 +427,7 @@ rightbtc.then(response => {
     }
   }
   redis.set('rightbtc', JSON.stringify(rightbtcObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 southxchange.then(response => {
   for (let key in response) {
@@ -405,6 +437,7 @@ southxchange.then(response => {
     }
   }
   redis.set('southxchange', JSON.stringify(southxchangeObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err));
 therock.then(response => {
   for (let key in response) {
@@ -414,6 +447,7 @@ therock.then(response => {
     }
   }
   redis.set('therock', JSON.stringify(therockObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //has last price
 tidex.then(response => {
   for (let key in response) {
@@ -423,6 +457,7 @@ tidex.then(response => {
     }
   }
   redis.set('tidex', JSON.stringify(zaifObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
 wex.then(response => {
   for (let key in response) {
@@ -432,6 +467,7 @@ wex.then(response => {
     }
   }
   redis.set('wex', JSON.stringify(wexObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
 yobit.then(response => {
   for (let key in response) {
@@ -441,6 +477,7 @@ yobit.then(response => {
     }
   }
   redis.set('yobit', JSON.stringify(yobitObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
 zaif.then(response => {
   for (let key in response) {
@@ -453,6 +490,7 @@ zaif.then(response => {
     }
   }
   redis.set('zaif', JSON.stringify(zaifObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 
 function aggregate(coin, id, price, time) {
