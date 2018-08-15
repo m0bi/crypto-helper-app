@@ -107,6 +107,7 @@ anxpro.then(response => {
     }
   }
   redis.set('anxpro', JSON.stringify(anxproObj));
+  redis.set('timestamp', JSON.stringify(new Date()));
 }).catch(err => console.log(err));
 anybits.then(response => {
   for (let key in response) {
