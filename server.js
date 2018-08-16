@@ -17,13 +17,7 @@ global.__root = __dirname + '/';
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/" + database);
 
 var Redis = require('ioredis');
-var redis = new Redis({
-  port: 11581,          // Redis port
-  host: 'redis-11581.c16.us-east-1-2.ec2.cloud.redislabs.com',   // Redis host
-  family: 4,           // 4 (IPv4) or 6 (IPv6)
-  password: keys.redis_key,
-  db: 0
-})
+var redis = new Redis(process.env.REDIS_URL)
 
 // let promiseNews = resolve.news();
 // let exchangeValues = resolve.exchanges();
