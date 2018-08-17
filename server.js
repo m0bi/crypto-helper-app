@@ -138,7 +138,7 @@ bitbay.then(response => {
       //var bitpayObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
   }
-  redis.set('bitpay', JSON.stringify(redisArray));
+  redis.set('bitbay', JSON.stringify(redisArray));
   redis.set('time', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 bitfinex2.then(response => {
@@ -684,7 +684,7 @@ app.get('/', function (req, res) {
   await redis.get('rightbtc').then(function(result){
     rootObj.push(JSON.parse(result));
   }).catch(err => console.log(err));
-  await redis.get('southexchange').then(function(result){
+  await redis.get('southxchange').then(function(result){
     rootObj.push(JSON.parse(result));
   }).catch(err => console.log(err));
   await redis.get('therock').then(function(result){
