@@ -682,7 +682,7 @@ app.get('/', function (req, res) {
   await redis.get('zaif').then(function(result){
     rootObj.push(JSON.parse(result));
   }).catch(err => console.log(err));
-  const pairOBJ = {
+  const pairObj = {
     'BCH/BTC': [],
     'BCH/ETH': [],
     'BCH/USDT': [],
