@@ -468,7 +468,6 @@ function aggregate(coin, id, price, time) {
 }
 
 app.get('/', function (req, res) {
-  redisWrite();
   res.json(redisRead());
 });
 
@@ -477,7 +476,9 @@ function redisRead() {
     if(err) { return err }
     else {
       let object = JSON.parse(result);
-      return object;
+      console.log(object);
+      console.log("test");
+      return result;
     }
   });
 }
