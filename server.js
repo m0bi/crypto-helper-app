@@ -92,15 +92,16 @@ const pairOBJ = {
 //promise = [anxpro, anybits, binance, bitbay, bitfinex2, bitflyer, bitlish, bitstamp, btcmarkets, btctradeim, cex, coinbasepro, coinegg, ]
 //exchangeValues.then(response => console.log("Values: " + response)); //works
 anxpro.then(response => {
+  let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
       //key is redis key
       //flatten (stringify array and add as response)
-      console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
+      redisArray.push(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
       var anxproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
   }
-  redis.set('anxpro', JSON.stringify(anxproObj));
+  redis.set('anxpro', JSON.stringify(redisArray));
 }).catch(err => console.log(err));
 anybits.then(response => {
   for (let key in response) {
@@ -442,7 +443,6 @@ zaif.then(response => {
     if (response[key].last !== undefined) {
       console.log(response.id + " " + key + " " + response[key].last + " " + new Date(response[key].timestamp));
       var zaifObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-      console.log("zaifObj: " + JSON.stringify(zaifObj));
     }
   }
   redis.set('zaif', JSON.stringify(zaifObj));
