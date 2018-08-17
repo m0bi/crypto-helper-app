@@ -702,6 +702,9 @@ app.get('/', function (req, res) {
   await redis.get('zaif').then(function(result){
     rootObj.push(JSON.parse(result));
   }).catch(err => console.log(err));
+  await redis.get('time').then(function(result){
+    rootObj.push(JSON.parse(result));
+  });
 
   //do some object reduction to rootObj here before displaying it.
   res.json(rootObj);
