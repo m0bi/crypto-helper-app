@@ -473,7 +473,6 @@ app.get('/', function (req, res) {
     rootObj.push(JSON.parse(result));
   }).catch(console.log(error));
   await redis.get('anybits').then(function(result){
-    let rootObj = {};
     rootObj.push(JSON.parse(result));
   }).catch(console.log(error));
   res.json(rootObj);
