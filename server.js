@@ -465,9 +465,9 @@ function aggregate(coin, id, price, time) {
   return pairOBJ;
 }
 
-// app.get('/', function (req, res) {
-//   res.status(200).send('This is an API.');
-// });
+app.get('/', function (req, res) {
+  res.status(200).send('This is an API.');
+});
 
 
 // app.get('/api', function (req, res) {
