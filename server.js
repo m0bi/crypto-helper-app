@@ -478,7 +478,7 @@ function redisRead() {
       let object = JSON.parse(result);
       console.log(object);
       console.log("test");
-      return result;
+      return JSON.parse(result);
     }
   });
 }
