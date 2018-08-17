@@ -415,7 +415,7 @@ tidex.then(response => {
       var tidexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
   }
-  redis.set('tidex', JSON.stringify(zaifObj));
+  redis.set('tidex', JSON.stringify(tidexObj));
 }).catch(err => console.log(err)); //includes fees
 wex.then(response => {
   for (let key in response) {
