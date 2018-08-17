@@ -471,10 +471,10 @@ app.get('/', function (req, res) {
   (async function red () {
   await redis.get('anxpro').then(function(result){
     rootObj.push(JSON.parse(result));
-  }).catch(console.log(error));
+  }).catch(err => console.log(err));
   await redis.get('anybits').then(function(result){
     rootObj.push(JSON.parse(result));
-  }).catch(console.log(error));
+  }).catch(err => console.log(err));
   res.json(rootObj);
 })();
 });
