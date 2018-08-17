@@ -64,27 +64,7 @@ let wex = resolve.wex();
 let yobit = resolve.yobit();
 let zaif = resolve.zaif();
 
-const pairOBJ = {
-  'BCH/BTC': [],
-  'BCH/ETH': [],
-  'BCH/USDT': [],
-  'BTC/USDT': [],
-  'DASH/BTC': [],
-  'DASH/ETH': [],
-  'EOS/BTC': [],
-  'EOS/USDT': [],
-  'ETH/BTC': [],
-  'ETH/USDT': [],
-  'LTC/BTC': [],
-  'LTC/ETH': [],
-  'LTC/USDT': [],
-  'TRX/BTC': [],
-  'XLM/BTC': [],
-  'XMR/BTC': [],
-  'XRP/BTC': [],
-  'ZEC/BTC': [],
-  'ZEC/ETH': []
-};
+
 //write to redis async without using a promise.all, then they will overwrite as they update. 
 
 //capture the exchange rates in the redis server and then do the multiplication on the front end. 
@@ -705,9 +685,34 @@ app.get('/', function (req, res) {
   await redis.get('time').then(function(result){
     rootObj.push(JSON.parse(result));
   });
-
+  const pairOBJ = {
+    'BCH/BTC': [],
+    'BCH/ETH': [],
+    'BCH/USDT': [],
+    'BTC/USDT': [],
+    'DASH/BTC': [],
+    'DASH/ETH': [],
+    'EOS/BTC': [],
+    'EOS/USDT': [],
+    'ETH/BTC': [],
+    'ETH/USDT': [],
+    'LTC/BTC': [],
+    'LTC/ETH': [],
+    'LTC/USDT': [],
+    'TRX/BTC': [],
+    'XLM/BTC': [],
+    'XMR/BTC': [],
+    'XRP/BTC': [],
+    'ZEC/BTC': [],
+    'ZEC/ETH': []
+  };
+  rootObj.map((val)=>{
+    val.map((value)=>{
+      pairObj[value[1]].push(value); 
+    })
+  });
   //do some object reduction to rootObj here before displaying it.
-  res.json(rootObj);
+  res.json(pairObj);
 })();
 });
 
