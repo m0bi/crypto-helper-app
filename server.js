@@ -565,124 +565,7 @@ function aggregate(coin, id, price, time) {
 app.get('/', function (req, res) {
   (async function red () {
   var rootObj = [];
-  await redis.get('anxpro').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('anybits').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('binance').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitbay').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitfinex2').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitflyer').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitlish').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitstamp').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('btcmarkets').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('btctradeim').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('cex').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinbasepro').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinegg').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinex').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinexchange').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinfalcon').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinmate').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('dsx').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('exmo').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('gatecoin').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('gemini').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('hitbtc2').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('ice3x').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('kraken').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('kucoin').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('lakebtc').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('lbank').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('livecoin').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('liqui').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('lykke').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('qryptos').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('quadrigacx').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('rightbtc').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('southxchange').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('therock').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('tidex').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('wex').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('yobit').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('zaif').then(function(result){
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  const pairObj = {
+  var pairObj = {
     'BCH/BTC': [],
     'BCH/ETH': [],
     'BCH/USDT': [],
@@ -703,11 +586,128 @@ app.get('/', function (req, res) {
     'ZEC/BTC': [],
     'ZEC/ETH': []
   };
-  rootObj.map((val)=>{
-    val.map((value)=>{
-      pairObj[value[1]].push(value); 
-    })
-  });
+  // await redis.get('anxpro').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('anybits').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('binance').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('bitbay').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('bitfinex2').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('bitflyer').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('bitlish').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('bitstamp').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('btcmarkets').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('btctradeim').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('cex').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('coinbasepro').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('coinegg').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('coinex').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('coinexchange').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('coinfalcon').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('coinmate').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('dsx').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('exmo').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('gatecoin').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('gemini').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('hitbtc2').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('ice3x').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('kraken').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('kucoin').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('lakebtc').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('lbank').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('livecoin').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('liqui').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('lykke').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('qryptos').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('quadrigacx').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('rightbtc').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('southxchange').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('therock').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('tidex').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('wex').then(function(result){
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  // await redis.get('yobit').then(function(result){
+  //   let resultArr = JSON.parse(result);
+  //   resultArr.map((val)=>{pairObj[val[1]].push(val)});
+  //   rootObj.push(JSON.parse(result));
+  // }).catch(err => console.log(err));
+  await redis.get('zaif').then(function(result){
+    let resultArr = JSON.parse(result);
+    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    rootObj.push(JSON.parse(result));
+  }).catch(err => console.log(err));
+  
   //do some object reduction to rootObj here before displaying it.
   res.json(pairObj);
 })();
