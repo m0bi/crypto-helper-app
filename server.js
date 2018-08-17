@@ -563,8 +563,8 @@ function aggregate(coin, id, price, time) {
 }
 
 app.get('/', function (req, res) {
-  let rootObj = [];
   (async function red () {
+  var rootObj = [];
   await redis.get('anxpro').then(function(result){
     rootObj.push(JSON.parse(result));
   }).catch(err => console.log(err));
