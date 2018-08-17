@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 var keys = require("./keys.js");
 require("dotenv").config();
 
-const mongoose = require('mongoose');
-var database = 'binancedb';
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/" + database);
+// const mongoose = require('mongoose');
+// var database = 'binancedb';
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/" + database);
 
 //const resolvePromise = [];
 
@@ -32,25 +32,25 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/" + database);
 //const pairs = ['BCH/BTC', 'BCH/LTC', 'BCH/ETH', 'BCH/USDT', 'BCH/DASH', 'BCH/ZEC', 'BTC/USDT', 'DASH/BTC', 'DASH/LTC', 'DASH/ETH', 'DASH/ZEC', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/LTC', 'ETH/USDT', 'ETH/ZEC', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'TRX/USDT', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/LTC', 'ZEC/ETH'];
 
 module.exports = {
-    news: async function getNews() {
-        try {
-            const response = await axios('https://cryptopanic.com/api/posts/?auth_token=518dacbc2f54788fcbd9e182521851725a09b4fa&public=true');
-            var news = [];
-            response.data.results.forEach((results) => {
+    // news: async function getNews() {
+    //     try {
+    //         const response = await axios('https://cryptopanic.com/api/posts/?auth_token=518dacbc2f54788fcbd9e182521851725a09b4fa&public=true');
+    //         var news = [];
+    //         response.data.results.forEach((results) => {
 
-                news.push({
-                    title: results.title,
-                    pub_data: results.published_at,
-                    url: results.url
-                });
-            });
-            //console.log(news);
-            //console.log(response.data.results);
-            return news;
-        } catch (error) {
-            console.error(error);
-        }
-    },
+    //             news.push({
+    //                 title: results.title,
+    //                 pub_data: results.published_at,
+    //                 url: results.url
+    //             });
+    //         });
+    //         //console.log(news);
+    //         //console.log(response.data.results);
+    //         return news;
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // },
 
     exchanges: async function printExchange() {
         let ccxtcontainer = await ccxt.exchanges;
