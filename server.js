@@ -91,6 +91,7 @@ const pairOBJ = {
 
 //promise = [anxpro, anybits, binance, bitbay, bitfinex2, bitflyer, bitlish, bitstamp, btcmarkets, btctradeim, cex, coinbasepro, coinegg, ]
 //exchangeValues.then(response => console.log("Values: " + response)); //works
+function redisWrite(){
 anxpro.then(response => {
   for (let key in response) {
     if (response[key].last !== undefined) {
@@ -447,6 +448,7 @@ zaif.then(response => {
   }
   redis.set('zaif', JSON.stringify(zaifObj));
 }).catch(err => console.log(err)); //
+}
 
 function aggregate(coin, id, price, time) {
   //could be a global redis store (possible race condition issues).
@@ -466,6 +468,7 @@ function aggregate(coin, id, price, time) {
 }
 
 app.get('/', function (req, res) {
+  redisWrite();
   res.status(200).send('This is an API.');
 });
 
