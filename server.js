@@ -469,8 +469,18 @@ function aggregate(coin, id, price, time) {
 
 app.get('/', function (req, res) {
   redisWrite();
-  res.status(200).send('This is an API.');
+  res.json(redisRead());
 });
+
+function redisRead() {
+  redis.get('anxpro', function(err, result){
+    if(err) { return err }
+    else {
+      let object = JSON.parse(result);
+      return object;
+    }
+  });
+}
 
 
 // app.get('/api', function (req, res) {
