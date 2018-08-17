@@ -467,8 +467,13 @@ function aggregate(coin, id, price, time) {
 }
 
 app.get('/', function (req, res) {
-  let rootObj = {};
   redis.get('anxpro').then(function(result){
+    let rootObj = {};
+    rootObj = JSON.parse(result);
+    res.json(rootObj);
+  });
+  redis.get('anybits').then(function(result){
+    let rootObj = {};
     rootObj = JSON.parse(result);
     res.json(rootObj);
   });
