@@ -310,6 +310,7 @@ dsx.then(response => {
   redis.set('time', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 exmo.then(response => {
+  let redisArray = [];
   for (let key in response) {
     let redisArray = [];
     if (response[key].last !== undefined) {
