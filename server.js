@@ -586,202 +586,54 @@ app.get('/', function (req, res) {
     'ZEC/BTC': [],
     'ZEC/ETH': []
   };
-  await redis.get('anxpro').then(function(result){
-    let resultArr = JSON.parse(result);
+  const exhcanges = [];
+  exchanges.push(redis.get('anxpro'));
+  exchanges.push(redis.get('anybits'));
+  exchanges.push(redis.get('binance'));
+  exchanges.push(redis.get('bitbay'));
+  exchanges.push(redis.get('bitfinex2'));
+  exchanges.push(redis.get('bitflyer'));
+  exchanges.push(redis.get('bitlish'));
+  exchanges.push(redis.get('bitstamp'));
+  exchanges.push(redis.get('btcmarkets'));
+  exchanges.push(redis.get('btctradeim'));
+  exchanges.push(redis.get('cex'));
+  exchanges.push(redis.get('coinbasepro'));
+  exchanges.push(redis.get('coinegg'));
+  exchanges.push(redis.get('coinex'));
+  exchanges.push(redis.get('coinexchange'));
+  exchanges.push(redis.get('coinfalcon'));
+  exchanges.push(redis.get('coinmate'));
+  exchanges.push(redis.get('dsx'));
+  exchanges.push(redis.get('exmo'));
+  exchanges.push(redis.get('gatecoin'));
+  exchanges.push(redis.get('gemini'));
+  exchanges.push(redis.get('hitbtc2'));
+  exchanges.push(redis.get('ice3x'));
+  exchanges.push(redis.get('kraken'));
+  exchanges.push(redis.get('kucoin'));
+  exchanges.push(redis.get('lakebtc'));
+  exchanges.push(redis.get('lbank'));
+  exchanges.push(redis.get('livecoin'));
+  exchanges.push(redis.get('liqui'));
+  exchanges.push(redis.get('lykke'));
+  exchanges.push(redis.get('qryptos'));
+  exchanges.push(redis.get('quadrigacx'));
+  exchanges.push(redis.get('rightbtc'));
+  exchanges.push(redis.get('southxchange'));
+  exchanges.push(redis.get('therock'));
+  exchanges.push(redis.get('tidex'));
+  exchanges.push(redis.get('wex'));
+  exchanges.push(redis.get('yobit'));
+  exchanges.push(redis.get('zaif'));
+  //use promise.all here. This will increase the speed of the load.
+  Promise.all(exchanges).then((result)=>{
+    for(let i=0; i<result.length; i++){
+    let resultArr = JSON.parse(result[i]);
     resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('anybits').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('binance').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitbay').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitfinex2').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitflyer').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitlish').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('bitstamp').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('btcmarkets').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('btctradeim').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('cex').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinbasepro').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinegg').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinex').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinexchange').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinfalcon').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('coinmate').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('dsx').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('exmo').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('gatecoin').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('gemini').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('hitbtc2').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('ice3x').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('kraken').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('kucoin').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('lakebtc').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('lbank').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('livecoin').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('liqui').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('lykke').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('qryptos').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('quadrigacx').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('rightbtc').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('southxchange').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('therock').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('tidex').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('wex').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('yobit').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  await redis.get('zaif').then(function(result){
-    let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result));
-  }).catch(err => console.log(err));
-  
+    rootObj.push(JSON.parse(result[i]));
+    }
+  }).catch(err=>console.log(err));
   //do some object reduction to rootObj here before displaying it.
   res.json(pairObj);
 })();
@@ -807,7 +659,7 @@ app.get('/', function (req, res) {
 // app.get("/api/usd/", (req, res) => {
 //   (async function usd() {
 //     let test;
-//     await Usd.find({}).sort({ date: 1 }).then(data1 => {
+//     exchanges.push() Usd.find({}).sort({ date: 1 }).then(data1 => {
 //       test = data1;
 //     }).catch(() => console.log(err));
 //     res.json(test);
