@@ -86,7 +86,7 @@ app.get('/', function (req, res) {
     exchanges.push(redis.get('zaif'));
     // //use promise.all here. This will increase the speed of the load.
     //rootObj.push(exchanges);
-    promise.all(promises.map(p => p.catch(() => undefined))).then((result) => {
+    Promise.all(exchanges.map(p => p.catch(() => undefined))).then((result) => {
       for (let i = 0; i < result.length; i++) {
           let resultArr = JSON.parse(result[i]);
           resultArr.map((val) => { pairObj[val[1]].push(val) });
