@@ -586,7 +586,7 @@ app.get('/', function (req, res) {
       'ZEC/BTC': [],
       'ZEC/ETH': []
     };
-    const exchanges = [];
+    let exchanges = [];
     // exchanges.push(redis.get('anxpro'));
     // exchanges.push(redis.get('anybits'));
      exchanges.push(redis.get('binance'));
