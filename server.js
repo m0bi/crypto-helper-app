@@ -563,80 +563,82 @@ function aggregate(coin, id, price, time) {
 }
 
 app.get('/', function (req, res) {
-  (async function red () {
-  var rootObj = [];
-  var pairObj = {
-    'BCH/BTC': [],
-    'BCH/ETH': [],
-    'BCH/USDT': [],
-    'BTC/USDT': [],
-    'DASH/BTC': [],
-    'DASH/ETH': [],
-    'EOS/BTC': [],
-    'EOS/USDT': [],
-    'ETH/BTC': [],
-    'ETH/USDT': [],
-    'LTC/BTC': [],
-    'LTC/ETH': [],
-    'LTC/USDT': [],
-    'TRX/BTC': [],
-    'XLM/BTC': [],
-    'XMR/BTC': [],
-    'XRP/BTC': [],
-    'ZEC/BTC': [],
-    'ZEC/ETH': []
-  };
-  const exhcanges = [];
-  exchanges.push(redis.get('anxpro'));
-  exchanges.push(redis.get('anybits'));
-  exchanges.push(redis.get('binance'));
-  exchanges.push(redis.get('bitbay'));
-  exchanges.push(redis.get('bitfinex2'));
-  exchanges.push(redis.get('bitflyer'));
-  exchanges.push(redis.get('bitlish'));
-  exchanges.push(redis.get('bitstamp'));
-  exchanges.push(redis.get('btcmarkets'));
-  exchanges.push(redis.get('btctradeim'));
-  exchanges.push(redis.get('cex'));
-  exchanges.push(redis.get('coinbasepro'));
-  exchanges.push(redis.get('coinegg'));
-  exchanges.push(redis.get('coinex'));
-  exchanges.push(redis.get('coinexchange'));
-  exchanges.push(redis.get('coinfalcon'));
-  exchanges.push(redis.get('coinmate'));
-  exchanges.push(redis.get('dsx'));
-  exchanges.push(redis.get('exmo'));
-  exchanges.push(redis.get('gatecoin'));
-  exchanges.push(redis.get('gemini'));
-  exchanges.push(redis.get('hitbtc2'));
-  exchanges.push(redis.get('ice3x'));
-  exchanges.push(redis.get('kraken'));
-  exchanges.push(redis.get('kucoin'));
-  exchanges.push(redis.get('lakebtc'));
-  exchanges.push(redis.get('lbank'));
-  exchanges.push(redis.get('livecoin'));
-  exchanges.push(redis.get('liqui'));
-  exchanges.push(redis.get('lykke'));
-  exchanges.push(redis.get('qryptos'));
-  exchanges.push(redis.get('quadrigacx'));
-  exchanges.push(redis.get('rightbtc'));
-  exchanges.push(redis.get('southxchange'));
-  exchanges.push(redis.get('therock'));
-  exchanges.push(redis.get('tidex'));
-  exchanges.push(redis.get('wex'));
-  exchanges.push(redis.get('yobit'));
-  exchanges.push(redis.get('zaif'));
-  //use promise.all here. This will increase the speed of the load.
-  Promise.all(exchanges).then((result)=>{
-    for(let i=0; i<result.length; i++){
-    let resultArr = JSON.parse(result[i]);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
-    rootObj.push(JSON.parse(result[i]));
-    }
-  }).catch(err=>console.log(err));
-  //do some object reduction to rootObj here before displaying it.
-  res.json(pairObj);
-})();
+  (async function red() {
+    var rootObj = [];
+    var pairObj = {
+      'BCH/BTC': [],
+      'BCH/ETH': [],
+      'BCH/USDT': [],
+      'BTC/USDT': [],
+      'DASH/BTC': [],
+      'DASH/ETH': [],
+      'EOS/BTC': [],
+      'EOS/USDT': [],
+      'ETH/BTC': [],
+      'ETH/USDT': [],
+      'LTC/BTC': [],
+      'LTC/ETH': [],
+      'LTC/USDT': [],
+      'TRX/BTC': [],
+      'XLM/BTC': [],
+      'XMR/BTC': [],
+      'XRP/BTC': [],
+      'ZEC/BTC': [],
+      'ZEC/ETH': []
+    };
+    const exhcanges = [];
+    exchanges.push(redis.get('anxpro'));
+    exchanges.push(redis.get('anybits'));
+    exchanges.push(redis.get('binance'));
+    exchanges.push(redis.get('bitbay'));
+    exchanges.push(redis.get('bitfinex2'));
+    exchanges.push(redis.get('bitflyer'));
+    exchanges.push(redis.get('bitlish'));
+    exchanges.push(redis.get('bitstamp'));
+    exchanges.push(redis.get('btcmarkets'));
+    exchanges.push(redis.get('btctradeim'));
+    exchanges.push(redis.get('cex'));
+    exchanges.push(redis.get('coinbasepro'));
+    exchanges.push(redis.get('coinegg'));
+    exchanges.push(redis.get('coinex'));
+    exchanges.push(redis.get('coinexchange'));
+    exchanges.push(redis.get('coinfalcon'));
+    exchanges.push(redis.get('coinmate'));
+    exchanges.push(redis.get('dsx'));
+    exchanges.push(redis.get('exmo'));
+    exchanges.push(redis.get('gatecoin'));
+    exchanges.push(redis.get('gemini'));
+    exchanges.push(redis.get('hitbtc2'));
+    exchanges.push(redis.get('ice3x'));
+    exchanges.push(redis.get('kraken'));
+    exchanges.push(redis.get('kucoin'));
+    exchanges.push(redis.get('lakebtc'));
+    exchanges.push(redis.get('lbank'));
+    exchanges.push(redis.get('livecoin'));
+    exchanges.push(redis.get('liqui'));
+    exchanges.push(redis.get('lykke'));
+    exchanges.push(redis.get('qryptos'));
+    exchanges.push(redis.get('quadrigacx'));
+    exchanges.push(redis.get('rightbtc'));
+    exchanges.push(redis.get('southxchange'));
+    exchanges.push(redis.get('therock'));
+    exchanges.push(redis.get('tidex'));
+    exchanges.push(redis.get('wex'));
+    exchanges.push(redis.get('yobit'));
+    exchanges.push(redis.get('zaif'));
+    //use promise.all here. This will increase the speed of the load.
+    Promise.all(exchanges).then((result) => {
+      for (let i = 0; i < result.length; i++) {
+        if (result) {
+          let resultArr = JSON.parse(result[i]);
+          resultArr.map((val) => { pairObj[val[1]].push(val) });
+          rootObj.push(JSON.parse(result[i]));
+        }
+      }
+    }).catch(err => console.log(err));
+    //do some object reduction to rootObj here before displaying it.
+    res.json(pairObj);
+  })();
 });
 
 
