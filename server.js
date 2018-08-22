@@ -630,10 +630,8 @@ app.get('/', function (req, res) {
     //rootObj.push(exchanges);
     Promise.all(exchanges).then((result) => {
       for (let i = 0; i < result.length; i++) {
-        if(result[i]){
           let resultArr = JSON.parse(result[i]);
           resultArr.map((val) => { pairObj[val[1]].push(val) });
-        }   
       }
       res.json(pairObj);
     }).catch(err => console.log(err));
