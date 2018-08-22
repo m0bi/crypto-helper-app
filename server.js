@@ -15,10 +15,11 @@ global.__root = __dirname + '/';
 // const mongoose = require('mongoose');
 // var database = 'shortcoindb';
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/" + database);
-
+var Q = require('q');
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
-
+Redis.Promise = require('q');
+assert.equal(redis.get().constructor, require('q'));
 
 
 app.get('/', function (req, res) {
@@ -86,7 +87,7 @@ app.get('/', function (req, res) {
     exchanges.push(redis.get('zaif'));
     // //use promise.all here. This will increase the speed of the load.
     //rootObj.push(exchanges);
-    Promise.all(exchanges.map(p => p.catch(() => undefined))).then((result) => {
+    Promise.allSettled(exchanges).then((result) => {
       for (let i = 0; i < result.length; i++) {
           let resultArr = JSON.parse(result[i]);
           resultArr.map((val) => { pairObj[val[1]].push(val) });
