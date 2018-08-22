@@ -2588,6 +2588,10 @@ process-nextick-args@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
 
+promise-all-soft-fail@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/promise-all-soft-fail/-/promise-all-soft-fail-2.0.1.tgz#951c43461f369876db632cd34bf37aa7653b67a5"
+
 proxy-addr@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.3.tgz#355f262505a621646b3130a728eb647e22055341"

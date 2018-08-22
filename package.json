@@ -21,6 +21,7 @@
     "mobx": "^5.0.3",
     "mongoose": "^5.2.1",
     "node-fetch": "^2.1.2",
+    "promise-all-soft-fail": "^2.0.1",
     "rebridge": "^2.3.1",
     "redis": "^2.8.0",
     "request": "^2.87.0",
