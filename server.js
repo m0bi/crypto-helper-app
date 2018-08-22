@@ -589,7 +589,7 @@ app.get('/', function (req, res) {
     let exchanges = [];
     // exchanges.push(redis.get('anxpro'));
     // exchanges.push(redis.get('anybits'));
-     exchanges.push(redis.get('binance'));
+     exchanges.push(new Promise(redis.get('binance')));
     // exchanges.push(redis.get('bitbay'));
     // exchanges.push(redis.get('bitfinex2'));
     // exchanges.push(redis.get('bitflyer'));
