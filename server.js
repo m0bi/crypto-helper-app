@@ -633,7 +633,7 @@ app.get('/', function (req, res) {
           resultArr.map((val) => { pairObj[val[1]].push(val) });
           
       }
-      rootObj.push(results);
+      rootObj.push(result);
     }).catch(err => console.log(err));
     //do some object reduction to rootObj here before displaying it.
     res.json(rootObj);
