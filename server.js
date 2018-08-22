@@ -629,15 +629,13 @@ app.get('/', function (req, res) {
     //use promise.all here. This will increase the speed of the load.
     Promise.all(exchanges).then((result) => {
       for (let i = 0; i < result.length; i++) {
-        if (result) {
           let resultArr = JSON.parse(result[i]);
           resultArr.map((val) => { pairObj[val[1]].push(val) });
           rootObj.push(JSON.parse(result[i]));
-        }
       }
     }).catch(err => console.log(err));
     //do some object reduction to rootObj here before displaying it.
-    res.json(pairObj);
+    res.json(rootObj);
   })();
 });
 
