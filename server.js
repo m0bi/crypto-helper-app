@@ -563,7 +563,7 @@ function aggregate(coin, id, price, time) {
 }
 
 app.get('/', function (req, res) {
-  (async function red() {
+  (function red() {
     var rootObj = [];
     var pairObj = {
       'BCH/BTC': [],
