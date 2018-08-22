@@ -635,7 +635,7 @@ app.get('/', function (req, res) {
       }
     }).catch(err => console.log(err));
     //do some object reduction to rootObj here before displaying it.
-    res.json(rootObj);
+    res.json(pairObj);
   })();
 });
 
