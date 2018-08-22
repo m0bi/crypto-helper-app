@@ -18,7 +18,6 @@ global.__root = __dirname + '/';
 
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
-let promiseAllSoftFail = require('promise-all-soft-fail').promiseAllSoftFail;
 
 
 
@@ -87,7 +86,7 @@ app.get('/', function (req, res) {
     exchanges.push(redis.get('zaif'));
     // //use promise.all here. This will increase the speed of the load.
     //rootObj.push(exchanges);
-    promiseAllSoftFail(exchanges).then((result) => {
+    promise.all(promises.map(p => p.catch(() => undefined))).then((result) => {
       for (let i = 0; i < result.length; i++) {
           let resultArr = JSON.parse(result[i]);
           resultArr.map((val) => { pairObj[val[1]].push(val) });
