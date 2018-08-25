@@ -206,178 +206,158 @@ app.get('/', function (req, res) {
 
 app.get('/book', function(req,res){
  (async function book(){
-  var pairObj = {
-    'BCH/BTC': [],
-    'BCH/ETH': [],
-    'BCH/USDT': [],
-    'BTC/USDT': [],
-    'DASH/BTC': [],
-    'DASH/ETH': [],
-    'EOS/BTC': [],
-    'EOS/USDT': [],
-    'ETH/BTC': [],
-    'ETH/USDT': [],
-    'LTC/BTC': [],
-    'LTC/ETH': [],
-    'LTC/USDT': [],
-    'TRX/BTC': [],
-    'XLM/BTC': [],
-    'XMR/BTC': [],
-    'XRP/BTC': [],
-    'ZEC/BTC': [],
-    'ZEC/ETH': []
-  };
+  var pairObj = [];
   await redis.get('anxprobook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('anybitsbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('binancebook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('bitbaybook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('bitfinex2book').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('bitflyerbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('bitlishbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('bitstampbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('btcmarketsbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('btctradeimbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('cexbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('coinbaseprobook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('coinexbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('coinexchangebook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('coinfalconbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('coinmatebook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('dsxbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('exmobook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('gatecoinbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('geminibook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('hitbtc2book').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('ice3xbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('krakenbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('kucoinbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('lakebtcbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('lbankbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('livecoinbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('liquibook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('lykkebook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('qryptosbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('quadrigacxbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('rightbtcbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('southxchangebook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('therockbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('tidexbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('wexbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('yobitbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   await redis.get('zaifbook').then(function(result){
     let resultArr = JSON.parse(result);
-    resultArr.map((val)=>{pairObj[val[1]].push(val)});
+    pairObj.push(resultArr);
   }).catch(err => console.log(err));
   
   //do some object reduction to rootObj here before displaying it.
