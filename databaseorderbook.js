@@ -1,4 +1,4 @@
-var resolve = require("./logic.js");
+var resolve = require("./logicbooks.js");
 
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
@@ -15,6 +15,7 @@ let btcmarkets = resolve.btcmarkets();
 let btctradeim = resolve.btctradeim();
 let cex = resolve.cex();
 let coinbasepro = resolve.coinbasepro();
+let coinegg = resolve.coinegg();
 let coinex = resolve.coinex();
 let coinexchange = resolve.coinexchange();
 let coinfalcon = resolve.coinfalcon();
@@ -52,16 +53,20 @@ let zaif = resolve.zaif();
 anxpro.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      //key is redis key
-      //flatten (stringify array and add as response)
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-     // var anxproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + JSON.stringify({ 'bid': bid, 'ask': ask, 'spread': spread }) + new Date());
+    // var anxproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
+
   }
-  redis.set('anxpro', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('anxprobook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err));
 anybits.then(response => {
   let redisArray = [];
@@ -153,7 +158,7 @@ btcmarkets.then(response => {
     if (response[key].last !== undefined) {
       redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-     // var btcmarketsObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
+      // var btcmarketsObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
   }
   redis.set('btcmarkets', JSON.stringify(redisArray));
@@ -195,6 +200,18 @@ coinbasepro.then(response => {
   redis.set('coinbasepro', JSON.stringify(redisArray));
   redis.set('time', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
+coinegg.then(response => {
+  let redisArray = [];
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
+      //var coineggObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
+    }
+  }
+  redis.set('coinegg', JSON.stringify(redisArray));
+  redis.set('time', JSON.stringify(new Date()));
+}).catch(err => console.log(err)); // 
 coinex.then(response => {
   let redisArray = [];
   for (let key in response) {
@@ -377,7 +394,7 @@ livecoin.then(response => {
   redis.set('time', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //bid/ask prices
 liqui.then(response => {
-  let redisArray = [];  
+  let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
       redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
@@ -392,7 +409,7 @@ lykke.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume,  new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var lykkeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }

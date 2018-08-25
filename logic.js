@@ -259,22 +259,6 @@ module.exports = {
 
         //return await coinbasepro.fetch_markets();
     },
-    coinegg: async function printCoinegg() {
-        let coinegg = new ccxt.coinegg({
-            'enableRateLimit': true,
-        });
-        await coinegg.loadMarkets();
-        const prices = { 'id': coinegg.id };
-        if (coinegg.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XRP/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await coinegg.fetchTicker(pairs[i]);
-            }
-        }
-        return prices;
-
-        //return await coinegg.fetch_markets();
-    },
     coinex: async function printCoinex() {
         let coinex = new ccxt.coinex({
             'enableRateLimit': true,
