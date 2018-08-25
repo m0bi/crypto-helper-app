@@ -71,458 +71,573 @@ anxpro.then(response => {
 anybits.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var anybitsObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + JSON.stringify({ 'bid': bid, 'ask': ask, 'spread': spread }) + new Date());
   }
-  redis.set('anybits', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('anybitsbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 binance.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var binanceObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
+      if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+      if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+      if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+      console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+      //key is redis key
+      //flatten (stringify array and add as response)
+      redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+      console.log(response.id + " " + key + " market price " + JSON.stringify({ 'bid': bid, 'ask': ask, 'spread': spread }) + new Date());
     }
   }
-  redis.set('binance', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('binancebook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 bitbay.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var bitpayObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + new Date());
   }
-  redis.set('bitbay', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('bitbaybook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 bitfinex2.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var bitfinex2Obj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + new Date());
   }
-  redis.set('bitfinex2', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('bitfinex2book', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 bitflyer.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var bitflyerObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + JSON.stringify({ 'bid': bid, 'ask': ask, 'spread': spread }) + new Date());
   }
-  redis.set('bitflyer', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('bitflyerbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 bitlish.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var bitlishObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('bitlish', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('bitlishbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 bitstamp.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var bitstampObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + new Date());
   }
-  redis.set('bitstamp', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('bitstampbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 btcmarkets.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      // var btcmarketsObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('btcmarkets', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('btcmarketsbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 btctradeim.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var btctradeimObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('btctradeim', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('btctradeimbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 cex.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var cexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('cex', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('cexbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
 coinbasepro.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var coinbaseproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('coinbasepro', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('coinbaseprobook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 coinegg.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var coineggObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('coinegg', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('coineggbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
 coinex.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var coinexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+      if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+      if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+      if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+      console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+      //key is redis key
+      //flatten (stringify array and add as response)
+      redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+      console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('coinex', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('coinexbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 coinexchange.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var coinexchangeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('coinexchange', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('coinexchangebook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // last price
 coinfalcon.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var coinfalconObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('coinfalcon', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('coinfalconbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
 coinmate.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var coinmateObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('coinmate', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('coinmatebook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
 dsx.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var dsxObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('dsx', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('dsxbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 exmo.then(response => {
   let redisArray = [];
   for (let key in response) {
-    let redisArray = [];
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var exmoObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('exmo', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('exmobook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 gatecoin.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var gatecoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('gatecoin', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('gatecoinbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 gemini.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var geminiObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('gemini', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('geminibook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 hitbtc2.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var hitbtc2Obj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('hitbtc2', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('hitbtc2book', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //fees
 ice3x.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var ice3xObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('ice3x', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('ice3xbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
 kraken.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var krakenObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('kraken', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('krakenbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // has fees
 kucoin.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var kucoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('kucoin', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('kucoinbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // has last deal price
 lakebtc.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var lakebtcObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('lakebtc', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('lakebtcbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // has last price
 lbank.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var lbankObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('lbank', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('lbankbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 livecoin.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var livecoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('livecoin', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('livecoinbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //bid/ask prices
 liqui.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var liquiObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('liqui', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('liquibook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //taker
 lykke.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var lykkeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('lykke', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('lykkebook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 qryptos.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var qryptosObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('qryptos', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('qryptosbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //market bid, market ask
 quadrigacx.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var quadrigacxObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('quadrigacx', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('quadrigacxbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
 rightbtc.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var rightbtcObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('rightbtc', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('rightbtcbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
 southxchange.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var southxchangeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('southxchange', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('southxchangebooks', JSON.stringify(redisArray));
+  redis.set('bookstime', JSON.stringify(new Date()));
 }).catch(err => console.log(err));
 therock.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var therockObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('therock', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('therockbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //has last price
 tidex.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var tidexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('tidex', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('tidexbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
 wex.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var wexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('wex', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('wexbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
 yobit.then(response => {
   let redisArray = [];
   for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var yobitObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('yobit', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('yobitbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
 zaif.then(response => {
   let redisArray = [];
   for (let key in response) {
     //save values immediately to redis instead of using the aggregate function. 
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
-      //var zaifObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
+    if (len(response[key].bids) > 0) { bid = response[key].bids } else { bid = Null }
+    if (len(orderbook[key].asks) > 0) { ask = response[key].asks } else { ask = Null }
+    if (bid && ask) { spread = (ask - bid) } else { spread = Null }
+    console.log(response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    //key is redis key
+    //flatten (stringify array and add as response)
+    redisArray.push([response.id, key, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread }]);
+    console.log(response.id + " " + key + " market price " + { 'bid': bid, 'ask': ask, 'spread': spread } + " " + new Date());
   }
-  redis.set('zaif', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
+  redis.set('zaifbook', JSON.stringify(redisArray));
+  redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //

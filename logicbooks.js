@@ -2,11 +2,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 const app = express();
 
-const diff = require('deep-diff').diff; //finding differences between objects
-const axios = require('axios');
-const request = require('request');
-var Combinatorics = require('js-combinatorics');
-
 //here I get exchange data.
 
 const ccxt = require('ccxt');
