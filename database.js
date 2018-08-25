@@ -55,8 +55,8 @@ anxpro.then(response => {
     if (response[key].last !== undefined) {
       //key is redis key
       //flatten (stringify array and add as response)
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
-      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
+      console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].ask + " " + new Date(response[key].timestamp));
      // var anxproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
   }
@@ -67,7 +67,7 @@ anybits.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var anybitsObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -79,7 +79,7 @@ binance.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var binanceObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -91,7 +91,7 @@ bitbay.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var bitpayObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -103,7 +103,7 @@ bitfinex2.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var bitfinex2Obj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -115,7 +115,7 @@ bitflyer.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var bitflyerObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -127,7 +127,7 @@ bitlish.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var bitlishObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -139,7 +139,7 @@ bitstamp.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var bitstampObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -151,7 +151,7 @@ btcmarkets.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
      // var btcmarketsObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -163,7 +163,7 @@ btctradeim.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var btctradeimObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -175,7 +175,7 @@ cex.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var cexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -187,7 +187,7 @@ coinbasepro.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var coinbaseproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -199,7 +199,7 @@ coinex.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var coinexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -211,7 +211,7 @@ coinexchange.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var coinexchangeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -223,7 +223,7 @@ coinfalcon.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var coinfalconObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -235,7 +235,7 @@ coinmate.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var coinmateObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -247,7 +247,7 @@ dsx.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var dsxObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -260,7 +260,7 @@ exmo.then(response => {
   for (let key in response) {
     let redisArray = [];
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var exmoObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -272,7 +272,7 @@ gatecoin.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var gatecoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -284,7 +284,7 @@ gemini.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var geminiObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -296,7 +296,7 @@ hitbtc2.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var hitbtc2Obj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -308,7 +308,7 @@ ice3x.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var ice3xObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -320,7 +320,7 @@ kraken.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var krakenObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -332,7 +332,7 @@ kucoin.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var kucoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -344,7 +344,7 @@ lakebtc.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var lakebtcObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -356,7 +356,7 @@ lbank.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var lbankObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -368,7 +368,7 @@ livecoin.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var livecoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -380,7 +380,7 @@ liqui.then(response => {
   let redisArray = [];  
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var liquiObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -392,7 +392,7 @@ lykke.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume,  new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask,  new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var lykkeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -404,7 +404,7 @@ qryptos.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var qryptosObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -416,7 +416,7 @@ quadrigacx.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var quadrigacxObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -428,7 +428,7 @@ rightbtc.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var rightbtcObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -440,7 +440,7 @@ southxchange.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var southxchangeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -452,7 +452,7 @@ therock.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var therockObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -464,7 +464,7 @@ tidex.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var tidexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -476,7 +476,7 @@ wex.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var wexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -488,7 +488,7 @@ yobit.then(response => {
   let redisArray = [];
   for (let key in response) {
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var yobitObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
@@ -501,7 +501,7 @@ zaif.then(response => {
   for (let key in response) {
     //save values immediately to redis instead of using the aggregate function. 
     if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].bidvolume, response[key].ask, response[key].askvolume, new Date(response[key].timestamp)]);
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
       console.log(response.id + " " + key + " " + response[key].last + " " + response[key].bid + " " + response[key].bidvolume + " " + response[key].ask + " " + response[key].askvolume + " " + new Date(response[key].timestamp));
       //var zaifObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
     }
