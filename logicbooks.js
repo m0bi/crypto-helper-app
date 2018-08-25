@@ -2,6 +2,11 @@ var express = require("express");
 var bodyParser = require("body-parser");
 const app = express();
 
+const diff = require('deep-diff').diff; //finding differences between objects
+const axios = require('axios');
+const request = require('request');
+var Combinatorics = require('js-combinatorics');
+
 //here I get exchange data.
 
 const ccxt = require('ccxt');
@@ -59,7 +64,7 @@ module.exports = {
         const prices = {'id':anxpro.id};
         const pairs = ['LTC/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await anxpro.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await anxpro.fetchTicker(pairs[i]);
         }
         return prices;
         //return await anxpro.fetch_markets();
@@ -72,7 +77,7 @@ module.exports = {
         const prices = {'id':anybits.id};
         const pairs = ['LTC/BTC', 'XRP/BTC', 'ETH/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await anybits.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await anybits.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -86,7 +91,7 @@ module.exports = {
         const prices = {'id':binance.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'EOS/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await binance.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await binance.fetchTicker(pairs[i]);
         }
         return prices;
         //return await binance.fetch_markets();
@@ -99,7 +104,7 @@ module.exports = {
         const prices = {'id':bitbay.id};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await bitbay.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await bitbay.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -113,7 +118,7 @@ module.exports = {
         const prices = {'id':bitfinex2.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC', 'EOS/BTC', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await bitfinex2.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await bitfinex2.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -127,7 +132,7 @@ module.exports = {
         const prices = {'id':bitflyer.id};
         const pairs = ['BCH/BTC', 'ETH/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await bitflyer.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await bitflyer.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -141,7 +146,7 @@ module.exports = {
         const prices = {'id':bitlish.id};
         const pairs = ['BCH/BTC', 'BTC/USDT', 'LTC/BTC', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await bitlish.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await bitlish.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -156,7 +161,7 @@ module.exports = {
         const prices = {'id': bitstamp.id};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await bitstamp.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await bitstamp.fetchTicker(pairs[i]);
         }
         return prices;
         
@@ -171,7 +176,7 @@ module.exports = {
         const prices = {'id': btcalpha.id};
         const pairs = ['BCH/BTC', 'BTC/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await btcalpha.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await btcalpha.fetchTicker(pairs[i]);
         }
         return prices;
         
@@ -186,7 +191,7 @@ module.exports = {
         const prices = {'id': btcmarkets.id};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await btcmarkets.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await btcmarkets.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -200,7 +205,7 @@ module.exports = {
         const prices = {'id': btctradeim.id};
         const pairs = ['BCH/BTC', 'EOS/BTC', 'LTC/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await btctradeim.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await btctradeim.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -214,7 +219,7 @@ module.exports = {
         const prices = {'id':cex.id};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'XLM/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await cex.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await cex.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -228,7 +233,7 @@ module.exports = {
         const prices = {'id':coinbasepro.id};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await coinbasepro.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await coinbasepro.fetchTicker(pairs[i]);
         }
         return prices;
         
@@ -242,7 +247,7 @@ module.exports = {
         const prices = {'id':coinegg.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await coinegg.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await coinegg.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -256,7 +261,7 @@ module.exports = {
         const prices = {'id':coinex.id};
         const pairs =  ['BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/USDT', 'TRX/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await coinex.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await coinex.fetchTicker(pairs[i]);
         }
         return prices;
         //return await coinex.fetch_markets();
@@ -269,7 +274,7 @@ module.exports = {
         const prices = {'id':coinexchange.id};
         const pairs =  ['BCH/BTC', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await coinexchange.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await coinexchange.fetchTicker(pairs[i]);
         }
         return prices;
     },
@@ -281,7 +286,7 @@ module.exports = {
         const prices = {'id':coinfalcon.id};
         const pairs = ['BCH/BTC', 'BTC/USDT', 'EOS/USDT', 'ETH/BTC', 'TRX/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await coinfalcon.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await coinfalcon.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -293,7 +298,7 @@ module.exports = {
         });
         await coinmate.loadMarkets();
         const prices = {'id':coinmate.id};
-        prices['LTC/BTC'] = await coinmate.fetchL2OrderBook('LTC/BTC');
+        prices['LTC/BTC'] = await coinmate.fetchTicker('LTC/BTC');
         return prices;
 
         //return await coinmate.fetch_markets();
@@ -306,7 +311,7 @@ module.exports = {
         const prices = {'id':dsx.id};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await dsx.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await dsx.fetchTicker(pairs[i]);
         }
         return prices;
         //return await dsx.fetch_markets();
@@ -319,7 +324,7 @@ module.exports = {
         const prices = {'id':exmo.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await exmo.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await exmo.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -333,7 +338,7 @@ module.exports = {
         const prices = {'id':gatecoin.id};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/ETH', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await gatecoin.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await gatecoin.fetchTicker(pairs[i]);
         }
         return prices;
         //return await gatecoin.fetch_markets();
@@ -346,7 +351,7 @@ module.exports = {
         const prices = {'id':gemini.id};
         const pairs = ['ETH/BTC', 'ZEC/BTC', 'ZEC/ETH'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await gemini.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await gemini.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -360,7 +365,7 @@ module.exports = {
         const prices = {'id':hitbtc2.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/ETH'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await hitbtc2.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await hitbtc2.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -374,7 +379,7 @@ module.exports = {
         const prices = {'id':ice3x.id};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'XMR/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await ice3x.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await ice3x.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -388,7 +393,7 @@ module.exports = {
         const prices = {'id':kraken.id};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await kraken.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await kraken.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -401,7 +406,7 @@ module.exports = {
         const prices = {'id':kucoin.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XLM/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await kucoin.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await kucoin.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -415,7 +420,7 @@ module.exports = {
         const prices = {'id':lakebtc.id};
         const pairs = ['BCH/BTC', 'LTC/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await lakebtc.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await lakebtc.fetchTicker(pairs[i]);
         }
         return prices;
     },
@@ -427,7 +432,7 @@ module.exports = {
         const prices = {'id':lbank.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'ZEC/BTC', 'ZEC/ETH'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await lbank.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await lbank.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -441,7 +446,7 @@ module.exports = {
         const prices = {'id':livecoin.id};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XMR/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await livecoin.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await livecoin.fetchTicker(pairs[i]);
         }
         return prices;
     },
@@ -453,7 +458,7 @@ module.exports = {
         const prices = {'id':liqui.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await liqui.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await liqui.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -467,7 +472,7 @@ module.exports = {
         const prices = {'id':lykke.id};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await lykke.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await lykke.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -481,7 +486,7 @@ module.exports = {
         const prices = {'id':qryptos.id};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await qryptos.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await qryptos.fetchTicker(pairs[i]);
         }
         return prices;
     },
@@ -493,7 +498,7 @@ module.exports = {
         const prices = {'id':quadrigacx.id};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await quadrigacx.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await quadrigacx.fetchTicker(pairs[i]);
         }
         return prices;
         
@@ -507,7 +512,7 @@ module.exports = {
         const prices = {'id':rightbtc.id};
         const pairs = ['BCH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await rightbtc.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await rightbtc.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -521,7 +526,7 @@ module.exports = {
         const prices = {'id':southxchange.id};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await southxchange.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await southxchange.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -535,7 +540,7 @@ module.exports = {
         const prices = {'id':therock.id};
         const pairs = ['BCH/BTC', 'BTC/XRP', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await therock.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await therock.fetchTicker(pairs[i]);
         }
         return prices;
     },
@@ -547,7 +552,7 @@ module.exports = {
         const prices = {'id':tidex.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await tidex.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await tidex.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -561,7 +566,7 @@ module.exports = {
         const prices = {'id':wex.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/ZEC', 'DASH/BTC', 'DASH/ETH', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await wex.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await wex.fetchTicker(pairs[i]);
         }
         return prices;
 
@@ -575,7 +580,7 @@ module.exports = {
         const prices = {'id':yobit.id};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'LTC/BTC', 'LTC/ETH', 'ETH/BTC', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'TRX/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await yobit.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await yobit.fetchTicker(pairs[i]);
         }
         return prices;
         //return await yobit.fetch_markets();
@@ -588,7 +593,7 @@ module.exports = {
         const prices = {'id':zaif.id};
         const pairs = ['BCH/BTC', 'ETH/BTC'];
         for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await zaif.fetchL2OrderBook(pairs[i]);
+            prices[pairs[i]] = await zaif.fetchTicker(pairs[i]);
         }
         return prices;
 
