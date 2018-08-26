@@ -365,6 +365,13 @@ app.get('/book', function(req,res){
  })();
 });
 
+app.get("/api/news", (req,res)=>{
+  (async function news(){
+    await redis.get('news').then(function(result){
+      res.json(result);
+    }).catch(err=>console.log(err));
+  })();
+});
 
 // app.get('/api', function (req, res) {
 //   res.status(200).send('./c/:id ./news ./usd ./usd/:id ./bibox ./bibox/:id ./bibox/c/:id ./binance ./binance/:id ./binance/c/:id ./cryptopia ./cryptopia/:id ./cryptopia/c/:id ./kucoin ./kucoin/:id ./kucoin/c/:id');
