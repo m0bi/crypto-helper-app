@@ -1,10 +1,10 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 const app = express();
-
+const axios = require("axios");
 //here I get exchange data.
 
-const ccxt = require('ccxt');
+
 
 
 
