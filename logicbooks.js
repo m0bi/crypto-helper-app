@@ -239,7 +239,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinegg.loadMarkets();
-        const prices = {'id':coinegg.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await coinegg.fetchOrderBook(pairs[i]);
@@ -253,7 +253,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinex.loadMarkets();
-        const prices = {'id':coinex.id};
+        const prices = {};
         const pairs =  ['BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/USDT', 'TRX/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await coinex.fetchOrderBook(pairs[i]);
@@ -266,7 +266,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinexchange.loadMarkets();
-        const prices = {'id':coinexchange.id};
+        const prices = {};
         const pairs =  ['BCH/BTC', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await coinexchange.fetchOrderBook(pairs[i]);
@@ -278,7 +278,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinfalcon.loadMarkets();
-        const prices = {'id':coinfalcon.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BTC/USDT', 'EOS/USDT', 'ETH/BTC', 'TRX/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await coinfalcon.fetchOrderBook(pairs[i]);
@@ -292,7 +292,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinmate.loadMarkets();
-        const prices = {'id':coinmate.id};
+        const prices = {};
         prices['LTC/BTC'] = await coinmate.fetchOrderBook('LTC/BTC');
         return prices;
 
@@ -303,7 +303,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await dsx.loadMarkets();
-        const prices = {'id':dsx.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await dsx.fetchOrderBook(pairs[i]);
@@ -316,7 +316,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await exmo.loadMarkets();
-        const prices = {'id':exmo.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await exmo.fetchOrderBook(pairs[i]);
@@ -330,7 +330,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await gatecoin.loadMarkets();
-        const prices = {'id':gatecoin.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/ETH', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await gatecoin.fetchOrderBook(pairs[i]);
@@ -343,7 +343,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await gemini.loadMarkets();
-        const prices = {'id':gemini.id};
+        const prices = {};
         const pairs = ['ETH/BTC', 'ZEC/BTC', 'ZEC/ETH'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await gemini.fetchOrderBook(pairs[i]);
@@ -357,7 +357,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await hitbtc2.loadMarkets();
-        const prices = {'id':hitbtc2.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/ETH'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await hitbtc2.fetchOrderBook(pairs[i]);
@@ -371,7 +371,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await ice3x.loadMarkets();
-        const prices = {'id':ice3x.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'XMR/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await ice3x.fetchOrderBook(pairs[i]);
@@ -385,7 +385,7 @@ module.exports = {
             'enableRateLimit': true,
         })
         await kraken.loadMarkets();
-        const prices = {'id':kraken.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await kraken.fetchOrderBook(pairs[i]);
@@ -398,7 +398,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await kucoin.loadMarkets();
-        const prices = {'id':kucoin.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XLM/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await kucoin.fetchOrderBook(pairs[i]);
@@ -412,7 +412,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await lakebtc.loadMarkets();
-        const prices = {'id':lakebtc.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'LTC/BTC', 'XRP/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await lakebtc.fetchOrderBook(pairs[i]);
@@ -424,7 +424,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await lbank.loadMarkets();
-        const prices = {'id':lbank.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'ZEC/BTC', 'ZEC/ETH'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await lbank.fetchOrderBook(pairs[i]);
@@ -438,7 +438,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await livecoin.loadMarkets();
-        const prices = {'id':livecoin.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XMR/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await livecoin.fetchOrderBook(pairs[i]);
@@ -450,7 +450,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await liqui.loadMarkets();
-        const prices = {'id':liqui.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await liqui.fetchOrderBook(pairs[i]);
@@ -464,7 +464,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await lykke.loadMarkets();
-        const prices = {'id':lykke.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await lykke.fetchOrderBook(pairs[i]);
@@ -478,7 +478,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await qryptos.loadMarkets();
-        const prices = {'id':qryptos.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await qryptos.fetchOrderBook(pairs[i]);
@@ -490,7 +490,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await quadrigacx.loadMarkets();
-        const prices = {'id':quadrigacx.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await quadrigacx.fetchOrderBook(pairs[i]);
@@ -504,7 +504,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await rightbtc.loadMarkets();
-        const prices = {'id':rightbtc.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await rightbtc.fetchOrderBook(pairs[i]);
@@ -518,7 +518,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await southxchange.loadMarkets();
-        const prices = {'id':southxchange.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await southxchange.fetchOrderBook(pairs[i]);
@@ -532,7 +532,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await therock.loadMarkets();
-        const prices = {'id':therock.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BTC/XRP', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await therock.fetchOrderBook(pairs[i]);
@@ -544,7 +544,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await tidex.loadMarkets();
-        const prices = {'id':tidex.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await tidex.fetchOrderBook(pairs[i]);
@@ -558,7 +558,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await wex.loadMarkets();
-        const prices = {'id':wex.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/ZEC', 'DASH/BTC', 'DASH/ETH', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await wex.fetchOrderBook(pairs[i]);
@@ -572,7 +572,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await yobit.loadMarkets();
-        const prices = {'id':yobit.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'BCH/ETH', 'LTC/BTC', 'LTC/ETH', 'ETH/BTC', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'TRX/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await yobit.fetchOrderBook(pairs[i]);
@@ -585,7 +585,7 @@ module.exports = {
             'enableRateLimit': true,
         });
         await zaif.loadMarkets();
-        const prices = {'id':zaif.id};
+        const prices = {};
         const pairs = ['BCH/BTC', 'ETH/BTC'];
         for (let i = 0; i < pairs.length; i++) {
             prices[pairs[i]] = await zaif.fetchOrderBook(pairs[i]);
