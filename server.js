@@ -365,7 +365,7 @@ app.get('/book', function(req,res){
  })();
 });
 
-app.get("/api/news", (req,res)=>{
+app.get("/news", (req,res)=>{
   (async function news(){
     await redis.get('news').then(function(result){
       res.json(JSON.parse(result));
