@@ -57,10 +57,16 @@ module.exports = {
         });
         await anxpro.loadMarkets();
         const prices = { 'id': anxpro.id };
+        let symbols = anxpro.symbols
+        console.log("anxpro symbols: "+ symbols);
+        const pairs = ['LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
         if (anxpro.has['fetchTicker']) {
-            const pairs = ['LTC/BTC', 'XRP/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await anxpro.fetchTicker(pairs[i]);
+            for(let key of symbols){
+                pairs.forEach(val=>{
+                    if(val===key){
+                        prices[pairs[val]] = await anxpro.fetchTicker(pairs[val]);
+                    }
+                });                
             }
         }
         return prices;
