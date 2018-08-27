@@ -101,7 +101,7 @@ module.exports = {
             for(let key of symbols){
                 pairs.forEach(val=>{
                     if(val===key){
-                        prices[pairs[val]] = await anxpro.fetchTicker(pairs[val]);
+                        prices[pairs[val]] = await binance.fetchTicker(pairs[val]);
                     }
                 });                
             }
