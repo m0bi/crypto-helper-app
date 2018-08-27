@@ -62,11 +62,11 @@ module.exports = {
         const pairs = ['LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
         if (anxpro.has['fetchTicker']) {
             for(let key of symbols){
-                pairs.forEach(val=>{
+                for(let val of pairs){
                     if(val===key){
                         prices[pairs[val]] = await anxpro.fetchTicker(pairs[val]);
                     }
-                });                
+                };                
             }
         }
         return prices;
@@ -99,11 +99,11 @@ module.exports = {
         if (binance.has['fetchTicker']) {
             const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'EOS/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
             for(let key of symbols){
-                pairs.forEach(val=>{
+                for(let val of pairs){
                     if(val===key){
                         prices[pairs[val]] = await binance.fetchTicker(pairs[val]);
                     }
-                });                
+                };                
             }
         }
         return prices;
