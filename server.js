@@ -373,6 +373,14 @@ app.get("/news", (req,res)=>{
   })();
 });
 
+app.get("/cash", (req,res)=>{
+  (async function cash(){
+    await redis.get('cash').then(function(result){
+      res.json(JSON.parse(result));
+    }).catch(err=>console.log(err));
+  })();
+});
+
 // app.get('/api', function (req, res) {
 //   res.status(200).send('./c/:id ./news ./usd ./usd/:id ./bibox ./bibox/:id ./bibox/c/:id ./binance ./binance/:id ./binance/c/:id ./cryptopia ./cryptopia/:id ./cryptopia/c/:id ./kucoin ./kucoin/:id ./kucoin/c/:id');
 // });
