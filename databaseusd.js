@@ -4,7 +4,7 @@ var redis = new Redis(process.env.REDIS_URL);
 
 let usd = resolve.cash();
 
-cash.then((response)=>{
+usd.then((response)=>{
     redis.set('cash', JSON.stringify(response));
     redis.set('cashtime', JSON.stringify(new Date()));
 });

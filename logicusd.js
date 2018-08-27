@@ -18,7 +18,7 @@ var keys = require("./keys.js");
 require("dotenv").config();
 
 module.exports = {
-    news: async function getNews() {
+    cash: async function getCash() {
         try {
             const COINS = [];
             const BCH = await axios('http://coincap.io/page/BCH');
