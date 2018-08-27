@@ -40,7 +40,24 @@ app.get('/', function (req, res) {
     'XMR/BTC': [],
     'XRP/BTC': [],
     'ZEC/BTC': [],
-    'ZEC/ETH': []
+    'ZEC/ETH': [],
+    'BCH/BTC': [],
+    'ETH/BCH': [],
+    'USDT/BCH': [],
+    'USDT/BTC': [],
+    'BTC/DASH': [],
+    'ETH/DASH': [],
+    'BTC/EOS': [],
+    'USDT/EOS': [],
+    'BTC/LTC': [],
+    'ETH/LTC': [],
+    'USDT/LTC': [],
+    'BTC/TRX': [],
+    'BTC/XLM': [],
+    'BTC/XMR': [],
+    'BTC/XRP': [],
+    'BTC/ZEC': [],
+    'ETH/ZEC': []
   };
   await redis.get('anxpro').then(function(result){
     let resultArr = JSON.parse(result);

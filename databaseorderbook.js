@@ -54,7 +54,6 @@ anxpro.then(response => {
   let redisArray = [];
   for (let key in response) {
 
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
 
   }
@@ -64,7 +63,6 @@ anxpro.then(response => {
 anybits.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('anybitsbook', JSON.stringify(redisArray));
@@ -73,7 +71,6 @@ anybits.then(response => {
 binance.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('binancebook', JSON.stringify(redisArray));
@@ -82,7 +79,6 @@ binance.then(response => {
 bitbay.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('bitbaybook', JSON.stringify(redisArray));
@@ -91,7 +87,6 @@ bitbay.then(response => {
 bitfinex2.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('bitfinex2book', JSON.stringify(redisArray));
@@ -100,7 +95,6 @@ bitfinex2.then(response => {
 bitflyer.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('bitflyerbook', JSON.stringify(redisArray));
@@ -109,7 +103,6 @@ bitflyer.then(response => {
 bitlish.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('bitlishbook', JSON.stringify(redisArray));
@@ -118,7 +111,6 @@ bitlish.then(response => {
 bitstamp.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('bitstampbook', JSON.stringify(redisArray));
@@ -127,7 +119,6 @@ bitstamp.then(response => {
 btcmarkets.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('btcmarketsbook', JSON.stringify(redisArray));
@@ -136,7 +127,6 @@ btcmarkets.then(response => {
 btctradeim.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('btctradeimbook', JSON.stringify(redisArray));
@@ -145,7 +135,6 @@ btctradeim.then(response => {
 cex.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('cexbook', JSON.stringify(redisArray));
@@ -154,7 +143,6 @@ cex.then(response => {
 coinbasepro.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('coinbaseprobook', JSON.stringify(redisArray));
@@ -163,7 +151,6 @@ coinbasepro.then(response => {
 coinegg.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('coineggbook', JSON.stringify(redisArray));
@@ -172,7 +159,6 @@ coinegg.then(response => {
 coinex.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('coinexbook', JSON.stringify(redisArray));
@@ -181,7 +167,6 @@ coinex.then(response => {
 coinexchange.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('coinexchangebook', JSON.stringify(redisArray));
@@ -190,7 +175,6 @@ coinexchange.then(response => {
 coinfalcon.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('coinfalconbook', JSON.stringify(redisArray));
@@ -199,7 +183,6 @@ coinfalcon.then(response => {
 coinmate.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('coinmatebook', JSON.stringify(redisArray));
@@ -208,7 +191,6 @@ coinmate.then(response => {
 dsx.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('dsxbook', JSON.stringify(redisArray));
@@ -217,7 +199,6 @@ dsx.then(response => {
 exmo.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('exmobook', JSON.stringify(redisArray));
@@ -226,7 +207,6 @@ exmo.then(response => {
 gatecoin.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('gatecoinbook', JSON.stringify(redisArray));
@@ -235,7 +215,6 @@ gatecoin.then(response => {
 gemini.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('geminibook', JSON.stringify(redisArray));
@@ -244,7 +223,6 @@ gemini.then(response => {
 hitbtc2.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
 redis.set('hitbtc2book', JSON.stringify(redisArray));
@@ -253,7 +231,6 @@ redis.set('booktime', JSON.stringify(new Date()));
 ice3x.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('ice3xbook', JSON.stringify(redisArray));
@@ -262,7 +239,6 @@ ice3x.then(response => {
 kraken.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('krakenbook', JSON.stringify(redisArray));
@@ -271,7 +247,6 @@ kraken.then(response => {
 kucoin.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('kucoinbook', JSON.stringify(redisArray));
@@ -280,7 +255,6 @@ kucoin.then(response => {
 lakebtc.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('lakebtcbook', JSON.stringify(redisArray));
@@ -289,7 +263,6 @@ lakebtc.then(response => {
 lbank.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('lbankbook', JSON.stringify(redisArray));
@@ -298,7 +271,6 @@ lbank.then(response => {
 livecoin.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('livecoinbook', JSON.stringify(redisArray));
@@ -307,7 +279,6 @@ livecoin.then(response => {
 liqui.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('liquibook', JSON.stringify(redisArray));
@@ -316,7 +287,6 @@ liqui.then(response => {
 lykke.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('lykkebook', JSON.stringify(redisArray));
@@ -325,7 +295,6 @@ lykke.then(response => {
 qryptos.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('qryptosbook', JSON.stringify(redisArray));
@@ -334,7 +303,6 @@ qryptos.then(response => {
 quadrigacx.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('quadrigacxbook', JSON.stringify(redisArray));
@@ -343,7 +311,6 @@ quadrigacx.then(response => {
 rightbtc.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('rightbtcbook', JSON.stringify(redisArray));
@@ -352,7 +319,6 @@ rightbtc.then(response => {
 southxchange.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('southxchangebooks', JSON.stringify(redisArray));
@@ -361,7 +327,6 @@ southxchange.then(response => {
 therock.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('therockbook', JSON.stringify(redisArray));
@@ -370,7 +335,6 @@ therock.then(response => {
 tidex.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('tidexbook', JSON.stringify(redisArray));
@@ -379,7 +343,6 @@ tidex.then(response => {
 wex.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('wexbook', JSON.stringify(redisArray));
@@ -388,7 +351,6 @@ wex.then(response => {
 yobit.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('yobitbook', JSON.stringify(redisArray));
@@ -397,7 +359,6 @@ yobit.then(response => {
 zaif.then(response => {
   let redisArray = [];
   for (let key in response) {
-    console.log(key, response[key])
     redisArray.push([key, response[key]]);
   }
   redis.set('zaifbook', JSON.stringify(redisArray));
