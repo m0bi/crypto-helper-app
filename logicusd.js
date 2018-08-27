@@ -45,7 +45,7 @@ module.exports = {
             COINS.push(ZEC);
             //console.log(news);
             //console.log(response.data.results);
-            return coins;
+            return COINS;
         } catch (error) {
             console.error(error);
         }
