@@ -50,7 +50,6 @@ module.exports = {
             for(let i=0; i<result.length; i++){
                 data.push(result[i].data);
             }
-            console.log(data);
             return data;
         } catch (error) {
             console.error(error);
