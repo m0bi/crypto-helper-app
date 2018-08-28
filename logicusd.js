@@ -18,7 +18,7 @@ var keys = require("./keys.js");
 require("dotenv").config();
 
 module.exports = {
-    cash: function getCash() {
+    cash: async function getCash() {
         try {
             const COINS = [];
             const BCH = axios('http://coincap.io/page/BCH');
@@ -45,9 +45,8 @@ module.exports = {
             COINS.push(ZEC);
             //console.log(news);
             //console.log(response.data.results);
-            Promise.all(COINS).then((res)=>{
-                return res;
-            });
+            let result = await Promise.all(COINS);
+            return result;
         } catch (error) {
             console.error(error);
         }
