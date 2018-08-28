@@ -57,21 +57,10 @@ module.exports = {
         });
         await anxpro.loadMarkets();
         const prices = { 'id': anxpro.id };
-        let symbols = anxpro.symbols
-        console.log("anxpro symbols: "+ symbols);
-        const pairs = ['LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
-        const validpairs = [];
-        for(let key of symbols) {
-            for(let val of pairs) {
-                if(key == val) {
-                    validpairs.push(val);
-                }
-            }
-        }
-        console.log(validpairs);
+        const pairs = ['LTC/BTC', 'XRP/BTC'];
         if (anxpro.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await anxpro.fetchTicker(validpairs[i]);
+                prices[pairs[i]] = await anxpro.fetchTicker(pairs[i]);
             }
         }
         return prices;
@@ -112,7 +101,7 @@ module.exports = {
         }
         console.log(validpairs);
         if (binance.has['fetchTicker']) {
-            for (let i = 0; i < pairs.length; i++) {
+            for (let i = 0; i < validpairs.length; i++) {
                 prices[validpairs[i]] = await binance.fetchTicker(validpairs[i]);
             }
         }
