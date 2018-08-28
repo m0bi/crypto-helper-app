@@ -383,27 +383,19 @@ app.get('/book', function (req, res) {
 });
 
 app.get("/news", (req, res) => {
-  (function () {
-    async function news() {
+  (async function news() {
       await redis.get('news').then(function (result) {
         res.json(JSON.parse(result));
       }).catch(err => console.log(err));
-    }
-    news();
-    setInterval(news(), 600000);
-  })();
+    })();
 });
 
 app.get("/cash", (req, res) => {
-  (function () {
-    async function cash() {
+(async function cash() {
       await redis.get('cash').then(function (result) {
         res.json(JSON.parse(result));
       }).catch(err => console.log(err));
-    }
-    cash();
-    setInterval(cash(), 600000);
-  })();
+    })();
 });
 
 // app.get('/api', function (req, res) {
