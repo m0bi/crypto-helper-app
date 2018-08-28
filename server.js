@@ -383,29 +383,27 @@ app.get('/book', function (req, res) {
 });
 
 app.get("/news", (req, res) => {
-  (async function news() {
-  await redis.get('news').then(function (result) {
-    res.json(JSON.parse(result));
-  }).catch(err => console.log(err));
-})();
-setInterval((async function news2() {
-  await redis.get('news').then(function (result) {
-    res.json(JSON.parse(result));
-  }).catch(err => console.log(err));
-})(), 600000);
+  (function () {
+    async function news() {
+      await redis.get('news').then(function (result) {
+        res.json(JSON.parse(result));
+      }).catch(err => console.log(err));
+    }
+    news();
+    setInterval(news(), 600000);
+  })();
 });
 
 app.get("/cash", (req, res) => {
-(async function cash() {
-  await redis.get('cash').then(function (result) {
-    res.json(JSON.parse(result));
-  }).catch(err => console.log(err));
-})();
-setInterval((async function cash2() {
-  await redis.get('cash').then(function (result) {
-    res.json(JSON.parse(result));
-  }).catch(err => console.log(err));
-})(), 600000);
+  (function () {
+    async function cash() {
+      await redis.get('cash').then(function (result) {
+        res.json(JSON.parse(result));
+      }).catch(err => console.log(err));
+    }
+    cash();
+    setInterval(cash(), 600000);
+  })();
 });
 
 // app.get('/api', function (req, res) {
