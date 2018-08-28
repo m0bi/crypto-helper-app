@@ -46,7 +46,12 @@ module.exports = {
             //console.log(news);
             //console.log(response.data.results);
             let result = await Promise.all(COINS);
-            return result;
+            const data = [];
+            for(let i=0; i<result.length; i++){
+                data.push(result[i].data);
+            }
+            console.log(data);
+            return data;
         } catch (error) {
             console.error(error);
         }
