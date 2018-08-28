@@ -22,7 +22,7 @@ module.exports = {
         try {
             const COINS = [];
             const BCH = axios('http://coincap.io/page/BCH');
-            CPOINS.push(BCH);
+            COINS.push(BCH);
             const BTC = axios('http://coincap.io/page/BTC');
             COINS.push(BTC);
             const DASH = axios('http://coincap.io/page/DASH');
