@@ -21,7 +21,7 @@ var redis = new Redis(process.env.REDIS_URL);
 
 app.get('/', function (req, res) {
   (async function red() {
-    var pairObj = {
+    let pairObj = {
       'BCH/BTC': [],
       'BCH/ETH': [],
       'BCH/USDT': [],

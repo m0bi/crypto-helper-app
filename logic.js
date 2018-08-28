@@ -56,11 +56,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await anxpro.loadMarkets();
+        const symbols = anxpro.symbols;
         const prices = { 'id': anxpro.id };
-        const pairs = ['LTC/BTC', 'XRP/BTC'];
+        const pairs = ['LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (anxpro.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[pairs[i]] = await anxpro.fetchTicker(pairs[i]);
+                prices[validpairs[i]] = await anxpro.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -72,11 +81,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await anybits.loadMarkets();
+        const symbols = anybits.symbols;
         const prices = { 'id': anybits.id };
         if (anybits.has['fetchTicker']) {
-            const pairs = ['LTC/BTC', 'XRP/BTC', 'ETH/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await anybits.fetchTicker(pairs[i]);
+            const pairs = ['LTC/BTC', 'XRP/BTC', 'ETH/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+            const validpairs = [];
+            for (let key of symbols) {
+                for (let val of pairs) {
+                    if (key == val) {
+                        validpairs.push(val);
+                    }
+                }
+            }
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await anybits.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -87,19 +105,17 @@ module.exports = {
             'enableRateLimit': true,
         });
         await binance.loadMarkets();
-        let symbols = binance.symbols
-        console.log("binance symbols: "+ symbols);
+        const symbols = binance.symbols;
         const prices = { 'id': binance.id };
         const validpairs = [];
         const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'EOS/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
-        for(let key of symbols) {
-            for(let val of pairs) {
-                if(key == val) {
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
                     validpairs.push(val);
                 }
             }
         }
-        console.log(validpairs);
         if (binance.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
                 prices[validpairs[i]] = await binance.fetchTicker(validpairs[i]);
@@ -113,11 +129,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await bitbay.loadMarkets();
+        const symbols = bitbay.symbols;
         const prices = { 'id': bitbay.id };
+        const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (bitbay.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await bitbay.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await bitbay.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -129,11 +154,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await bitfinex2.loadMarkets();
+        const symbols = bitfinex2.symbols;
         const prices = { 'id': bitfinex2.id };
+        const validpairs = []
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC', 'EOS/BTC', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (bitfinex2.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'LTC/BTC', 'LTC/USDT', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC', 'EOS/BTC', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await bitfinex2.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await bitfinex2.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -144,11 +178,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await bitflyer.loadMarkets();
+        const symbols = bitflyer.symbols;
         const prices = { 'id': bitflyer.id };
+        const pairs = ['BCH/BTC', 'ETH/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (bitflyer.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'ETH/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await bitflyer.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await bitflyer.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -160,11 +203,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await bitlish.loadMarkets();
+        const symbols = bitlish.symbols;
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BTC/USDT', 'LTC/BTC', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
         const prices = { 'id': bitlish.id };
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (bitlish.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BTC/USDT', 'LTC/BTC', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await bitlish.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await bitlish.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -177,11 +229,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await bitstamp.loadMarkets();
+        const symbols = bitstamp.symbols;
         const prices = { 'id': bitstamp.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (bitstamp.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await bitstamp.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await bitstamp.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -194,11 +255,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await btcalpha.loadMarkets();
+        const symbols = btcalpha.symbols;
         const prices = { 'id': btcalpha.id };
+        const pairs = ['BCH/BTC', 'BTC/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (btcalpha.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BTC/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await btcalpha.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await btcalpha.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -211,11 +281,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await btcmarkets.loadMarkets();
+        const symbols = btcmarkets.symbols;
         const prices = { 'id': btcmarkets.id };
+        const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (btcmarkets.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'XRP/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await btcmarkets.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await btcmarkets.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -227,11 +306,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await btctradeim.loadMarkets();
+        const symbols = btctradeim.symbols;
         const prices = { 'id': btctradeim.id };
+        const pairs = ['BCH/BTC', 'EOS/BTC', 'LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (btctradeim.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'EOS/BTC', 'LTC/BTC', 'XRP/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await btctradeim.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await btctradeim.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -243,11 +331,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await cex.loadMarkets();
+        const symbols = cex.symbols;
         const prices = { 'id': cex.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'XLM/BTC', 'XRP/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (cex.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'XLM/BTC', 'XRP/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await cex.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await cex.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -259,9 +356,18 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinbasepro.loadMarkets();
+        const symbols = coinbasepro.symbols;
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (coinbasepro.has['fetchTicker']) {
             const prices = { 'id': coinbasepro.id };
-            const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
             for (let i = 0; i < pairs.length; i++) {
                 prices[pairs[i]] = await coinbasepro.fetchTicker(pairs[i]);
             }
@@ -275,11 +381,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinex.loadMarkets();
+        const symbols = coinex.symbols;
         const prices = { 'id': coinex.id };
+        const pairs = ['BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/USDT', 'TRX/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (coinex.has['fetchTicker']) {
-            const pairs = ['BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/USDT', 'TRX/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await coinex.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await coinex.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -290,11 +405,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinexchange.loadMarkets();
+        const symbols = coinexchange.symbols;
         const prices = { 'id': coinexchange.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (exchange.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await coinexchange.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await coinexchange.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -304,11 +428,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinfalcon.loadMarkets();
+        const symbols = coinfalcon.symbols;
         const prices = { 'id': coinfalcon.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BTC/USDT', 'EOS/USDT', 'ETH/BTC', 'TRX/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (coinfalcon.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BTC/USDT', 'EOS/USDT', 'ETH/BTC', 'TRX/BTC', 'XRP/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await coinfalcon.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await coinfalcon.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -320,9 +453,21 @@ module.exports = {
             'enableRateLimit': true,
         });
         await coinmate.loadMarkets();
+        const symbols = coinmate.symbols;
         const prices = { 'id': coinmate.id };
+        const validpairs = [];
+        const pairs = ['LTC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC']
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (coinmate.has['fetchTicker']) {
-            prices['LTC/BTC'] = await coinmate.fetchTicker('LTC/BTC');
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await coinmate.fetchTicker(validpairs[i]);
+            }
         }
         return prices;
         //return await coinmate.fetch_markets();
@@ -332,11 +477,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await dsx.loadMarkets();
+        const symbols = dsx.symbols;
         const prices = { 'id': dsx.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (dsx.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await dsx.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await dsx.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -347,11 +501,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await exmo.loadMarkets();
+        const symbols = exmo.symbols;
         const prices = { 'id': exmo.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (exmo.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await exmo.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await exmo.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -363,9 +526,18 @@ module.exports = {
             'enableRateLimit': true,
         });
         await gatecoin.loadMarkets();
+        const symbols = gatecoin.symbols;
         const prices = { 'id': gatecoin.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/ETH', 'LTC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (gatecoin.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/ETH', 'LTC/BTC'];
             for (let i = 0; i < pairs.length; i++) {
                 prices[pairs[i]] = await gatecoin.fetchTicker(pairs[i]);
             }
@@ -378,11 +550,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await gemini.loadMarkets();
+        const symbols = gemini.symbols;
         const prices = { 'id': gemini.id };
+        const validpairs = [];
+        const pairs = ['ETH/BTC', 'ZEC/BTC', 'ZEC/ETH', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (gemini.has['fetchTicker']) {
-            const pairs = ['ETH/BTC', 'ZEC/BTC', 'ZEC/ETH'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await gemini.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await gemini.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -394,11 +575,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await hitbtc2.loadMarkets();
+        const symbols = hitbtc2.symbols;
         const prices = { 'id': hitbtc2.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/ETH', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }    
         if (hitbtc2.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/ETH'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await hitbtc2.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await hitbtc2.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -410,11 +600,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await ice3x.loadMarkets();
+        const symbols = ice3x.symbols;
         const prices = { 'id': ice3x.id };
+        const validpairs = []
+        const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'XMR/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }   
         if (ice3x.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'XMR/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await ice3x.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await ice3x.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -426,11 +625,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await kraken.loadMarkets();
+        const symbols = kraken.symbols;
         const prices = { 'id': kraken.id };
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (kraken.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await kraken.fetchTicker(pairs[i]);
+            const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await kraken.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -441,11 +649,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await kucoin.loadMarkets();
+        const symbols = kucoin.symbols;
         const prices = { 'id': kucoin.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XLM/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (kucoin.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'XLM/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await kucoin.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await kucoin.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -457,11 +674,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await lakebtc.loadMarkets();
+        const symbols = lakebtc.symbols;
         const prices = { 'id': lakebtc.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (lakebtc.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'LTC/BTC', 'XRP/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await lakebtc.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await lakebtc.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -471,11 +697,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await lbank.loadMarkets();
+        const symbols = lbank.symbols;
         const prices = { 'id': lbank.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'ZEC/BTC', 'ZEC/ETH', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }   
         if (lbank.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'ZEC/BTC', 'ZEC/ETH'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await lbank.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await lbank.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -487,11 +722,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await livecoin.loadMarkets();
+        const symbols = livecoin.symbols;
         const prices = { 'id': livecoin.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XMR/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }    
         if (livecoin.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XMR/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await livecoin.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await livecoin.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -501,11 +745,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await liqui.loadMarkets();
+        const symbols = liqui.symbols;
         const prices = { 'id': liqui.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }  
         if (liqui.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await liqui.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await liqui.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -517,11 +770,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await lykke.loadMarkets();
+        const symbols = lykke.symbols;
         const prices = { 'id': lykke.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        } 
         if (lykke.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await lykke.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await lykke.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -533,9 +795,18 @@ module.exports = {
             'enableRateLimit': true,
         });
         await qryptos.loadMarkets();
+        const symbols = qryptos.symbols;
+        const validpairs = [];
         const prices = { 'id': qryptos.id };
+        const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }   
         if (qryptos.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC'];
             for (let i = 0; i < pairs.length; i++) {
                 prices[pairs[i]] = await qryptos.fetchTicker(pairs[i]);
             }
@@ -547,9 +818,18 @@ module.exports = {
             'enableRateLimit': true,
         });
         await quadrigacx.loadMarkets();
+        const symbols = quadrigacx.symbols;
         const prices = { 'id': quadrigacx.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        } 
         if (quadrigacx.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
             for (let i = 0; i < pairs.length; i++) {
                 prices[pairs[i]] = await quadrigacx.fetchTicker(pairs[i]);
             }
@@ -563,11 +843,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await rightbtc.loadMarkets();
+        const symbols = rightbtc.symbols;
         const prices = { 'id': rightbtc.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }    
         if (rightbtc.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await rightbtc.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await rightbtc.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -579,11 +868,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await southxchange.loadMarkets();
+        const symbols = southxchange.symbols;
         const prices = { 'id': southxchange.id };
+        const validpairs = [];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (southxchange.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await southxchange.fetchTicker(pairs[i]);
+            const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await southxchange.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -595,11 +893,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await therock.loadMarkets();
+        const symbols = therock.symbols;
         const prices = { 'id': therock.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BTC/XRP', 'LTC/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (therock.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BTC/XRP', 'LTC/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await therock.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await therock.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -609,11 +916,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await tidex.loadMarkets();
+        const symbols = tidex.symbols;
         const prices = { 'id': tidex.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }
         if (tidex.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await tidex.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await tidex.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -625,11 +941,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await wex.loadMarkets();
+        const symbols = wex.symbols;
         const prices = { 'id': wex.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/ZEC', 'DASH/BTC', 'DASH/ETH', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }  
         if (wex.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'BCH/ZEC', 'DASH/BTC', 'DASH/ETH', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await wex.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await wex.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -641,11 +966,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await yobit.loadMarkets();
+        const symbols = yobit.symbols;
         const prices = { 'id': yobit.id };
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'BCH/ETH', 'LTC/BTC', 'LTC/ETH', 'ETH/BTC', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'TRX/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }    
         if (yobit.has['fetchTicker']) {
-            const pairs = ['BCH/BTC', 'BCH/ETH', 'LTC/BTC', 'LTC/ETH', 'ETH/BTC', 'DASH/BTC', 'DASH/ETH', 'ZEC/BTC', 'ZEC/ETH', 'EOS/BTC', 'TRX/BTC'];
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await yobit.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await yobit.fetchTicker(validpairs[i]);
             }
         }
         return prices;
@@ -656,11 +990,20 @@ module.exports = {
             'enableRateLimit': true,
         });
         await zaif.loadMarkets();
+        const symbols = zaif.symbols;
         const prices = { 'id': zaif.id };
-        const pairs = ['BCH/BTC', 'ETH/BTC'];
+        const validpairs = [];
+        const pairs = ['BCH/BTC', 'ETH/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }  
         if (zaif.has['fetchTicker']) {
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await zaif.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await zaif.fetchTicker(validpairs[i]);
             }
         }
         return prices;
