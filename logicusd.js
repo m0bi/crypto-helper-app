@@ -18,34 +18,36 @@ var keys = require("./keys.js");
 require("dotenv").config();
 
 module.exports = {
-    cash: async function getCash() {
+    cash: function getCash() {
         try {
             const COINS = [];
-            const BCH = await axios('http://coincap.io/page/BCH');
-            COINS.push(BCH);
-            const BTC = await axios('http://coincap.io/page/BTC');
+            const BCH = axios('http://coincap.io/page/BCH');
+            CPOINS.push(BCH);
+            const BTC = axios('http://coincap.io/page/BTC');
             COINS.push(BTC);
-            const DASH = await axios('http://coincap.io/page/DASH');
+            const DASH = axios('http://coincap.io/page/DASH');
             COINS.push(DASH);
-            const EOS = await axios('http://coincap.io/page/EOS');
+            const EOS = axios('http://coincap.io/page/EOS');
             COINS.push(EOS);
-            const ETH = await axios('http://coincap.io/page/ETH');
+            const ETH = axios('http://coincap.io/page/ETH');
             COINS.push(ETH);
-            const LTC = await axios('http://coincap.io/page/LTC');
+            const LTC = axios('http://coincap.io/page/LTC');
             COINS.push(LTC);
-            const TRX = await axios('http://coincap.io/page/TRX');
+            const TRX = axios('http://coincap.io/page/TRX');
             COINS.push(TRX);
-            const XLM = await axios('http://coincap.io/page/XLM');
+            const XLM = axios('http://coincap.io/page/XLM');
             COINS.push(XLM);
-            const XMR = await axios('http://coincap.io/page/XMR');
+            const XMR = axios('http://coincap.io/page/XMR');
             COINS.push(XMR);
-            const XRP = await axios('http://coincap.io/page/XRP');
+            const XRP = axios('http://coincap.io/page/XRP');
             COINS.push(XRP);
-            const ZEC = await axios('http://coincap.io/page/ZEC');
+            const ZEC = axios('http://coincap.io/page/ZEC');
             COINS.push(ZEC);
             //console.log(news);
             //console.log(response.data.results);
-            return COINS;
+            Promise.all(COINS).then((res)=>{
+                return res;
+            });
         } catch (error) {
             console.error(error);
         }
