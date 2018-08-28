@@ -106,13 +106,6 @@ app.get('/', function (req, res) {
         rootObj[val[1]].push(val);
       });
     }).catch(err => console.log(err));
-    await redis.get('coinegg').then(function (result) {
-      let resultArr = JSON.parse(result);
-      resultArr.map((val) => {
-      rootObj[val[1]] = rootObj[val[1]] || [];
-        rootObj[val[1]].push(val);
-      });
-    }).catch(err => console.log(err));
     await redis.get('coinex').then(function (result) {
       let resultArr = JSON.parse(result);
       resultArr.map((val) => {
