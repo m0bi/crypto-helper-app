@@ -14,7 +14,6 @@ let bitstamp = resolve.bitstamp();
 let btcmarkets = resolve.btcmarkets();
 let btctradeim = resolve.btctradeim();
 let cex = resolve.cex();
-let coinbasepro = resolve.coinbasepro();
 let coinex = resolve.coinex();
 let coinexchange = resolve.coinexchange();
 let coinfalcon = resolve.coinfalcon();
@@ -170,17 +169,6 @@ cex.then(response => {
   redis.set('cex', JSON.stringify(redisArray));
   redis.set('time', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // 
-coinbasepro.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var coinbaseproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('coinbasepro', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
 coinex.then(response => {
   let redisArray = [];
   for (let key in response) {

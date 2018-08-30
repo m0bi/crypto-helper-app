@@ -351,31 +351,6 @@ module.exports = {
 
         //return await cex.fetch_markets();
     },
-    coinbasepro: async function printCoinbasepro() {
-        let coinbasepro = new ccxt.coinbasepro({
-            'enableRateLimit': true,
-        });
-        await coinbasepro.loadMarkets();
-        const symbols = coinbasepro.symbols;
-        const validpairs = [];
-        const pairs = ['BTC/BCH', 'ETH/BTC', 'LTC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
-        for (let key of symbols) {
-            for (let val of pairs) {
-                if (key == val) {
-                    validpairs.push(val);
-                }
-            }
-        }
-        if (coinbasepro.has['fetchTicker']) {
-            const prices = { 'id': coinbasepro.id };
-            for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await coinbasepro.fetchTicker(validpairs[i]);
-            }
-        }
-        return prices;
-
-        //return await coinbasepro.fetch_markets();
-    },
     coinex: async function printCoinex() {
         let coinex = new ccxt.coinex({
             'enableRateLimit': true,
@@ -416,7 +391,7 @@ module.exports = {
                 }
             }
         }
-        if (exchange.has['fetchTicker']) {
+        if (coinexchange.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
                 prices[validpairs[i]] = await coinexchange.fetchTicker(validpairs[i]);
             }
@@ -827,8 +802,8 @@ module.exports = {
             }
         } 
         if (quadrigacx.has['fetchTicker']) {
-            for (let i = 0; i < pairs.length; i++) {
-                prices[pairs[i]] = await quadrigacx.fetchTicker(pairs[i]);
+            for (let i = 0; i < validpairs.length; i++) {
+                prices[validpairs[i]] = await quadrigacx.fetchTicker(validpairs[i]);
             }
         }
         return prices;
