@@ -220,20 +220,6 @@ module.exports = {
 
         //return await cex.fetch_markets();
     },
-    coinbasepro: async function printCoinbasepro() {
-        let coinbasepro = new ccxt.coinbasepro({
-            'enableRateLimit': true,
-        });
-        await coinbasepro.loadMarkets();
-        const prices = {'id':coinbasepro.id};
-        const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
-        for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await coinbasepro.fetchOrderBook(pairs[i]);
-        }
-        return prices;
-        
-        //return await coinbasepro.fetch_markets();
-    },
     coinex: async function printCoinex() {
         let coinex = new ccxt.coinex({
             'enableRateLimit': true,

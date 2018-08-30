@@ -320,10 +320,6 @@ app.get('/book', function (req, res) {
       let resultArr = JSON.parse(result);
       pairObj.push(resultArr);
     }).catch(err => console.log(err));
-    await redis.get('coinbaseprobook').then(function (result) {
-      let resultArr = JSON.parse(result);
-      pairObj.push(resultArr);
-    }).catch(err => console.log(err));
     await redis.get('coinexbook').then(function (result) {
       let resultArr = JSON.parse(result);
       pairObj.push(resultArr);
