@@ -225,13 +225,13 @@ app.get('/live', function (req, res) {
         rootObj[val[1]].push(val);
       });
     }).catch(err => console.log(err));
-    await redis.get('theocean').then(function (result) {
-      let resultArr = JSON.parse(result);
-      resultArr.map((val) => {
-        rootObj[val[1]] = rootObje[val[1]] || [];
-        rootObj[val[1]].push(val);
-      });
-    });
+    // await redis.get('theocean').then(function (result) {
+    //   let resultArr = JSON.parse(result);
+    //   resultArr.map((val) => {
+    //     rootObj[val[1]] = rootObje[val[1]] || [];
+    //     rootObj[val[1]].push(val);
+    //   });
+    // });
     await redis.get('qryptos').then(function (result) {
       let resultArr = JSON.parse(result);
       resultArr.map((val) => {
