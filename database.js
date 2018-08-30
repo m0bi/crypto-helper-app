@@ -381,7 +381,7 @@ theocean.then(response => {
   }
   redis.set('theocean', JSON.stringify(redisArray));
   redis.set('time', JSON.stringify(new Date()));
-});
+}).catch(err=>console.log(err));
 qryptos.then(response => {
   let redisArray = [];
   for (let key in response) {
