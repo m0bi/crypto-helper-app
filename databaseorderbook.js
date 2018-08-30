@@ -147,15 +147,7 @@ coinbasepro.then(response => {
   }
   redis.set('coinbaseprobook', JSON.stringify(redisArray));
   redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-coinegg.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('coineggbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // 
+}).catch(err => console.log(err)); // fee
 coinex.then(response => {
   let redisArray = [];
   for (let key in response) {
