@@ -32,6 +32,7 @@ let lbank = resolve.lbank();
 let livecoin = resolve.livecoin();
 let liqui = resolve.liqui();
 let lykke = resolve.lykke();
+let theocean = resolve.theocean();
 let qryptos = resolve.qryptos();
 let quadrigacx = resolve.quadrigacx();
 let rightbtc = resolve.rightbtc();
@@ -371,6 +372,16 @@ lykke.then(response => {
   redis.set('lykke', JSON.stringify(redisArray));
   redis.set('time', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //
+theocean.then(response => {
+  let redisArray = [];
+  for (let key in response) {
+    if (response[key].last !== undefined) {
+      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
+    }
+  }
+  redis.set('theocean', JSON.stringify(redisArray));
+  redis.set('time', JSON.stringify(new Date()));
+});
 qryptos.then(response => {
   let redisArray = [];
   for (let key in response) {

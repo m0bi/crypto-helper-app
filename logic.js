@@ -790,6 +790,27 @@ module.exports = {
 
         //return await lykke.fetch_markets();
     },
+    theocean: async function printO() {
+        let theocean = new ccxt.theocean({'enableRateLimit': true,});
+        await theocean.loadMarkets();
+        const symbols = theocean.symbols;
+        const validpairs = [];
+        const prices = { 'id': theocean.id };
+        const pairs = ['LTC/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'ETH/BTC', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'BTC/USDT', 'DASH/BTC', 'DASH/ETH', 'EOS/BTC', 'EOS/USDT', 'ETH/USDT', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XMR/BTC', 'ZEC/BTC', 'ZEC/ETH', 'BTC/BCH', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        for (let key of symbols) {
+            for (let val of pairs) {
+                if (key == val) {
+                    validpairs.push(val);
+                }
+            }
+        }   
+        if (theocean.has['fetchTicker']) {
+            for (let i = 0; i < pairs.length; i++) {
+                prices[pairs[i]] = await qryptos.fetchTicker(pairs[i]);
+            }
+        }
+        return prices;
+    },
     qryptos: async function printQ() { //has price data
         let qryptos = new ccxt.qryptos({
             'enableRateLimit': true,
