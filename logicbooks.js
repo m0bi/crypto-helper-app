@@ -234,20 +234,6 @@ module.exports = {
         
         //return await coinbasepro.fetch_markets();
     },
-    coinegg: async function printCoinegg() {
-        let coinegg = new ccxt.coinegg({
-            'enableRateLimit': true,
-        });
-        await coinegg.loadMarkets();
-        const prices = {};
-        const pairs = ['BCH/BTC', 'BCH/ETH', 'BTC/USDT', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'XLM/BTC', 'XRP/BTC'];
-        for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await coinegg.fetchOrderBook(pairs[i]);
-        }
-        return prices;
-
-        //return await coinegg.fetch_markets();
-    },
     coinex: async function printCoinex() {
         let coinex = new ccxt.coinex({
             'enableRateLimit': true,
@@ -297,19 +283,6 @@ module.exports = {
         return prices;
 
         //return await coinmate.fetch_markets();
-    },
-    dsx: async function printDsx() {
-        let dsx = new ccxt.dsx({
-            'enableRateLimit': true,
-        });
-        await dsx.loadMarkets();
-        const prices = {};
-        const pairs = ['BCH/BTC', 'ETH/BTC', 'LTC/BTC'];
-        for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await dsx.fetchOrderBook(pairs[i]);
-        }
-        return prices;
-        //return await dsx.fetch_markets();
     },
     exmo: async function printExmo() {
         let exmo = new ccxt.exmo({
@@ -498,34 +471,6 @@ module.exports = {
         return prices;
         
         //return await quadrigacx.fetch_markets();
-    },
-    rightbtc: async function printRight() {
-        let rightbtc = new ccxt.rightbtc({
-            'enableRateLimit': true,
-        });
-        await rightbtc.loadMarkets();
-        const prices = {};
-        const pairs = ['BCH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC'];
-        for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await rightbtc.fetchOrderBook(pairs[i]);
-        }
-        return prices;
-
-        //return await rightbtc.fetch_markets();
-    },
-    southxchange: async function printSouth() {
-        let southxchange = new ccxt.southxchange({
-            'enableRateLimit': true,
-        });
-        await southxchange.loadMarkets();
-        const prices = {};
-        const pairs = ['BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC'];
-        for (let i = 0; i < pairs.length; i++) {
-            prices[pairs[i]] = await southxchange.fetchOrderBook(pairs[i]);
-        }
-        return prices;
-
-        //return await southxchange.fetch_markets();
     },
     therock: async function printRock() { //has last price
         let therock = new ccxt.therock({

@@ -15,12 +15,10 @@ let btcmarkets = resolve.btcmarkets();
 let btctradeim = resolve.btctradeim();
 let cex = resolve.cex();
 let coinbasepro = resolve.coinbasepro();
-let coinegg = resolve.coinegg();
 let coinex = resolve.coinex();
 let coinexchange = resolve.coinexchange();
 let coinfalcon = resolve.coinfalcon();
 let coinmate = resolve.coinmate();
-let dsx = resolve.dsx();
 let exmo = resolve.exmo();
 let gatecoin = resolve.gatecoin();
 let gemini = resolve.gemini();
@@ -35,8 +33,6 @@ let liqui = resolve.liqui();
 let lykke = resolve.lykke();
 let qryptos = resolve.qryptos();
 let quadrigacx = resolve.quadrigacx();
-let rightbtc = resolve.rightbtc();
-let southxchange = resolve.southxchange();
 let therock = resolve.therock();
 let tidex = resolve.tidex();
 let wex = resolve.wex();
@@ -180,14 +176,6 @@ coinmate.then(response => {
   redis.set('coinmatebook', JSON.stringify(redisArray));
   redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
-dsx.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('dsxbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
 exmo.then(response => {
   let redisArray = [];
   for (let key in response) {
@@ -300,22 +288,6 @@ quadrigacx.then(response => {
   redis.set('quadrigacxbook', JSON.stringify(redisArray));
   redis.set('booktime', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
-rightbtc.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('rightbtcbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-southxchange.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('southxchangebooks', JSON.stringify(redisArray));
-  redis.set('bookstime', JSON.stringify(new Date()));
-}).catch(err => console.log(err));
 therock.then(response => {
   let redisArray = [];
   for (let key in response) {

@@ -19,7 +19,6 @@ let coinex = resolve.coinex();
 let coinexchange = resolve.coinexchange();
 let coinfalcon = resolve.coinfalcon();
 let coinmate = resolve.coinmate();
-let dsx = resolve.dsx();
 let exmo = resolve.exmo();
 let gatecoin = resolve.gatecoin();
 let gemini = resolve.gemini();
@@ -35,8 +34,6 @@ let lykke = resolve.lykke();
 let theocean = resolve.theocean();
 let qryptos = resolve.qryptos();
 let quadrigacx = resolve.quadrigacx();
-let rightbtc = resolve.rightbtc();
-let southxchange = resolve.southxchange();
 let therock = resolve.therock();
 let tidex = resolve.tidex();
 let wex = resolve.wex();
@@ -228,17 +225,6 @@ coinmate.then(response => {
   redis.set('coinmate', JSON.stringify(redisArray));
   redis.set('time', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); // fees
-dsx.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var dsxObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('dsx', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
 exmo.then(response => {
   let redisArray = [];
   for (let key in response) {
@@ -404,28 +390,6 @@ quadrigacx.then(response => {
   redis.set('quadrigacx', JSON.stringify(redisArray));
   redis.set('time', JSON.stringify(new Date()));
 }).catch(err => console.log(err)); //includes fees
-rightbtc.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var rightbtcObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('rightbtc', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-southxchange.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var southxchangeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('southxchange', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err));
 therock.then(response => {
   let redisArray = [];
   for (let key in response) {

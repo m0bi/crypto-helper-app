@@ -134,13 +134,6 @@ app.get('/live', function (req, res) {
         rootObj[val[1]].push(val);
       });
     }).catch(err => console.log(err));
-    await redis.get('dsx').then(function (result) {
-      let resultArr = JSON.parse(result);
-      resultArr.map((val) => {
-        rootObj[val[1]] = rootObj[val[1]] || [];
-        rootObj[val[1]].push(val);
-      });
-    }).catch(err => console.log(err));
     await redis.get('exmo').then(function (result) {
       let resultArr = JSON.parse(result);
       resultArr.map((val) => {
@@ -240,20 +233,6 @@ app.get('/live', function (req, res) {
       });
     }).catch(err => console.log(err));
     await redis.get('quadrigacx').then(function (result) {
-      let resultArr = JSON.parse(result);
-      resultArr.map((val) => {
-        rootObj[val[1]] = rootObj[val[1]] || [];
-        rootObj[val[1]].push(val);
-      });
-    }).catch(err => console.log(err));
-    await redis.get('rightbtc').then(function (result) {
-      let resultArr = JSON.parse(result);
-      resultArr.map((val) => {
-        rootObj[val[1]] = rootObj[val[1]] || [];
-        rootObj[val[1]].push(val);
-      });
-    }).catch(err => console.log(err));
-    await redis.get('southxchange').then(function (result) {
       let resultArr = JSON.parse(result);
       resultArr.map((val) => {
         rootObj[val[1]] = rootObj[val[1]] || [];
@@ -368,10 +347,6 @@ app.get('/book', function (req, res) {
       let resultArr = JSON.parse(result);
       pairObj.push(resultArr);
     }).catch(err => console.log(err));
-    await redis.get('dsxbook').then(function (result) {
-      let resultArr = JSON.parse(result);
-      pairObj.push(resultArr);
-    }).catch(err => console.log(err));
     await redis.get('exmobook').then(function (result) {
       let resultArr = JSON.parse(result);
       pairObj.push(resultArr);
@@ -425,14 +400,6 @@ app.get('/book', function (req, res) {
       pairObj.push(resultArr);
     }).catch(err => console.log(err));
     await redis.get('quadrigacxbook').then(function (result) {
-      let resultArr = JSON.parse(result);
-      pairObj.push(resultArr);
-    }).catch(err => console.log(err));
-    await redis.get('rightbtcbook').then(function (result) {
-      let resultArr = JSON.parse(result);
-      pairObj.push(resultArr);
-    }).catch(err => console.log(err));
-    await redis.get('southxchangebook').then(function (result) {
       let resultArr = JSON.parse(result);
       pairObj.push(resultArr);
     }).catch(err => console.log(err));
