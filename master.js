@@ -415,7 +415,7 @@ module.exports = {
                 var values = [];
                 values.push(CASH);
                 values.push(TICKER);
-                values.push(BOOKS);
+                //values.push(BOOKS);
                 return values;
             } catch (error) {
                 console.log(error);
