@@ -13,16 +13,18 @@ require("dotenv").config();
 module.exports = {
     master: async function populate() {
         const VALUE = (async function accumulate() {
+            var CASH = [];
+            var TICKER = [];
+            var BOOKS = [];
+            var rootObj = {};
+            var pairObj = [];
             try {
                 await (async function usd() {
-                    var CASH = [];
                     redis.get('cash').then((result) => {
                         CASH.push(JSON.parse(result));
                     })
                 })();
                 await (async function red() {
-                    var TICKER = [];
-                    let rootObj = {};    
                     await redis.get('anxpro').then(function (result) {
                         let resultArr = JSON.parse(result);
                         resultArr.map((val) => {
@@ -271,8 +273,6 @@ module.exports = {
                     TICKER.push(rootObj);
                 })();
                 await (async function book() {
-                    var BOOKS = [];
-                    let pairObj = [];    
                     await redis.get('anxprobook').then(function (result) {
                         let resultArr = JSON.parse(result);
                         pairObj.push(resultArr);
