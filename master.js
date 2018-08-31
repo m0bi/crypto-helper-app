@@ -12,7 +12,7 @@ var keys = require("./keys.js");
 require("dotenv").config();
 module.exports = {
     master: async function populate() {
-        async function accumulate() {
+        const VALUE = (async function accumulate() {
             try {
                 const CASH = [];
                 await (async function usd() {
@@ -416,6 +416,7 @@ module.exports = {
             } catch (error) {
                 console.log(error);
             }
-
-        }
+        })();
+        return VALUE;
     }
+}
