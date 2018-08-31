@@ -272,7 +272,7 @@ module.exports = {
                 })();
                 await (async function book() {
                     var BOOKS = [];
-                    let pairObj = {};    
+                    let pairObj = [];    
                     await redis.get('anxprobook').then(function (result) {
                         let resultArr = JSON.parse(result);
                         pairObj.push(resultArr);
