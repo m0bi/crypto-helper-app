@@ -427,8 +427,8 @@ app.get("/test1", (req, res) => {
 });
 
 app.get("/test2", (req, res) => {
-  (async function test1(){
-    await redis.get('book').then(function(result){
+  (async function test2(){
+    await redis.get('books').then(function(result){
       res.json(JSON.parse(result));
     }).catch(err => console.log(err));
   })();
@@ -452,17 +452,16 @@ app.get("/cash", (req, res) => {
 
 app.get("/master", (req, res) => {
   (async function master() {
-    const PROMISE = [];
-    PROMISE.push(redis.get('cash'));
-    PROMISE.push(redis.get('live'));
+    const VALS = [];
+    await redis.get('cash').then((result)=>{
+      VALS.push(JSON.parse(result));
+    });
+    await redis.get('live').then((result)=>{
+      VALS.push(JSON.parse(result));
+    });
+    res.json(result);
     //PROMISE.push(redis.get('books'));
 
-    let result = await Promise.all(PROMISE);
-    const data = [];
-    for (let i = 0; i < result.length; i++) {
-      data.push(JSON.parse(result[i].data));
-    }
-    res.json(data);
   })();
 });
 
