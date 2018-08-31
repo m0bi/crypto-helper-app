@@ -1,6 +1,14 @@
-
+var express = require("express");
+var bodyParser = require("body-parser");
+const app = express();
 const axios = require('axios');
+app.use(bodyParser.urlencoded({ extended: false }));
 
+// parse application/json
+app.use(bodyParser.json());
+
+var keys = require("./keys.js");
+require("dotenv").config();
 module.exports = {
     master: async function populate() {
         try{
@@ -15,7 +23,7 @@ module.exports = {
         let result = await Promise.all(PROMISE);
         return result;
         } catch(error){
-            console.log(err)
+            console.log(error)
         }
     }
 }
