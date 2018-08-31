@@ -449,7 +449,7 @@ app.get("/master", (req, res) => {
       data.push(JSON.parse(result[i].data));
     }
     res.json(data);
-  })
+  })();
 });
 
 // app.get('/api', function (req, res) {
