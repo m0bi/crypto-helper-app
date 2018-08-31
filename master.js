@@ -14,15 +14,15 @@ module.exports = {
     master: async function populate() {
         const VALUE = (async function accumulate() {
             try {
-                const CASH = [];
                 await (async function usd() {
+                    const CASH = [];
                     redis.get('cash').then((result) => {
                         CASH.push(JSON.parse(result));
                     })
                 })();
-                const TICKER = [];
-                let rootObj = {};
                 await (async function red() {
+                    const TICKER = [];
+                    let rootObj = {};    
                     await redis.get('anxpro').then(function (result) {
                         let resultArr = JSON.parse(result);
                         resultArr.map((val) => {
@@ -270,9 +270,9 @@ module.exports = {
                     }).catch(err => console.log(err));
                     TICKER.push(rootObj);
                 })();
-                const BOOKS = [];
-                const pairObj = {};
                 await (async function book() {
+                    const BOOKS = [];
+                    const pairObj = {};    
                     await redis.get('anxprobook').then(function (result) {
                         let resultArr = JSON.parse(result);
                         pairObj.push(resultArr);
