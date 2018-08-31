@@ -269,6 +269,7 @@ app.get('/live', function (req, res) {
     }).catch(err => console.log(err));
 
     //do some object reduction to rootObj here before displaying it.
+    redis.set('live', JSON.stringify(rootObj));
     res.json(rootObj);
   })();
 });
@@ -414,6 +415,7 @@ app.get('/book', function (req, res) {
     }).catch(err => console.log(err));
 
     //do some object reduction to rootObj here before displaying it.
+    redis.set('books', JSON.stringify(pairObj));
     res.json(pairObj);
   })();
 });
@@ -436,9 +438,17 @@ app.get("/cash", (req, res) => {
 
 app.get("/master", (req, res) => {
   (async function master() {
-    await redis.get('master').then(function(result) {
-      res.json(JSON.parse(result));
-    }).catch(err=>console.log(err));
+    const PROMISE = [];
+    PROMISE.push(redis.get('cash'));
+    PROMISE.push(redis.get('live'));
+    PROMISE.push(redis.get('books'));
+
+    let result = await Promise.all(PROMISE);
+    const data = [];
+    for (let i = 0; i < result.length; i++) {
+      data.push(JSON.parse(result[i].data));
+    }
+    res.json(data);
   })
 });
 
