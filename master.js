@@ -15,13 +15,13 @@ module.exports = {
         const VALUE = (async function accumulate() {
             try {
                 await (async function usd() {
-                    const CASH = [];
+                    var CASH = [];
                     redis.get('cash').then((result) => {
                         CASH.push(JSON.parse(result));
                     })
                 })();
                 await (async function red() {
-                    const TICKER = [];
+                    var TICKER = [];
                     let rootObj = {};    
                     await redis.get('anxpro').then(function (result) {
                         let resultArr = JSON.parse(result);
@@ -271,8 +271,8 @@ module.exports = {
                     TICKER.push(rootObj);
                 })();
                 await (async function book() {
-                    const BOOKS = [];
-                    const pairObj = {};    
+                    var BOOKS = [];
+                    let pairObj = {};    
                     await redis.get('anxprobook').then(function (result) {
                         let resultArr = JSON.parse(result);
                         pairObj.push(resultArr);
@@ -412,7 +412,9 @@ module.exports = {
                     //do some object reduction to rootObj here before displaying it.
                     BOOKS.push(pairObj);
                 })();
-                return [...CASH, ...TICKER, ...BOOKS];
+                cat = CASH.concat(TICKER);
+                cat = concat.concat(BOOKS);
+                return cat;
             } catch (error) {
                 console.log(error);
             }
