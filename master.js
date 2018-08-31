@@ -12,9 +12,9 @@ require("dotenv").config();
 module.exports = {
     master: async function populate() {
         try{
-        const LIVE = axios.get('/live');
-        const BOOK = axios.get('/book');
-        const CASH = axios.get('/cash');
+        const LIVE = axios.get('https://headless-api-crypto.herokuapp.com/live');
+        const BOOK = axios.get('https://headless-api-crypto.herokuapp.com/book');
+        const CASH = axios.get('https://headless-api-crypto.herokuapp.com/cash');
 
         const PROMISE = [];
         PROMISE.push(LIVE);
