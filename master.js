@@ -412,9 +412,11 @@ module.exports = {
                     //do some object reduction to rootObj here before displaying it.
                     BOOKS.push(pairObj);
                 })();
-                cat = CASH.concat(TICKER);
-                cat = cat.concat(BOOKS);
-                return cat;
+                var values = [];
+                values.push(CASH);
+                values.push(TICKER);
+                values.push(BOOKS);
+                return values;
             } catch (error) {
                 console.log(error);
             }
