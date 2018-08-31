@@ -459,7 +459,7 @@ app.get("/master", (req, res) => {
     await redis.get('live').then((result)=>{
       VALS.push(JSON.parse(result));
     });
-    res.json(result);
+    res.json(VALS);
     //PROMISE.push(redis.get('books'));
 
   })();
