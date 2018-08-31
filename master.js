@@ -413,7 +413,7 @@ module.exports = {
                     BOOKS.push(pairObj);
                 })();
                 cat = CASH.concat(TICKER);
-                cat = concat.concat(BOOKS);
+                cat = cat.concat(BOOKS);
                 return cat;
             } catch (error) {
                 console.log(error);
