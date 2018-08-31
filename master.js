@@ -1,14 +1,21 @@
+
 const axios = require('axios');
 
-const LIVE = axios('/live');
-const BOOK = axios('/book');
-const CASH = axios('/cash');
+module.exports = {
+    master: async function populate() {
+        try{
+        const LIVE = axios('/live');
+        const BOOK = axios('/book');
+        const CASH = axios('/cash');
 
-(async function populate() {
-    const PROMISE = [];
-    PROMISE.push(LIVE);
-    PROMISE.push(BOOK);
-    PROMISE.push(CASH);
-    let result = await Promise.all(PROMISE);
-    console.log(result);
-})();
+        const PROMISE = [];
+        PROMISE.push(LIVE);
+        PROMISE.push(BOOK);
+        PROMISE.push(CASH);
+        let result = await Promise.all(PROMISE);
+        return result;
+        }catch(error){
+            console.log(err)
+        }
+    }
+}
