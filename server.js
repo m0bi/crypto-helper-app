@@ -441,7 +441,7 @@ app.get("/master", (req, res) => {
     const PROMISE = [];
     PROMISE.push(redis.get('cash'));
     PROMISE.push(redis.get('live'));
-    PROMISE.push(redis.get('books'));
+    //PROMISE.push(redis.get('books'));
 
     let result = await Promise.all(PROMISE);
     const data = [];
