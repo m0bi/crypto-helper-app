@@ -422,7 +422,7 @@ var redis = new Redis(process.env.REDIS_URL);
           returnObject["Rprice"] = value.price;
         }
       });
-      returnObject["values"] = VALS[1].key;
+      returnObject["values"] = VALS[1][key];
       RETURN.push(returnObject);
     }
     redis.set('master', JSON.stringify(RETURN));
