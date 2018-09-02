@@ -395,3 +395,35 @@ var redis = new Redis(process.env.REDIS_URL);
     //do some object reduction to rootObj here before displaying it.
     redis.set('books', JSON.stringify(pairObj));
 })();
+
+(async function master() {
+    const VALS = [];
+    await redis.get('cash').then((result) => {
+        VALS.push(JSON.parse(result));
+    }).catch(err => console.log(err));
+    await redis.get('live').then((result) => {
+        VALS.push(JSON.parse(result));
+    }).catch(err => console.log(err));
+    const RETURN = [];
+    for(key in VALS[1]) {
+      const SPLIT = key.split('/');
+      let returnObject = {};
+      VAL[0].map((value)=>{
+        if(value.id == SPLIT[0]) {
+          returnObject["Lid"] = value.id;
+          returnObject["LdisplayName"] = value.display_name;
+          returnObject["L24hrChange"] = value.cap24hrChange;
+          returnObject["Lprice"] = value.price;
+        }
+        if(value.id == SPLIT[1]) {
+          returnObject["Rid"] = value.id;
+          returnObject["RdisplayName"] = value.display_name;
+          returnObject["R24hrChange"] = value.cap24hrChange;
+          returnObject["Rprice"] = value.price;
+        }
+      });
+      returnObject["values"] = VALS[1].key;
+      RETURN.push(returnObject);
+    }
+    redis.set('master', JSON.stringify(RETURN));
+})();

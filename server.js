@@ -452,16 +452,9 @@ app.get("/cash", (req, res) => {
 
 app.get("/master", (req, res) => {
   (async function master() {
-    const VALS = [];
-    await redis.get('cash').then((result)=>{
-      VALS.push(JSON.parse(result));
-    });
-    await redis.get('live').then((result)=>{
-      VALS.push(JSON.parse(result));
-    });
-    res.json(VALS);
-    //PROMISE.push(redis.get('books'));
-
+    await redis.get('master').then((result)=>{
+      res.json(JSON.parse(result));
+    }).catch(err=> console.log(err));
   })();
 });
 
