@@ -36,7 +36,12 @@
             returnObject["Rprice"] = 1;
         }
       });
-      returnObject["values"] = VALS[1][key];
+      const SORTAR = VALS[1][key];
+      SORTAR.sort(function compareNumbers(a, b) {
+        return a[2] - b[2];
+      });
+      returnObject["HighValue"] = SORTAR[0];
+      returnObject["LowValue"] = SORTAR[SORTAR.length - 1]; 
       RETURN.push(returnObject);
     }
     redis.set('master', JSON.stringify(RETURN));
