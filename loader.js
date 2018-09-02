@@ -421,6 +421,18 @@ var redis = new Redis(process.env.REDIS_URL);
           returnObject["R24hrChange"] = value.cap24hrChange;
           returnObject["Rprice"] = value.price;
         }
+        if(SPLIT[0] == 'USDT'){
+            returnObject["Lid"] = 'USDT';
+            returnObject["LdisplayName"] = 'Tether';
+            returnObject["L24hrChange"] = 0;
+            returnObject["Lprice"] = 1;
+        }
+        if(SPLIT[1] == 'USDT'){
+            returnObject["Rid"] = 'USDT';
+            returnObject["RdisplayName"] = 'Tether';
+            returnObject["R24hrChange"] = 0;
+            returnObject["Rprice"] = 1;
+        }
       });
       returnObject["values"] = VALS[1][key];
       RETURN.push(returnObject);
