@@ -408,7 +408,7 @@ var redis = new Redis(process.env.REDIS_URL);
     for(key in VALS[1]) {
       const SPLIT = key.split('/');
       let returnObject = {};
-      VAL[0].map((value)=>{
+      VALS[0].map((value)=>{
         if(value.id == SPLIT[0]) {
           returnObject["Lid"] = value.id;
           returnObject["LdisplayName"] = value.display_name;
