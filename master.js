@@ -43,8 +43,8 @@ var redis = new Redis(process.env.REDIS_URL);
       SORTAR.sort(function compareNumbers(a, b) {
         return a[2] - b[2];
       });
-      returnObject["HighValue"] = SORTAR[0];
-      returnObject["LowValue"] = SORTAR[SORTAR.length - 1]; 
+      returnObject["LowValue"] = SORTAR[0];
+      returnObject["HighValue"] = SORTAR[SORTAR.length - 1]; 
       RETURN.push(returnObject);
     }
     redis.set('master', JSON.stringify(RETURN));
