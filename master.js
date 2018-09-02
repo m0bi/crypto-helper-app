@@ -1,3 +1,6 @@
+var Redis = require('ioredis');
+var redis = new Redis(process.env.REDIS_URL);
+
 (async function master() {
     const VALS = [];
     await redis.get('cash').then((result) => {
