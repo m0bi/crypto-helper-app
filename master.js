@@ -47,5 +47,5 @@ var redis = new Redis(process.env.REDIS_URL);
       returnObject["High"] = SORTAR[SORTAR.length - 1]; 
       RETURN.push(returnObject);
     }
-    redis.set('master', JSON.stringify(RETURN));
+    redis.set('hilo', JSON.stringify(RETURN));
 })();

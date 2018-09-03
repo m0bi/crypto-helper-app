@@ -452,7 +452,7 @@ app.get("/cash", (req, res) => {
 
 app.get("/master", (req, res) => {
   (async function master() {
-    await redis.get('master').then((result)=>{
+    await redis.get('hilo').then((result)=>{
       res.json(JSON.parse(result));
     }).catch(err=> console.log(err));
   })();
