@@ -5,11 +5,11 @@ import "./App.css";
 import { Header, Navigation } from "./components/Header/Header";
 import Homepage from "./pages/Homepage";
 import CardsPage from "./pages/CardsPage";
-import SignUpPage from "./pages/SignUpPage";
-import SignInPage from "./pages/SignInPage";
+//import SignUpPage from "./pages/SignUpPage";
+//import SignInPage from "./pages/SignInPage";
 
 import * as routes from "./constants/routes";
-import { firebase } from './firebase';
+//import { firebase } from './firebase';
 
 
 class App extends Component {
@@ -18,39 +18,39 @@ class App extends Component {
     super(props);
 
     this.state = {
-      authUser: null
+     // authUser: null
     };
   }
 
-  componentDidMount() {
-    console.log(firebase);
-    firebase.auth.onAuthStateChanged(authUser => {
-      console.log(authUser);
-      // if(authUser === null){
-      //   console.log("I'm null!");
-      //   this.setState({ authUser: null })
-      // } else if(authUser !== null){
-      //   console.log("I'm not null!");
-      //   this.setState({ authUser })
-      // }
-      {
-      authUser
-        ? this.setState(() => ({ authUser }))
-        : this.setState(() => ({ authUser: null }));
-    }
-    });
-  }
+  // componentDidMount() {
+  //   //console.log(firebase);
+  //   //firebase.auth.onAuthStateChanged(authUser => {
+  //     //console.log(authUser);
+  //     // if(authUser === null){
+  //     //   console.log("I'm null!");
+  //     //   this.setState({ authUser: null })
+  //     // } else if(authUser !== null){
+  //     //   console.log("I'm not null!");
+  //     //   this.setState({ authUser })
+  //     // }
+  //     {
+  //     authUser
+  //       ? this.setState(() => ({ authUser }))
+  //       : this.setState(() => ({ authUser: null }));
+  //   }
+  //   });
+  // }
 
   render() {
     return (
       <Router>
         <div className="appContainer">
-          {console.log(firebase)}
-          <Header authUser={this.state.authUser} />
+          {/* {console.log(firebase)} */}
+          <Header />
           <Route exact path="/" component={Homepage} />
           <Route exact path="/cards" component={CardsPage} />
-          <Route exact path="/signup" component={SignUpPage} />
-          <Route exact path="/signin" component={SignInPage} />
+          {/* <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/signin" component={SignInPage} /> */}
           {/* <Route component={NoMatch} /> */}
         </div>
       </Router>
