@@ -13,14 +13,16 @@ class CardsPage extends Component {
 
     componentDidMount() {
 
-        (async function getCards() {
+        async function getCards() {
 
             const cards = await API.getCardData();
             this.setState({
                 cards
             });
 
-        })();
+        }
+        getCards();
+        setInterval(getCards(), 600000);
     }
 
     render() {

@@ -1,11 +1,35 @@
 {
-    "bibox": {
-        "url": "https://www.bibox.com/",
-        "description": "AI Enhanced Encrypted Digital Asset Exchange. The founding team is formed by top tier Chinese Blockchain and Crypto giants such as Okcoin and Houbi core team."
+    "anxpro": {
+        "url": "",
+        "description": ""
+    },
+    "anybits": {
+        "url": "",
+        "description": ""
     },
     "binance": {
         "url": "https://www.binance.com/",
         "description": "Binance was originally founded in China, but moved to Japan when cryptocurrency regulations were put into place. There are plans to move to Malta, where there are less regulations. One of the largest cryptocurrency exchanges."
+    },
+    "bitbay": {
+        "url": "",
+        "description": ""
+    },
+    "bitfinex2": {
+        "url": "",
+        "description": ""
+    },
+    "bitflyer": {
+        "url": "",
+        "description": ""
+    },
+    "bitlish": {
+        "url": "",
+        "description": ""
+    },
+    "bitstamp": {
+        "url": "",
+        "description": ""
     },
     "bitsquare": {
         "url": "https://bisq.network/",
