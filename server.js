@@ -5,7 +5,6 @@ const app = express();
 const ccxt = require('ccxt');
 const bodyParser = require("body-parser");
 //var resolve = require("./logic.js");
-var { Combo, Exchange, News, Usd, Bibox, Binance, Cryptopia, Kucoin } = require('./models');
 //const keys = require("./keys");
 var VerifyToken = require('./auth/VerifyToken.js');
 const keys = require("./keys");
