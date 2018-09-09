@@ -30,7 +30,7 @@ var AuthController = require(__root + 'auth/AuthController');
 app.use('/api/auth', AuthController);
 
 
-app.get("/api/Prices", (req, res) => {
+app.get("/api/live", (req, res) => {
   (async function test1(){
     await redis.get('live').then(function(result){
       res.json(JSON.parse(result));
