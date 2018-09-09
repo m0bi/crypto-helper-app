@@ -13,7 +13,7 @@ class CardsPage extends Component {
 
     componentDidMount() {
 
-        (async function getCards(){
+        (async function getCards() {
 
             const cards = await API.getCardData();
             this.setState({
@@ -30,18 +30,20 @@ class CardsPage extends Component {
                     <Card
                         key={i}
                         id={i}
-                        coin={card.coin}
-                        currency={card.currency}
-                        lefthandValue={Number(card.lhs).toFixed(3)}
-                        righthandValue={Number(card.rhs).toFixed(3)}
-                        currencyDiff={Number(card.diff).toFixed(3)}
-                        leftusdValue={card.usdlhs}
-                        rightusdValue={card.usdrhs}
-                        usdDiff={card.usddiff}
-                        lexchange={card.lexchange}
-                        rexchange={card.rexchange}
-                        lexchangeDescription={card.lexchangeDescription.description}
-                        rexchangeDescription={card.rexchangeDescription.description}
+                        coin={card.leftDisplayName}
+                        coinValue={card.leftPrice}
+                        coinChange={card.left24hrChange}
+                        currency={card.rightDisplayName}
+                        currencyValue={card.rightPrice}
+                        coinChange={card.right24hrChange}
+                        leftHandValue={card.low[2]}
+                        rightHandValue={card.high[2]}
+                        currencyDiff={card.high[2] - card.low[2]}
+                        leftUsdValue={card.low[2] * card.rightPrice}
+                        rightUsdValue={card.high[2] * card.rightPrice}
+                        usdDiff={(card.low[2] * card.rightPrice) - (card.high[2] * card.rightPrice)}
+                        leftExchange={card.low[0]}
+                        rightExchange={card.high[0]}
                     >
                     </Card>
                 ))}
