@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import scrollToComponent from 'react-scroll-to-component';
 
-import SignOutLink from "../SignOut/SignOut";
+//import SignOutLink from "../SignOut/SignOut";
 import * as routes from "../../constants/routes";
 import "./Header.css";
 
@@ -37,9 +37,9 @@ const NavigationAuth = () =>
         <div className="nav-item nav-link">
             <Link to="#newsContainer">Newsfeed</Link>
         </div>
-        <div className="nav-item nav-link">
+        {/* <div className="nav-item nav-link">
             <SignOutLink />
-        </div>
+        </div> */}
     </div>
 
 const NavigationNonAuth = () =>
@@ -56,9 +56,9 @@ const NavigationNonAuth = () =>
         <div className="nav-item nav-link">
             <Link to="#newsContainer">Newsfeed</Link>
         </div>
-        <div className="nav-item nav-link">
+        {/* z<div className="nav-item nav-link">
             <Link to={routes.SIGN_IN}>Sign In</Link>
-        </div>
+        </div> */}
     </div>
 
 export { Header, Navigation };
