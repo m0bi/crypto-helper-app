@@ -17,16 +17,12 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
-        function getNews() {
             API.getNewsData().then((res) => {
                 let newsfeed = res.data;
                 this.setState({
                     newsfeed
                 });
             });
-        }
-        getNews();
-        setInterval(getNews(), 600000);
     }
 
     render() {
