@@ -1,7 +1,14 @@
 var resolve = require("./logic.js");
+var keys = require('./keys.js');
 
 var Redis = require('ioredis');
-var redis = new Redis(process.env.REDIS_URL);
+var redis = new Redis(process.env.REDIS_URL || {
+  port: 11581,          // Redis port
+  host: 'redis-11581.c16.us-east-1-2.ec2.cloud.redislabs.com',   // Redis host
+  family: 4,           // 4 (IPv4) or 6 (IPv6)
+  password: keys.redis_key,
+  db: 0
+});
 
 let anxpro = resolve.anxpro();
 let anybits = resolve.anybits();

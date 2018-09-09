@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import Overview from "../components/Overview/Overview";
 import About from "../components/About/About";
-import Subscriptions from "../components/Subscriptions/Subscriptions";
+//import Subscriptions from "../components/Subscriptions/Subscriptions";
 import NewsfeedContainer from "../components/NewsfeedContainer/NewsfeedContainer";
 import Newsfeed from "../components/Newsfeed/Newsfeed";
 import Footer from "../components/Footer/Footer";
@@ -33,7 +33,7 @@ class Homepage extends Component {
                 <Jumbotron />
                 <Overview />
                 <About />
-                <Subscriptions />
+                {/* <Subscriptions /> */}
                 <NewsfeedContainer>
                     {this.state.newsfeed.map((news, i) => (
                         <Newsfeed

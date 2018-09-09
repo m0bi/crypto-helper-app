@@ -7,7 +7,7 @@ import * as routes from "../../constants/routes";
 import "./Header.css";
 
 
-const Header = props => (
+const Header = () => (
     <header>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <Link to={routes.HOME}>
@@ -62,4 +62,4 @@ const Navigation = () =>
 //         </div> */}
 //     </div>
 
-export { Header, Navigation };
+export default Header;
