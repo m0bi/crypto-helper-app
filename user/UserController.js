@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var { Combo, Exchange, News, Usd } = require('../models');
 
 var VerifyToken = require(__root + 'auth/VerifyToken');
 
