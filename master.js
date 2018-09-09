@@ -15,36 +15,36 @@ var redis = new Redis(process.env.REDIS_URL);
       let returnObject = {};
       VALS[0].map((value)=>{
         if(value.id == SPLIT[0]) {
-          returnObject["Lid"] = value.id;
-          returnObject["LdisplayName"] = value.display_name;
-          returnObject["L24hrChange"] = value.cap24hrChange;
-          returnObject["Lprice"] = value.price;
+          returnObject["LID"] = value.id;
+          returnObject["leftDisplayName"] = value.display_name;
+          returnObject["left24hrChange"] = value.cap24hrChange;
+          returnObject["leftPrice"] = value.price;
         }
         if(value.id == SPLIT[1]) {
-          returnObject["Rid"] = value.id;
-          returnObject["RdisplayName"] = value.display_name;
-          returnObject["R24hrChange"] = value.cap24hrChange;
-          returnObject["Rprice"] = value.price;
+          returnObject["RID"] = value.id;
+          returnObject["rightDisplayName"] = value.display_name;
+          returnObject["right24hrChange"] = value.cap24hrChange;
+          returnObject["rightPrice"] = value.price;
         }
         if(SPLIT[0] == 'USDT'){
-            returnObject["Lid"] = 'USDT';
-            returnObject["LdisplayName"] = 'Tether';
-            returnObject["L24hrChange"] = 0;
-            returnObject["Lprice"] = 1;
+            returnObject["LID"] = 'USDT';
+            returnObject["leftDisplayName"] = 'Tether';
+            returnObject["left24hrChange"] = 0;
+            returnObject["leftPrice"] = 1;
         }
         if(SPLIT[1] == 'USDT'){
-            returnObject["Rid"] = 'USDT';
-            returnObject["RdisplayName"] = 'Tether';
-            returnObject["R24hrChange"] = 0;
-            returnObject["Rprice"] = 1;
+            returnObject["RID"] = 'USDT';
+            returnObject["rightDisplayName"] = 'Tether';
+            returnObject["right24hrChange"] = 0;
+            returnObject["rightPrice"] = 1;
         }
       });
       const SORTAR = VALS[1][key];
       SORTAR.sort(function compareNumbers(a, b) {
         return a[2] - b[2];
       });
-      returnObject["Low"] = SORTAR[0];
-      returnObject["High"] = SORTAR[SORTAR.length - 1]; 
+      returnObject["low"] = SORTAR[0];
+      returnObject["high"] = SORTAR[SORTAR.length - 1]; 
       RETURN.push(returnObject);
     }
     redis.set('hilo', JSON.stringify(RETURN));

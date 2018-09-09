@@ -10,25 +10,17 @@ class CardsPage extends Component {
         cards: [],
         symbol: ""
     }
-    
+
     componentDidMount() {
 
-        API.getCardData().then(res => {
-            const cards = res.data;
-            console.log("cards", cards);
-            for (let i = 0; i < cards.length; i++) {
-                cards[i].coin = cards[i].coincurrency.match(/^[^_]+(?=_)/g)[0];
-                cards[i].currency = cards[i].coincurrency.match(/(?<=_).*/g)[0];
-                cards[i].lexchangeDescription = descriptionsJSON[cards[i].lexchange];
-                cards[i].rexchangeDescription = descriptionsJSON[cards[i].rexchange];
- 
-                // cards[i].lexchangeURL = descriptionsJSON[cards[i].lexchangeDescription[1]];
-                // cards[i].rexchangeURL = descriptionsJSON[cards[i].rexchange[1]];
-            }
+        (async function getCards(){
+
+            const cards = await API.getCardData();
             this.setState({
                 cards
             });
-        });
+
+        })();
     }
 
     render() {
@@ -50,7 +42,7 @@ class CardsPage extends Component {
                         rexchange={card.rexchange}
                         lexchangeDescription={card.lexchangeDescription.description}
                         rexchangeDescription={card.rexchangeDescription.description}
-                        >
+                    >
                     </Card>
                 ))}
             </CardsContainer>

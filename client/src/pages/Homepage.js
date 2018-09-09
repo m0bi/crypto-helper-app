@@ -17,20 +17,12 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
-        API.getNewsData().then(res => {
-            const newsfeed = res.data;
-            console.log(res.data);
-            for (let i = 0; i < newsfeed.length; i++) {
-                // console.log("Title: " + newsfeed[i].title);
-                // console.log("=================");
-                // console.log("Url: " + newsfeed[i].url);
-                // console.log("=================");
-                // console.log("Date: " + newsfeed[i].date);
-            }
+        (async function getNews() {
+            const newsfeed = await API.getNewsData();
             this.setState({
                 newsfeed
             });
-        });
+        })();
     }
 
     render() {
@@ -41,7 +33,7 @@ class Homepage extends Component {
                 <About />
                 <Subscriptions />
                 <NewsfeedContainer>
-                    {this.state.newsfeed.map((news, i)=>(
+                    {this.state.newsfeed.map((news, i) => (
                         <Newsfeed
                             key={i}
                             title={news.title}
