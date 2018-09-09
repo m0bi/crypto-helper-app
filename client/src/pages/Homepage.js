@@ -17,10 +17,12 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
-        async function getNews() {
-            const newsfeed = await API.getNewsData();
-            this.setState({
-                newsfeed
+        function getNews() {
+            API.getNewsData().then((res) => {
+                let newsfeed = res.data;
+                this.setState({
+                    newsfeed
+                });
             });
         }
         getNews();
