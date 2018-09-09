@@ -2,17 +2,18 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 var keysfb = require("./keysfb");
-
+var env = require("../.env");
 console.log("PROCESS:", process.env);
 
 const config = {
-  apiKey: "AIzaSyD6V2x_61X1qWxBuQJJh6VpgrocReek6Bk",
-  authDomain: "bitcoin-2-e029a.firebaseapp.com",
-  databaseURL: "https://bitcoin-2-e029a.firebaseio.com",
-  projectId: "bitcoin-2-e029a",
-  storageBucket: "bitcoin-2-e029a.appspot.com",
-  messagingSenderId: "195092768796"
+  apiKey: keysfb.firebase_key,
+  authDomain: keysfb.firebase_auth,
+  databaseURL: keysfb.firebase_url,
+  projectId: keysfb.firebase_id,
+  storageBucket: keysfb.firebase_bucket,
+  messagingSenderId: keysfb.firebase_sender
 };
+
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
