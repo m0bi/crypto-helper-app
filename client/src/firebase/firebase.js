@@ -2,7 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 var keysfb = require("./keysfb");
-var env = require("../.env");
 console.log("PROCESS:", process.env);
 
 const config = {
