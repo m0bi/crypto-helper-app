@@ -1,0 +1,31 @@
+.spoilsContainer {
+    background: #eee;
+    color: #343A40;
+    height: 100%;
+    margin-bottom: 100px;
+}
+.spoils-header {
+    margin-bottom: 100px;
+}
+.spoils-cards-container {
+    display: inline-block;
+}
+.spoils-card {
+    height: 25rem;
+    width: 25rem;
+}
+.card-subtitle {
+    color: #4091D3;
+}
+.spoilsContainer ul li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.to-subscriptions {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+.signup-btn {
+    background: #4091D3;
+    color: #fff;
+}

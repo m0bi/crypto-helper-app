@@ -1,0 +1,20 @@
+.aboutContainer {
+    background: #eee;
+    color: #343A40;
+    height: 100%;
+}
+.about-header {
+    margin-bottom: 100px;
+}
+.about-header p {
+    margin: 0 auto;
+    width: 80%;
+}
+.about-img {
+    height: 200px;
+    margin-bottom: 50px; 
+}
+.to-subscriptions {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}

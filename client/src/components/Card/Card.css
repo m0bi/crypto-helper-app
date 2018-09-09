@@ -1,0 +1,46 @@
+body {
+    font-family: 'Space Mono', sans-serif;
+}
+
+.card {
+    align-items: center;
+    width: 19rem;
+}
+.card-title {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+.coin, .curr {
+    text-transform: uppercase;
+}
+.fa-angle-left {
+    color: #4091D3;
+}
+.card-subtitle {
+    text-align: center;
+}
+table {
+    align-content: center;
+}
+.empty-space {
+    width: 20px;
+}
+.low-high-badges {
+    text-align: center;
+}
+.badge {
+    text-transform: uppercase;
+    width: 80px;
+}
+.curr-low-high-values, .dollar-low-high-values {
+    text-align: center;
+}
+.curr-logo img {
+    height: 22px;
+}
+.dollar-low-high-values {
+    border-top: 1px #bbb solid;
+}
+.profit-badge {
+    width: 184px;
+}

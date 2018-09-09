@@ -1,0 +1,20 @@
+.overviewContainer {
+    background: #eee;
+    color: #343A40;
+    height: 100%;
+}
+.overview-header {
+    margin-bottom: 100px;
+}
+.overview-header p {
+    margin: 0 auto;
+    width: 80%;
+}
+.overview-img {
+    height: 200px;
+    margin-bottom: 50px; 
+}
+.to-about {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
