@@ -35,9 +35,9 @@ const Navigation = () =>
         <div className="nav-item nav-link">
             <Link to={routes.CARDS}>Cards</Link>
         </div>
-        <div className="nav-item nav-link">
+        {/* <div className="nav-item nav-link">
             <Link to="#newsContainer">Newsfeed</Link>
-        </div>
+        </div> */}
         {/* <div className="nav-item nav-link">
             <SignOutLink />
         </div> */}

@@ -38,7 +38,7 @@ class Homepage extends Component {
                             key={i}
                             title={news.title}
                             url={news.url}
-                            date={news.date}
+                            date={news.pub_data}
                         />
                     ))}
                 </NewsfeedContainer>
