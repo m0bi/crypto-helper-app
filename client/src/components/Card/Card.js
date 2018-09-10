@@ -38,19 +38,19 @@ const Card = props => (
                     <tr className="dollar-low-high-values">
                         <td>
                             <h5 className="dollar-value align-middle pt-3">
-                                <span className="dollar-logo">$</span> <span className="dollar-low-value">{Number(props.leftUsdValue).toFixed(3)}</span>
+                                <span className="dollar-logo">$</span> <span className="dollar-low-value">{Number(props.leftUsdValue).toFixed(2)}</span>
                             </h5>
                         </td>
                         <td className="empty-space"></td>
                         <td>
                             <h5 className="dollar-value align-middle pt-3">
-                                <span className="dollar-logo">$</span> <span className="dollar-high-value">{Number(props.rightUsdValue).toFixed(3)}</span>
+                                <span className="dollar-logo">$</span> <span className="dollar-high-value">{Number(props.rightUsdValue).toFixed(2)}</span>
                             </h5>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div className="badge badge-success profit-badge d-flex justify-content-center text-center mt-4"><h5 className="align-middle my-2">$ {Number(props.usdDiff).toFixed(3)}</h5></div>
+            <div className="badge badge-success profit-badge d-flex justify-content-center text-center mt-4"><h5 className="align-middle my-2">$ {Number(props.usdDiff).toFixed(2)}</h5></div>
         </div>
     </div>
 );
