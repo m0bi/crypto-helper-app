@@ -12,13 +12,14 @@ class CardsPage extends Component {
     }
 
     componentDidMount() {
-        
-            API.getCardData().then((res)=>{
-                let cards = res.data;
+        (async function getCards () {
+            let res = await API.getCardData();
+            
+            let cards = res.data;
                 this.setState({
                     cards
                 });    
-            });
+        })();
              
     }
 
