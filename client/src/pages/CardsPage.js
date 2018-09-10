@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CardsContainer from "../components/CardsContainer/CardsContainer";
 import Card from "../components/Card/Card";
-import descriptionsJSON from "../json/descriptions.json";
+//import descriptionsJSON from "../json/descriptions.json";
 
 import API from "../utils/API";
 
@@ -35,7 +35,7 @@ class CardsPage extends Component {
                         coinChange={card.left24hrChange}
                         currency={card.rightDisplayName}
                         currencyValue={card.rightPrice}
-                        coinChange={card.right24hrChange}
+                        currencyChange={card.right24hrChange}
                         leftHandValue={card.low[2]}
                         rightHandValue={card.high[2]}
                         currencyDiff={card.high[2] - card.low[2]}
