@@ -41,7 +41,7 @@ export const PopoverLeft = props => (
   <PopoverItem 
     item={{ placement: 'bottom', text: 'Exchange' }}
     id={props.id + "-left"} 
-    exchange={props.lexchange}
+    exchange={props.leftExchange}
     description={props.description}
     className="badge low-badge py-1"/>
 )
@@ -50,7 +50,7 @@ export const PopoverRight = props => (
   <PopoverItem 
     item={{ placement: 'top', text: 'Exchange' }} 
     id={props.id + "-right"} 
-    exchange={props.rexchange}
+    exchange={props.rightExchange}
     description={props.description}
     className="badge high-badge py-1" />
 )

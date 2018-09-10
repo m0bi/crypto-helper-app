@@ -35,9 +35,9 @@ table {
 .curr-low-high-values, .dollar-low-high-values {
     text-align: center;
 }
-.curr-logo img {
+/* .curr-logo img {
     height: 22px;
-}
+} */
 .dollar-low-high-values {
     border-top: 1px #bbb solid;
 }

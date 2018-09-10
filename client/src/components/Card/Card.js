@@ -29,19 +29,6 @@ const Card = props => (
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="curr-low-high-values">
-                        <td>
-                            <h5 className="align-middle pb-2">
-                                <span className="curr-logo"><img alt={props.rightDisplayName} src={require(`../../img/crypto_logos/${props.rightDisplayName}_logo.svg`)} /></span> <span className="curr-low-value align-middle">{props.leftUsdValue}</span>
-                            </h5>
-                        </td>
-                        <td className="empty-space"></td>
-                        <td>
-                            <h5 className="align-middle pb-2">
-                            <span className="curr-logo"><img alt={props.rightDisplayName} src={require(`../../img/crypto_logos/${props.rightDisplayName}_logo.svg`)} /></span> <span className="curr-high-value align-middle">{props.rightUsdValue}</span>
-                            </h5>
-                        </td>
-                    </tr>
                     <tr className="dollar-low-high-values">
                         <td>
                             <h5 className="dollar-value align-middle pt-3">
