@@ -5,7 +5,7 @@ import "./Card.css";
 const Card = props => (
     <div className="card mb-4 d-flex justify-content-center">
         <div className="card-body">
-            <h5 className="card-title"><span className="coin">{props.leftDisplayName}</span> <i className="fas fa-angle-left ml-1 mr-1"></i> <span className="curr">{props.rightDisplayName}</span></h5>
+            <h5 className="card-title"><span className="coin">{props.coin}</span> <i className="fas fa-angle-left ml-1 mr-1"></i> <span className="curr">{props.currency}</span></h5>
             <hr />
             <h6 className="card-subtitle text-muted pt-2 pb-3">Low-High Spread</h6>
             <table>

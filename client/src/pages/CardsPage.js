@@ -30,10 +30,10 @@ class CardsPage extends Component {
                     <Card
                         key={i}
                         id={i}
-                        coin={card.leftDisplayName}
+                        coin={card.LID}
                         coinValue={card.leftPrice}
                         coinChange={card.left24hrChange}
-                        currency={card.rightDisplayName}
+                        currency={card.RID}
                         currencyValue={card.rightPrice}
                         currencyChange={card.right24hrChange}
                         leftHandValue={card.low[2]}
@@ -41,7 +41,7 @@ class CardsPage extends Component {
                         currencyDiff={card.high[2] - card.low[2]}
                         leftUsdValue={card.low[2] * card.rightPrice}
                         rightUsdValue={card.high[2] * card.rightPrice}
-                        usdDiff={(card.low[2] * card.rightPrice) - (card.high[2] * card.rightPrice)}
+                        usdDiff={(card.high[2] * card.rightPrice) - (card.low[2] * card.rightPrice)}
                         leftExchange={card.low[0]}
                         rightExchange={card.high[0]}
                     >
