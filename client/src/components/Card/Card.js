@@ -14,7 +14,7 @@ const Card = props => (
                         <th className="pb-4">
                             <PopoverLeft 
                                 id={props.id}
-                                lexchange={props.leftExchange}
+                                leftExchange={props.leftExchange}
                                 description={Number(props.leftHandValue).toFixed(3)}
                             />
                         </th>
@@ -22,7 +22,7 @@ const Card = props => (
                         <th className="pb-4">
                             <PopoverRight 
                                 id={props.id}
-                                rexchange={props.rightExchange}
+                                rightExchange={props.rightExchange}
                                 description={Number(props.rightHandValue).toFixed(3)}
                                 />
                         </th>

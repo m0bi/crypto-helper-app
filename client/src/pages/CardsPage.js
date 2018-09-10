@@ -12,17 +12,14 @@ class CardsPage extends Component {
     }
 
     componentDidMount() {
-        function getCards() {
-    
+        
             API.getCardData().then((res)=>{
                 let cards = res.data;
                 this.setState({
                     cards
                 });    
             });
-        }
-        getCards();
-        setInterval(getCards(), 600000);            
+             
     }
 
     render() {
@@ -39,7 +36,13 @@ class CardsPage extends Component {
                         currencyValue={card.rightPrice}
                         currencyChange={card.right24hrChange}
                         leftHandValue={card.low[2]}
+                        leftHandValue2={card.low[3]}
+                        leftHandValue3={card.low[4]}
+                        leftHandSpread={card.low[4]-card.low[3]}
                         rightHandValue={card.high[2]}
+                        rightHandValue2={card.high[3]}
+                        rightHandValue3={card.high[4]}
+                        rightHandSpread={card.high[4]-card.high[3]}
                         currencyDiff={card.high[2] - card.low[2]}
                         leftUsdValue={card.low[2] * card.rightPrice}
                         rightUsdValue={card.high[2] * card.rightPrice}
