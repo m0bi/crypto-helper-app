@@ -29,10 +29,10 @@ class PopoverItem extends React.Component {
           toggle={this.toggle}>
           <PopoverHeader>{this.props.exchange}</PopoverHeader>
           <PopoverBody data-spy="scroll">
-          {this.props.description}
-          {this.props.bid}
-          {this.props.ask}
-          {this.props.spread}
+          <span>{this.props.description}</span>
+          <span>Bid: {this.props.bid}</span>
+          <span>Ask: {this.props.ask}</span>
+          <span>Spread: {this.props.spread}</span>
           </PopoverBody>
         </Popover>
       </span>
