@@ -16,6 +16,9 @@ const Card = props => (
                                 id={props.id}
                                 leftExchange={props.leftExchange}
                                 description={Number(props.leftHandValue).toFixed(3)}
+                                bid={Number(props.leftHandBid).toFixed(3)}
+                                ask={Number(props.leftHandAsk).toFixed(3)}
+                                spread={Number(props.leftHandSpread).toFixed(3)}
                             />
                         </th>
                         <th className="empty-space pb-4"></th>
@@ -24,6 +27,9 @@ const Card = props => (
                                 id={props.id}
                                 rightExchange={props.rightExchange}
                                 description={Number(props.rightHandValue).toFixed(3)}
+                                bid={Number(props.rightHandBid).toFixed(3)}
+                                ask={Number(props.rightHandAsk).toFixed(3)}
+                                spread={Number(props.rightHandSpread).toFixed(3)}
                                 />
                         </th>
                     </tr>
@@ -44,7 +50,7 @@ const Card = props => (
                     </tr>
                 </tbody>
             </table>
-            <div className="badge badge-success profit-badge d-flex justify-content-center text-center mt-4"><h5 className="align-middle my-2">+ $ {Number(props.usdDiff).toFixed(3)}</h5></div>
+            <div className="badge badge-success profit-badge d-flex justify-content-center text-center mt-4"><h5 className="align-middle my-2">$ {Number(props.usdDiff).toFixed(3)}</h5></div>
         </div>
     </div>
 );

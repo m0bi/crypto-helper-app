@@ -36,12 +36,12 @@ class CardsPage extends Component {
                         currencyValue={card.rightPrice}
                         currencyChange={card.right24hrChange}
                         leftHandValue={card.low[2]}
-                        leftHandValue2={card.low[3]}
-                        leftHandValue3={card.low[4]}
+                        leftHandBid={card.low[3]}
+                        leftHandAsk={card.low[4]}
                         leftHandSpread={card.low[4]-card.low[3]}
                         rightHandValue={card.high[2]}
-                        rightHandValue2={card.high[3]}
-                        rightHandValue3={card.high[4]}
+                        rightHandBid={card.high[3]}
+                        rightHandAsk={card.high[4]}
                         rightHandSpread={card.high[4]-card.high[3]}
                         currencyDiff={card.high[2] - card.low[2]}
                         leftUsdValue={card.low[2] * card.rightPrice}

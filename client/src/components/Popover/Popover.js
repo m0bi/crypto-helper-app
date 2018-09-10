@@ -30,6 +30,9 @@ class PopoverItem extends React.Component {
           <PopoverHeader>{this.props.exchange}</PopoverHeader>
           <PopoverBody data-spy="scroll">
           {this.props.description}
+          {this.props.bid}
+          {this.props.ask}
+          {this.props.spread}
           </PopoverBody>
         </Popover>
       </span>
@@ -43,6 +46,9 @@ export const PopoverLeft = props => (
     id={props.id + "-left"} 
     exchange={props.leftExchange}
     description={props.description}
+    bid={props.bid}
+    ask={props.ask}
+    spread={props.spread}
     className="badge low-badge py-1"/>
 )
 
@@ -52,5 +58,8 @@ export const PopoverRight = props => (
     id={props.id + "-right"} 
     exchange={props.rightExchange}
     description={props.description}
+    bid={props.bid}
+    ask={props.ask}
+    spread={props.spread}
     className="badge high-badge py-1" />
 )
