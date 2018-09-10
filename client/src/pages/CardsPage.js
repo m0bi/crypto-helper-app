@@ -12,7 +12,7 @@ class CardsPage extends Component {
     }
 
     componentDidMount() {
-
+        function getCards() {
     
             API.getCardData().then((res)=>{
                 let cards = res.data;
@@ -20,7 +20,9 @@ class CardsPage extends Component {
                     cards
                 });    
             });
-            
+        }
+        getCards();
+        setInterval(getCards(), 600000);            
     }
 
     render() {
