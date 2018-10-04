@@ -53,391 +53,54 @@ let zaif = resolve.zaif();
 
 //promise = [anxpro, anybits, binance, bitbay, bitfinex2, bitflyer, bitlish, bitstamp, btcmarkets, btctradeim, cex, coinbasepro, coinegg, ]
 //exchangeValues.then(response => console.log("Values: " + response)); //works
-anxpro.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      //key is redis key
-      //flatten (stringify array and add as response)
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-     // var anxproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('anxpro', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err));
-anybits.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var anybitsObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('anybits', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-binance.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var binanceObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('binance', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-bitbay.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var bitpayObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('bitbay', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-bitfinex2.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var bitfinex2Obj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('bitfinex2', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-bitflyer.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var bitflyerObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('bitflyer', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-bitlish.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var bitlishObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('bitlish', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-bitstamp.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var bitstampObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('bitstamp', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-btcmarkets.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-     // var btcmarketsObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('btcmarkets', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-btctradeim.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var btctradeimObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('btctradeim', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-cex.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var cexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('cex', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // 
-coinex.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var coinexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('coinex', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-coinexchange.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var coinexchangeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('coinexchange', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // last price
-coinfalcon.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var coinfalconObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('coinfalcon', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // 
-coinmate.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var coinmateObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('coinmate', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-exmo.then(response => {
-  let redisArray = [];
-  for (let key in response) {
+
+function redisSet(exchange) {
+  exchange.then(response => {
     let redisArray = [];
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var exmoObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
+    for (let key in response) {
+      if (response[key].last !== undefined) {
+        //key is redis key
+        //flatten (stringify array and add as response)
+        redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
+       // var anxproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
+      }
     }
-  }
-  redis.set('exmo', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-gatecoin.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var gatecoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('gatecoin', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-gemini.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var geminiObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('gemini', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-hitbtc2.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var hitbtc2Obj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('hitbtc2', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //fees
-ice3x.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var ice3xObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('ice3x', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // 
-kraken.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var krakenObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('kraken', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // has fees
-kucoin.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var kucoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('kucoin', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // has last deal price
-lakebtc.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var lakebtcObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('lakebtc', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // has last price
-lbank.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var lbankObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('lbank', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-livecoin.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var livecoinObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('livecoin', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //bid/ask prices
-liqui.then(response => {
-  let redisArray = [];  
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var liquiObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('liqui', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //taker
-lykke.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask,  new Date(response[key].timestamp)]);
-      //var lykkeObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('lykke', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-// theocean.then(response => {
-//   let redisArray = [];
-//   for (let key in response) {
-//     if (response[key].last !== undefined) {
-//       redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-//     }
-//   }
-//   redis.set('theocean', JSON.stringify(redisArray));
-//   redis.set('time', JSON.stringify(new Date()));
-// }).catch(err=>console.log(err));
-qryptos.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var qryptosObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('qryptos', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //market bid, market ask
-quadrigacx.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var quadrigacxObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('quadrigacx', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //includes fees
-therock.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var therockObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('therock', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //has last price
-tidex.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var tidexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('tidex', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //includes fees
-wex.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var wexObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('wex', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //includes fees
-yobit.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var yobitObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('yobit', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //includes fees
-zaif.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    //save values immediately to redis instead of using the aggregate function. 
-    if (response[key].last !== undefined) {
-      redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
-      //var zaifObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
-    }
-  }
-  redis.set('zaif', JSON.stringify(redisArray));
-  redis.set('time', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
+    redis.set(exchange.id, JSON.stringify(redisArray));
+    redis.set('time', JSON.stringify(new Date()));
+  }).catch(err => console.log(err));
+}
+
+redisSet(anxpro);
+redisSet(anybits);
+redisSet(binance);
+redisSet(bitbay);
+redisSet(bitfinex2);
+redisSet(bitflyer);
+redisSet(bitlish);
+redisSet(bitstamp);
+redisSet(btcmarkets);
+redisSet(btctradeim);
+redisSet(cex);
+redisSet(coinex);
+redisSet(coinexchange);
+redisSet(coinfalcon);
+redisSet(coinmate);
+redisSet(exmo);
+redisSet(gatecoin);
+redisSet(gemini);
+redisSet(hitbtc2);
+redisSet(ice3x);
+redisSet(kraken);
+redisSet(kucoin);
+redisSet(lakebtc);
+redisSet(lbank);
+redisSet(livecoin);
+redisSet(liqui);
+redisSet(lykke);
+redisSet(qryptos);
+redisSet(quadrigacx);
+redisSet(therock);
+redisSet(tidex);
+redisSet(wex);
+redisSet(yobit);
+redisSet(zaif);

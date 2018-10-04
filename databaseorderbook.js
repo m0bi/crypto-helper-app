@@ -52,277 +52,51 @@ let zaif = resolve.zaif();
 
 //promise = [anxpro, anybits, binance, bitbay, bitfinex2, bitflyer, bitlish, bitstamp, btcmarkets, btctradeim, cex, coinbasepro, coinegg, ]
 //exchangeValues.then(response => console.log("Values: " + response)); //works
-anxpro.then(response => {
-  let redisArray = [];
-  for (let key in response) {
 
-    redisArray.push([key, response[key]]);
+function redisExchange(exchange) {
+  exchange.then(response=> {
+    let redisArray = [];
+    for (let key in response) {
+  
+      redisArray.push([key, response[key]]);
+  
+    }
+    redis.set(exchange + 'book', JSON.stringify(redisArray));
+    redis.set('booktime', JSON.stringify(new Date()));
+  }).catch(err => console.log(err));
+}
 
-  }
-  redis.set('anxprobook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err));
-anybits.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('anybitsbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-binance.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('binancebook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-bitbay.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('bitbaybook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-bitfinex2.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('bitfinex2book', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-bitflyer.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('bitflyerbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-bitlish.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('bitlishbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-bitstamp.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('bitstampbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-btcmarkets.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('btcmarketsbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-btctradeim.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('btctradeimbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-cex.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('cexbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // 
-coinex.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('coinexbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-coinexchange.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('coinexchangebook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // last price
-coinfalcon.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('coinfalconbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // 
-coinmate.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('coinmatebook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // fees
-exmo.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('exmobook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-gatecoin.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('gatecoinbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-gemini.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('geminibook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-hitbtc2.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-redis.set('hitbtc2book', JSON.stringify(redisArray));
-redis.set('booktime', JSON.stringify(new Date()));
-}).catch (err => console.log(err)); //fees
-ice3x.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('ice3xbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // 
-kraken.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('krakenbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // has fees
-kucoin.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('kucoinbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // has last deal price
-lakebtc.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('lakebtcbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); // has last price
-lbank.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('lbankbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-livecoin.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('livecoinbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //bid/ask prices
-liqui.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('liquibook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //taker
-lykke.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('lykkebook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
-qryptos.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('qryptosbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //market bid, market ask
-quadrigacx.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('quadrigacxbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //includes fees
-therock.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('therockbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //has last price
-tidex.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('tidexbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //includes fees
-wex.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('wexbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //includes fees
-yobit.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('yobitbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //includes fees
-zaif.then(response => {
-  let redisArray = [];
-  for (let key in response) {
-    redisArray.push([key, response[key]]);
-  }
-  redis.set('zaifbook', JSON.stringify(redisArray));
-  redis.set('booktime', JSON.stringify(new Date()));
-}).catch(err => console.log(err)); //
+redisExchange(anxpro);
+redisExchange(anybits);
+redisExchange(binance);
+redisExchange(bitbay);
+redisExchange(bitfinex2);
+redisExchange(bitflyer);
+redisExchange(bitlish);
+redisExchange(bitstamp);
+redisExchange(btcmarkets);
+redisExchange(btctradeim);
+redisExchange(cex);
+redisExchange(coinex);
+redisExchange(coinexchange);
+redisExchange(coinfalcon);
+redisExchange(coinmate);
+redisExchange(exmo);
+redisExchange(gatecoin);
+redisExchange(gemini);
+redisExchange(hitbtc2);
+redisExchange(ice3x);
+redisExchange(kraken);
+redisExchange(kucoin);
+redisExchange(lakebtc);
+redisExchange(lbank);
+redisExchange(livecoin);
+redisExchange(liqui);
+redisExchange(lykke);
+redisExchange(qryptos);
+redisExchange(quadrigacx);
+redisExchange(therock);
+redisExchange(tidex);
+redisExchange(wex);
+redisExchange(yobit);
+redisExchange(zaif);
