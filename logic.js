@@ -26,6 +26,14 @@ require("dotenv").config();
 
 //const pairs = ['BCH/BTC', 'BCH/LTC', 'BCH/ETH', 'BCH/USDT', 'BCH/DASH', 'BCH/ZEC', 'BTC/USDT', 'DASH/BTC', 'DASH/LTC', 'DASH/ETH', 'DASH/ZEC', 'EOS/BTC', 'EOS/USDT', 'ETH/BTC', 'ETH/LTC', 'ETH/USDT', 'ETH/ZEC', 'LTC/BTC', 'LTC/ETH', 'LTC/USDT', 'TRX/BTC', 'TRX/USDT', 'XLM/BTC', 'XMR/BTC', 'XRP/BTC', 'ZEC/BTC', 'ZEC/LTC', 'ZEC/ETH'];
 
+function marketPrice(exchange, order){
+    let orderbook = exchange.fetchOrderBook (order)
+    let bid = orderbook.bids.length ? orderbook.bids[0][0] : undefined
+  let ask = orderbook.asks.length ? orderbook.asks[0][0] : undefined
+  let spread = (bid && ask) ? ask - bid : undefined
+  return { 'id': exchange.id, 'market price': [bid, ask, spread]}
+  }
+
 module.exports = {
     // news: async function getNews() {
     //     try {
@@ -67,11 +75,9 @@ module.exports = {
                 }
             }
         }
-        if (anxpro.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await anxpro.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(anxpro, validpairs[i]);
             }
-        }
         return prices;
 
         //return await anxpro.fetch_markets();
@@ -83,7 +89,6 @@ module.exports = {
         await anybits.loadMarkets();
         const symbols = anybits.symbols;
         const prices = { 'id': anybits.id };
-        if (anybits.has['fetchTicker']) {
             const pairs = ['BTC/BCH', 'LTC/BTC', 'BTC/BCH', 'XRP/BTC', 'ETH/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
             const validpairs = [];
             for (let key of symbols) {
@@ -94,9 +99,8 @@ module.exports = {
                 }
             }
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await anybits.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(anybits, validpairs[i]);
             }
-        }
         return prices;
         //return await anybits.fetch_markets();
     },
@@ -116,11 +120,9 @@ module.exports = {
                 }
             }
         }
-        if (binance.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await binance.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(binance, validpairs[i]);
             }
-        }
         return prices;
         //return await binance.fetch_markets();
     },
@@ -140,11 +142,9 @@ module.exports = {
                 }
             }
         }
-        if (bitbay.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await bitbay.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(bitbay, validpairs[i]);
             }
-        }
         return prices;
 
         //return await bitbay.fetch_markets();
@@ -165,11 +165,9 @@ module.exports = {
                 }
             }
         }
-        if (bitfinex2.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await bitfinex2.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(bitfinex2, validpairs[i]);
             }
-        }
         return prices;
         //return await bitfinex2.fetch_markets();
     },
@@ -189,11 +187,9 @@ module.exports = {
                 }
             }
         }
-        if (bitflyer.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await bitflyer.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(bitflyer, validpairs[i]);
             }
-        }
         return prices;
 
         //return await bitflyer.fetch_markets();
@@ -214,11 +210,9 @@ module.exports = {
                 }
             }
         }
-        if (bitlish.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await bitlish.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(bitlish, validpairs[i]);
             }
-        }
         return prices;
 
 
@@ -240,11 +234,9 @@ module.exports = {
                 }
             }
         }
-        if (bitstamp.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await bitstamp.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(bitstamp, validpairs[i]);
             }
-        }
         return prices;
 
 
@@ -266,11 +258,9 @@ module.exports = {
                 }
             }
         }
-        if (btcalpha.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await btcalpha.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(btcalpha, validpairs[i]);
             }
-        }
         return prices;
 
 
@@ -292,11 +282,9 @@ module.exports = {
                 }
             }
         }
-        if (btcmarkets.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await btcmarkets.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(btcmarkets, validpairs[i]);
             }
-        }
         return prices;
 
         //return await btcmarkets.fetch_markets();
@@ -317,11 +305,9 @@ module.exports = {
                 }
             }
         }
-        if (btctradeim.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await btctradeim.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(btctradeim, validpairs[i]);
             }
-        }
         return prices;
 
         //return await btctradeim.fetch_markets();
@@ -342,11 +328,9 @@ module.exports = {
                 }
             }
         }
-        if (cex.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await cex.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(cex, validpairs[i]);
             }
-        }
         return prices;
 
         //return await cex.fetch_markets();
@@ -367,11 +351,9 @@ module.exports = {
                 }
             }
         }
-        if (coinex.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await coinex.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(coinex, validpairs[i]);
             }
-        }
         return prices;
         //return await coinex.fetch_markets();
     },
@@ -391,11 +373,9 @@ module.exports = {
                 }
             }
         }
-        if (coinexchange.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await coinexchange.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(coinexchange, validpairs[i]);
             }
-        }
         return prices;
     },
     coinfalcon: async function printCoinfalcon() {
@@ -414,11 +394,9 @@ module.exports = {
                 }
             }
         }
-        if (coinfalcon.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await coinfalcon.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(coinfalcon, validpairs[i]);
             }
-        }
         return prices;
 
         //return await coinfalcon.fetch_markets();
@@ -439,11 +417,9 @@ module.exports = {
                 }
             }
         }
-        if (coinmate.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await coinmate.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(coinmate, validpairs[i]);
             }
-        }
         return prices;
         //return await coinmate.fetch_markets();
     },
@@ -463,11 +439,9 @@ module.exports = {
                 }
             }
         }
-        if (exmo.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await exmo.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(exmo, validpairs[i]);
             }
-        }
         return prices;
 
         //return await exmo.fetch_markets();
@@ -488,11 +462,9 @@ module.exports = {
                 }
             }
         }
-        if (gatecoin.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await gatecoin.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(gatecoin, validpairs[i]);
             }
-        }
         return prices;
         //return await gatecoin.fetch_markets();
     },
@@ -512,11 +484,9 @@ module.exports = {
                 }
             }
         }
-        if (gemini.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await gemini.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(gemini, validpairs[i]);
             }
-        }
         return prices;
 
         //return await gemini.fetch_markets();
@@ -537,11 +507,9 @@ module.exports = {
                 }
             }
         }    
-        if (hitbtc2.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await hitbtc2.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(hitbtc2, validpairs[i]);
             }
-        }
         return prices;
 
         //return await hitbtc2.fetch_markets();
@@ -562,11 +530,9 @@ module.exports = {
                 }
             }
         }   
-        if (ice3x.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await ice3x.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(ice3x, validpairs[i]);
             }
-        }
         return prices;
 
         //return await ice3x.fetch_markets();
@@ -587,11 +553,9 @@ module.exports = {
                 }
             }
         }
-        if (kraken.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await kraken.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(kraken, validpairs[i]);
             }
-        }
         return prices;
 
     },
@@ -611,11 +575,9 @@ module.exports = {
                 }
             }
         }
-        if (kucoin.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await kucoin.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(kucoin, validpairs[i]);
             }
-        }
         return prices;
 
         //return await kucoin.fetch_markets();
@@ -636,11 +598,9 @@ module.exports = {
                 }
             }
         }
-        if (lakebtc.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await lakebtc.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(lakebtc, validpairs[i]);
             }
-        }
         return prices;
     },
     lbank: async function printLbank() {
@@ -659,11 +619,9 @@ module.exports = {
                 }
             }
         }   
-        if (lbank.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await lbank.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(lbank, validpairs[i]);
             }
-        }
         return prices;
 
         //return await lbank.fetch_markets();
@@ -684,11 +642,9 @@ module.exports = {
                 }
             }
         }    
-        if (livecoin.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await livecoin.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(livecoin, validpairs[i]);
             }
-        }
         return prices;
     },
     liqui: async function printLiqui() {
@@ -707,11 +663,9 @@ module.exports = {
                 }
             }
         }  
-        if (liqui.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await liqui.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(liqui, validpairs[i]);
             }
-        }
         return prices;
 
         //return await liqui.fetch_markets();
@@ -732,11 +686,9 @@ module.exports = {
                 }
             }
         } 
-        if (lykke.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await lykke.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(lykke, validpairs[i]);
             }
-        }
         return prices;
 
         //return await lykke.fetch_markets();
@@ -778,11 +730,9 @@ module.exports = {
                 }
             }
         }   
-        if (qryptos.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await qryptos.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(qryptos, validpairs[i]);
             }
-        }
         return prices;
     },
     quadrigacx: async function printQuad() {
@@ -801,11 +751,9 @@ module.exports = {
                 }
             }
         } 
-        if (quadrigacx.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await quadrigacx.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(quadrigacx, validpairs[i]);
             }
-        }
         return prices;
 
         //return await quadrigacx.fetch_markets();
@@ -826,11 +774,9 @@ module.exports = {
                 }
             }
         }
-        if (therock.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await therock.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(therock, validpairs[i]);
             }
-        }
         return prices;
     },
     tidex: async function printTidex() {
@@ -849,11 +795,9 @@ module.exports = {
                 }
             }
         }
-        if (tidex.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await tidex.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(tidex, validpairs[i]);
             }
-        }
         return prices;
 
         //return await tidex.fetch_markets();
@@ -874,11 +818,9 @@ module.exports = {
                 }
             }
         }  
-        if (wex.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await wex.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(wex, validpairs[i]);
             }
-        }
         return prices;
 
         //return await wex.fetch_markets();
@@ -899,11 +841,9 @@ module.exports = {
                 }
             }
         }    
-        if (yobit.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await yobit.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(yobit, validpairs[i]);
             }
-        }
         return prices;
         //return await yobit.fetch_markets();
     },
@@ -923,11 +863,9 @@ module.exports = {
                 }
             }
         }  
-        if (zaif.has['fetchTicker']) {
             for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await zaif.fetchTicker(validpairs[i]);
+                prices[validpairs[i]] = await marketPrice(zaif, validpairs[i]);
             }
-        }
         return prices;
 
 

@@ -66,6 +66,8 @@ function redisExchange(exchange) {
   }).catch(err => console.log(err));
 }
 
+
+
 redisExchange(anxpro);
 redisExchange(anybits);
 redisExchange(binance);
