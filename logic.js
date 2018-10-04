@@ -31,7 +31,7 @@ function marketPrice(exchange, order){
     let bid = orderbook.bids.length ? orderbook.bids[0][0] : undefined
   let ask = orderbook.asks.length ? orderbook.asks[0][0] : undefined
   let spread = (bid && ask) ? ask - bid : undefined
-  return { 'id': exchange.id, 'market price': [bid, ask, spread]}
+  return { 'symbol': order, 'bid': bid, 'ask': ask, 'last': spread }
   }
 
 module.exports = {
