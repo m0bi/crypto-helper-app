@@ -12,7 +12,7 @@ var data = [
 class TablesPage extends Component {
     render() {
       return (
-        <div className="App">
+        <div className="Table">
           <p className="Table-header">Basic Table</p>
           <Table1 data={data}/>
         </div>
