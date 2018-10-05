@@ -10,20 +10,6 @@ var data = [
 ];
 
 class TablesPage extends Component {
-    state = {
-        cards=[],
-        symbol=""
-    }
-    componentDidMount() {
-        
-        API.getCardData().then((res)=>{
-            let cards = res.data;
-            this.setState({
-                cards
-            });    
-        });
-         
-    }
     render() {
       return (
         <div className="App">
