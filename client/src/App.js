@@ -5,6 +5,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Homepage from "./pages/Homepage";
 import CardsPage from "./pages/CardsPage";
+import TablesPage from "./pages/TablesPage";
 //import SignUpPage from "./pages/SignUpPage";
 //import SignInPage from "./pages/SignInPage";
 
