@@ -19,7 +19,7 @@ const Card = props => (
                                 bid={Number(props.leftHandBid).toFixed(3)}
                                 ask={Number(props.leftHandAsk).toFixed(3)}
                                 spread={Number(props.leftHandSpread).toFixed(3)}
-                                change={Number(props.coinChange)}
+                                change={props.coinChange}
                             />
                         </th>
                         <th className="empty-space pb-4"></th>
@@ -31,7 +31,7 @@ const Card = props => (
                                 bid={Number(props.rightHandBid).toFixed(3)}
                                 ask={Number(props.rightHandAsk).toFixed(3)}
                                 spread={Number(props.rightHandSpread).toFixed(3)}
-                                change={Number(props.currencyChange)}
+                                change={props.currencyChange}
                                 />
                         </th>
                     </tr>
