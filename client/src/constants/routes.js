@@ -4,5 +4,7 @@ export const HOME = '/';
 
 export const CARDS = '/cards';
 
+export const TABLES = '/tables';
+
 //export const ACCOUNT = '/account';
 //export const PASSWORD_FORGET = '/pw-forget';
