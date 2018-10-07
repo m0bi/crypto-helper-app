@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 module.exports = {
-    redis_key: REDIS
+    redis_key: REDIS,
 };
 
   
