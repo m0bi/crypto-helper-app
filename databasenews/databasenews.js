@@ -1,6 +1,6 @@
-var resolve = require("./logicnews.js");
+var resolve = require("../logicnews.js");
 var Redis = require('ioredis');
-var keys = require('./keys.js');
+var keys = require('../keys.js');
 
 var redis = new Redis({
     port: 18167,          // Redis port
@@ -12,7 +12,11 @@ var redis = new Redis({
 
 let news = resolve.news();
 
-news.then((response)=>{
-    redis.set('news', JSON.stringify(response));
-    redis.set('newstime', JSON.stringify(new Date()));
-});
+module.exports ={
+    news: ()=>{
+        news.then((response)=>{
+            redis.set('news', JSON.stringify(response));
+            redis.set('newstime', JSON.stringify(new Date()));
+        });
+    }
+}
