@@ -1,4 +1,4 @@
-var resolve = require("../logic.js");
+
 var keys = require('../keys.js');
 
 var Redis = require('ioredis');
