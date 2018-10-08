@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import {BootstrapTable, 
-       TableHeaderColumn} from 'react-bootstrap-table';
-import './Table.css';
-import '../../node_modules/react-bootstrap-table/css/react-bootstrap-table.css'
+import React from 'react';
+import './Tables.css';
  
  
-class Table1 extends Component {
-  render() {
-    return (
-      <div>
-        <BootstrapTable data={this.props.data}>
-          <TableHeaderColumn isKey dataField='id'>
-            ID
-          </TableHeaderColumn>
-          <TableHeaderColumn dataField='name'>
-            Name
-          </TableHeaderColumn>
-          <TableHeaderColumn dataField='value'>
-            Value
-          </TableHeaderColumn>
-        </BootstrapTable>
-      </div>
-    );
-  }
-}
+const TableDemo = () => (
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Table Row Header</th>
+                    <th>Table Row Header</th>
+                    <th>Table Row Header</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Data</td>
+                    <td>Data</td> 
+                    <td>Data</td>             
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>Data</td> 
+                    <td>Data</td>             
+                </tr>
+            </tbody>
+        </table>
+    </div>
+);
  
-export default Table1;
+export default TableDemo;

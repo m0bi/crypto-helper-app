@@ -35,6 +35,9 @@ const Navigation = () =>
         <div className="nav-item nav-link">
             <Link to={routes.CARDS}>Cards</Link>
         </div>
+        <div className="nav-item nav-link">
+            <Link to={routes.TABLES}>Tables</Link>
+        </div>
         {/* <div className="nav-item nav-link">
             <Link to="#newsContainer">Newsfeed</Link>
         </div> */}

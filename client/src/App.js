@@ -5,6 +5,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Homepage from "./pages/Homepage";
 import CardsPage from "./pages/CardsPage";
+
 //import SignUpPage from "./pages/SignUpPage";
 //import SignInPage from "./pages/SignInPage";
 
@@ -49,6 +50,7 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={Homepage} />
           <Route exact path="/cards" component={CardsPage} />
+          <Route exact path="/tables" component={TablesPage} />
           {/* <Route exact path="/signup" component={SignUpPage} />
           <Route exact path="/signin" component={SignInPage} /> */}
           {/* <Route component={NoMatch} /> */}
