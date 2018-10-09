@@ -198,32 +198,6 @@ module.exports = {
 
         //return await bitflyer.fetch_markets();
     },
-    bitlish: async function printBitlish() {
-        let bitlish = new ccxt.bitlish({
-            'enableRateLimit': true,
-        });
-        await bitlish.loadMarkets();
-        const symbols = bitlish.symbols;
-        const validpairs = [];
-        const pairs = ['BCH/BTC', 'BTC/USDT', 'BTC/BCH', 'LTC/BTC', 'XRP/BTC', 'ETH/BTC', 'ETH/USDT', 'DASH/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
-        const prices = { 'id': bitlish.id };
-        for (let key of symbols) {
-            for (let val of pairs) {
-                if (key == val) {
-                    validpairs.push(val);
-                }
-            }
-        }
-        if (bitlish.has['fetchTicker']) {
-            for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await bitlish.fetchTicker(validpairs[i]);
-            }
-        }
-        return prices;
-
-
-        //return await bitlish.fetch_markets();
-    },
     bitstamp: async function printBitstamp() {
         let bitstamp = new ccxt.bitstamp({
             'enableRateLimit': true,
@@ -398,31 +372,6 @@ module.exports = {
         }
         return prices;
     },
-    coinfalcon: async function printCoinfalcon() {
-        let coinfalcon = new ccxt.coinfalcon({
-            'enableRateLimit': true,
-        });
-        await coinfalcon.loadMarkets();
-        const symbols = coinfalcon.symbols;
-        const prices = { 'id': coinfalcon.id };
-        const validpairs = [];
-        const pairs = ['BTC/BCH', 'BTC/USDT', 'EOS/USDT', 'ETH/BTC', 'TRX/BTC', 'XRP/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
-        for (let key of symbols) {
-            for (let val of pairs) {
-                if (key == val) {
-                    validpairs.push(val);
-                }
-            }
-        }
-        if (coinfalcon.has['fetchTicker']) {
-            for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await coinfalcon.fetchTicker(validpairs[i]);
-            }
-        }
-        return prices;
-
-        //return await coinfalcon.fetch_markets();
-    },
     coinmate: async function printcoinmate() {
         let coinmate = new ccxt.coinmate({
             'enableRateLimit': true,
@@ -546,31 +495,6 @@ module.exports = {
 
         //return await hitbtc2.fetch_markets();
     },
-    ice3x: async function printice3x() {
-        let ice3x = new ccxt.ice3x({
-            'enableRateLimit': true,
-        });
-        await ice3x.loadMarkets();
-        const symbols = ice3x.symbols;
-        const prices = { 'id': ice3x.id };
-        const validpairs = []
-        const pairs = ['BTC/BCH', 'BCH/BTC', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'XMR/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
-        for (let key of symbols) {
-            for (let val of pairs) {
-                if (key == val) {
-                    validpairs.push(val);
-                }
-            }
-        }   
-        if (ice3x.has['fetchTicker']) {
-            for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await ice3x.fetchTicker(validpairs[i]);
-            }
-        }
-        return prices;
-
-        //return await ice3x.fetch_markets();
-    },
     kraken: async function printKraken() {
         let kraken = new ccxt.kraken({
             'enableRateLimit': true,
@@ -642,31 +566,6 @@ module.exports = {
             }
         }
         return prices;
-    },
-    lbank: async function printLbank() {
-        let lbank = new ccxt.lbank({
-            'enableRateLimit': true,
-        });
-        await lbank.loadMarkets();
-        const symbols = lbank.symbols;
-        const prices = { 'id': lbank.id };
-        const validpairs = [];
-        const pairs = ['BTC/BCH', 'BCH/ETH', 'BCH/USDT', 'BTC/USDT', 'DASH/BTC', 'ETH/BTC', 'ETH/USDT', 'LTC/BTC', 'ZEC/BTC', 'ZEC/ETH', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
-        for (let key of symbols) {
-            for (let val of pairs) {
-                if (key == val) {
-                    validpairs.push(val);
-                }
-            }
-        }   
-        if (lbank.has['fetchTicker']) {
-            for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await lbank.fetchTicker(validpairs[i]);
-            }
-        }
-        return prices;
-
-        //return await lbank.fetch_markets();
     },
     livecoin: async function printLivecoin() { //has price data
         let livecoin = new ccxt.livecoin({

@@ -1,8 +1,8 @@
 var keys = require('../keys.js');
 var Redis = require('ioredis');
 var redis = new Redis({
-  port: 18167,          // Redis port
-  host: 'redis-18167.c55.eu-central-1-1.ec2.cloud.redislabs.com',   // Redis host
+  port: 12599,          // Redis port
+  host: 'redis-12599.c55.eu-central-1-1.ec2.cloud.redislabs.com',   // Redis host
   family: 4,           // 4 (IPv4) or 6 (IPv6)
   password: keys.redis_key,
   db: 0
