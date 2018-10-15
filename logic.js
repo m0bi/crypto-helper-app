@@ -575,7 +575,12 @@ module.exports = {
         const symbols = livecoin.symbols;
         const prices = { 'id': livecoin.id };
         const validpairs = [];
-        const pairs = ['BTC/BCH', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XMR/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const pairs = ['BTC/BCH', 'DASH/BTC', 
+        
+        
+        
+        
+        'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XMR/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
         for (let key of symbols) {
             for (let val of pairs) {
                 if (key == val) {
@@ -614,31 +619,6 @@ module.exports = {
         return prices;
 
         //return await liqui.fetch_markets();
-    },
-    lykke: async function printLykke() {
-        let lykke = new ccxt.lykke({
-            'enableRateLimit': true,
-        });
-        await lykke.loadMarkets();
-        const symbols = lykke.symbols;
-        const prices = { 'id': lykke.id };
-        const validpairs = [];
-        const pairs = ['BTC/BCH', 'DASH/BTC', 'EOS/BTC', 'ETH/BTC', 'LTC/BTC', 'ZEC/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/EOS', 'USDT/EOS', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
-        for (let key of symbols) {
-            for (let val of pairs) {
-                if (key == val) {
-                    validpairs.push(val);
-                }
-            }
-        } 
-        if (lykke.has['fetchTicker']) {
-            for (let i = 0; i < validpairs.length; i++) {
-                prices[validpairs[i]] = await lykke.fetchTicker(validpairs[i]);
-            }
-        }
-        return prices;
-
-        //return await lykke.fetch_markets();
     },
     // theocean: async function printO() {
     //     let theocean = new ccxt.theocean({'enableRateLimit': true,});

@@ -16,7 +16,7 @@ let usd = resolve.cash();
 module.exports = {
     dollar: ()=>{
         usd.then((response)=>{
-            redis.set('cash', JSON.stringify(response));
+            redis.set('cash', JSON.stringify(response), 'ex', 360);
             redis.set('cashtime', JSON.stringify(new Date()));
         });
     }

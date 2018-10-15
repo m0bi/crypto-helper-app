@@ -55,6 +55,6 @@ module.exports = {
         returnObject["high"] = SORTAR[SORTAR.length - 1]; 
         RETURN.push(returnObject);
       }
-      redis.set('hilo', JSON.stringify(RETURN));
+      redis.set('hilo', JSON.stringify(RETURN), 'ex', 360);
   }
 }

@@ -1,3 +1,4 @@
+const keys = require("./keys");
 module.exports = {
-  'secret': 'supersecret'
+  'secret': keys.secret_key
 };

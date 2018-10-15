@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import scrollToComponent from 'react-scroll-to-component';
 
 //import SignOutLink from "../SignOut/SignOut";
 import * as routes from "../../constants/routes";

@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 var VerifyToken = require('./auth/VerifyToken.js');
 const keys = require("./keys");
 global.__root = __dirname + '/';
-
+var { DateTime } = require('luxon');
 const mongoose = require('mongoose');
 var database = 'shortcoindb';
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/" + database);
@@ -49,7 +49,6 @@ var kucoin = resolve.kucoin();
 var lakebtc = resolve.lakebtc();
 var livecoin = resolve.livecoin();
 var liqui = resolve.liqui();
-var lykke = resolve.lykke();
 //var theocean = resolve.theocean();
 var quadrigacx = resolve.quadrigacx();
 var therock = resolve.therock();
@@ -63,7 +62,7 @@ cron.schedule('*/30 * * * *', ()=>{
     console.log("Running task: News");
   });
 
-cron.schedule('*/10 * * * *', ()=>{
+cron.schedule('*/5 * * * *', ()=>{
     dbusd.dollar();
     console.log("Running task: USD");
   });
@@ -77,11 +76,11 @@ async function redisExchange(exchange) {
       if (response[key].last !== undefined) {
         //key is redis key
         //flatten (stringify array and add as response)
-        redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, new Date(response[key].timestamp)]);
+        redisArray.push([response.id, key, response[key].last, response[key].bid, response[key].ask, DateTime.local(new Date(response[key].timestamp)).toLocalString(DateTime.DATETIME_SHORT)]);
        // var anxproObj = aggregate(key, response.id, response[key].last, new Date(response[key].timestamp));
       }
     }
-    redis.set(response.id, JSON.stringify(redisArray));
+    redis.set(response.id, JSON.stringify(redisArray), 'ex', 360);
     redis.set('time', JSON.stringify(new Date()));
     } catch(err){
      console.log(err);
@@ -112,8 +111,6 @@ cron.schedule('*/5 * * * *', ()=>{
    redisExchange(lakebtc);
    redisExchange(livecoin);
    redisExchange(liqui);
-   redisExchange(lykke);
-   redisExchange(qryptos);
    redisExchange(quadrigacx);
    redisExchange(therock);
    redisExchange(tidex);
@@ -281,13 +278,6 @@ cron.schedule('*/5 * * * *', ()=>{
             rootObj[val[1]].push(val);
         });
     }).catch(err => console.log(err));
-    await redis.get('lykke').then(function (result) {
-        let resultArr = JSON.parse(result);
-        resultArr.map((val) => {
-            rootObj[val[1]] = rootObj[val[1]] || [];
-            rootObj[val[1]].push(val);
-        });
-    }).catch(err => console.log(err));
     // await redis.get('theocean').then(function (result) {
     //   let resultArr = JSON.parse(result);
     //   resultArr.map((val) => {
@@ -295,13 +285,6 @@ cron.schedule('*/5 * * * *', ()=>{
     //     rootObj[val[1]].push(val);
     //   });
     // });
-    await redis.get('qryptos').then(function (result) {
-        let resultArr = JSON.parse(result);
-        resultArr.map((val) => {
-            rootObj[val[1]] = rootObj[val[1]] || [];
-            rootObj[val[1]].push(val);
-        });
-    }).catch(err => console.log(err));
     await redis.get('quadrigacx').then(function (result) {
         let resultArr = JSON.parse(result);
         resultArr.map((val) => {
@@ -390,7 +373,7 @@ cron.schedule('*/5 * * * *', ()=>{
       returnObject["values"] = VALS[1][key];
       RETURN.push(returnObject);
     }
-    redis.set('master', JSON.stringify(RETURN));
+    redis.set('master', JSON.stringify(RETURN), 'ex', 360);
   })();
 });
 

@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import TableDemo from "../components/Tables/Tables";
-// import { TablesContainer } from '../components/TablesContainer/TablesContainer.js';
+import TableLive from "../components/Tables/TableLive";
+import { TablesContainer } from '../components/TablesContainer/TablesContainer.js';
 // import { TableLive } from '../components/Tables/TableLive.js';
 // import { TableBooks } from '../components/Tables/TableBooks.js';
-
+import data from "./data";
 import API from "../utils/API";
  
 class TablesPage extends Component {
 
-    state = {
-        books: []
-    }
+    // state = {
+    //     live: []
+    // }
 
     // componentDidMount() {
         
-    //         API.getBooksData().then((res)=>{
-    //             let books = res.data;
+    //         API.getLiveData().then((res)=>{
+    //             let live = res.data;
     //             this.setState({
-    //                 books
+    //                 live
     //             });
     //         });
              
@@ -25,7 +25,7 @@ class TablesPage extends Component {
     
   render() {
     return (
-        <TableDemo />       
+        <TablesContainer live={data} />        
     );
   }
 }
