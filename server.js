@@ -254,6 +254,36 @@ app.get("/task/cash", (req, res) => {
     }
 });
 
+setInterval(()=>{
+    redisExchange(anxpro);
+    redisExchange(anybits);
+    redisExchange(binance);
+    redisExchange(bitbay);
+    redisExchange(bitfinex2);
+    redisExchange(bitflyer);
+    redisExchange(bitstamp);
+    redisExchange(btcmarkets);
+    redisExchange(btctradeim);
+    redisExchange(cex);
+    redisExchange(coinex);
+    redisExchange(coinexchange);
+    redisExchange(coinmate);
+    redisExchange(exmo);
+    redisExchange(gatecoin);
+    redisExchange(gemini);
+    redisExchange(hitbtc2);
+    redisExchange(kraken);
+    redisExchange(kucoin);
+    redisExchange(lakebtc);
+    redisExchange(livecoin);
+    redisExchange(liqui);
+    redisExchange(quadrigacx);
+    redisExchange(therock);
+    redisExchange(tidex);
+    redisExchange(wex);
+    redisExchange(yobit);
+    redisExchange(zaif);
+}, interval);
 app.get('/task/data', (req, res) => {
     redisExchange(anxpro);
     redisExchange(anybits);
