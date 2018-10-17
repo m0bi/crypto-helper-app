@@ -1,2 +1,13 @@
 cron:
-
+  - description: "Minute by minute"
+    url: /tasks/cash
+    schedule: every 1 mins
+  - description: "Data for Live"
+    url: /tasks/data
+    schedule: every 5 mins
+  - description: "Live accumulation and write"
+    url: /tasks/live
+    schedule: every 5 mins
+  - description: "News"
+    url: /tasks/news
+    schedule: every 5 mins

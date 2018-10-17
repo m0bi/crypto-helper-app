@@ -8,24 +8,24 @@ import API from "../utils/API";
  
 class TablesPage extends Component {
 
-    // state = {
-    //     live: []
-    // }
+    state = {
+        live: []
+    }
 
-    // componentDidMount() {
+    componentDidMount() {
         
-    //         API.getLiveData().then((res)=>{
-    //             let live = res.data;
-    //             this.setState({
-    //                 live
-    //             });
-    //         });
+            API.getLiveData().then((res)=>{
+                let live = res.data;
+                this.setState({
+                    live
+                });
+            });
              
-    // }
+    }
     
   render() {
     return (
-        <TablesContainer live={data} />        
+        <TablesContainer live={this.state.live} />        
     );
   }
 }

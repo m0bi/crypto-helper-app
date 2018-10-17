@@ -9,13 +9,16 @@ const axios = require("axios");
 
 
 //start of middleware stack
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 // parse application/json
 app.use(bodyParser.json());
 
 var keys = require("./keys.js");
 require("dotenv").config();
+
 
 module.exports = {
     cash: async function getCash() {
@@ -47,9 +50,10 @@ module.exports = {
             //console.log(response.data.results);
             let result = await Promise.all(COINS);
             const data = [];
-            for(let i=0; i<result.length; i++){
+            for (let i = 0; i < result.length; i++) {
                 data.push(result[i].data);
             }
+            
             return data;
         } catch (error) {
             console.error(error);

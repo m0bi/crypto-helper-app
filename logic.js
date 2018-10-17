@@ -52,9 +52,7 @@ module.exports = {
         return ccxtcontainer;
     },
     anxpro: async function printAnx() {
-        let anxpro = new ccxt.anxpro({
-            'enableRateLimit': true,
-        });
+        let anxpro = new ccxt.anxpro();
         await anxpro.loadMarkets();
         const symbols = anxpro.symbols;
         const prices = { 'id': anxpro.id };
@@ -77,9 +75,7 @@ module.exports = {
         //return await anxpro.fetch_markets();
     },
     anybits: async function printAnybits() {
-        let anybits = new ccxt.anybits({
-            'enableRateLimit': true,
-        });
+        let anybits = new ccxt.anybits();
         await anybits.loadMarkets();
         const symbols = anybits.symbols;
         const prices = { 'id': anybits.id };
@@ -101,9 +97,7 @@ module.exports = {
         //return await anybits.fetch_markets();
     },
     binance: async function printBinance() {
-        let binance = new ccxt.binance({
-            'enableRateLimit': true,
-        });
+        let binance = new ccxt.binance();
         await binance.loadMarkets();
         const symbols = binance.symbols;
         const prices = { 'id': binance.id };
@@ -125,9 +119,7 @@ module.exports = {
         //return await binance.fetch_markets();
     },
     bitbay: async function printBitbay() {
-        let bitbay = new ccxt.bitbay({
-            'enableRateLimit': true,
-        });
+        let bitbay = new ccxt.bitbay();
         await bitbay.loadMarkets();
         const symbols = bitbay.symbols;
         const prices = { 'id': bitbay.id };
@@ -150,9 +142,7 @@ module.exports = {
         //return await bitbay.fetch_markets();
     },
     bitfinex2: async function printBitfinex2() {
-        let bitfinex2 = new ccxt.bitfinex2({
-            'enableRateLimit': true,
-        });
+        let bitfinex2 = new ccxt.bitfinex2();
         await bitfinex2.loadMarkets();
         const symbols = bitfinex2.symbols;
         const prices = { 'id': bitfinex2.id };
@@ -174,9 +164,7 @@ module.exports = {
         //return await bitfinex2.fetch_markets();
     },
     bitflyer: async function printBitflyer() {
-        let bitflyer = new ccxt.bitflyer({
-            'enableRateLimit': true,
-        });
+        let bitflyer = new ccxt.bitflyer();
         await bitflyer.loadMarkets();
         const symbols = bitflyer.symbols;
         const prices = { 'id': bitflyer.id };
@@ -199,9 +187,7 @@ module.exports = {
         //return await bitflyer.fetch_markets();
     },
     bitstamp: async function printBitstamp() {
-        let bitstamp = new ccxt.bitstamp({
-            'enableRateLimit': true,
-        });
+        let bitstamp = new ccxt.bitstamp();
         await bitstamp.loadMarkets();
         const symbols = bitstamp.symbols;
         const prices = { 'id': bitstamp.id };
@@ -225,9 +211,7 @@ module.exports = {
         //return await bitstamp.fetch_markets();
     },
     btcalpha: async function printBtcalpha() {
-        let btcalpha = new ccxt.btcalpha({
-            'enableRateLimit': true,
-        });
+        let btcalpha = new ccxt.btcalpha();
         await btcalpha.loadMarkets();
         const symbols = btcalpha.symbols;
         const prices = { 'id': btcalpha.id };
@@ -251,9 +235,7 @@ module.exports = {
         //return await btcalpha.fetch_markets();
     },
     btcmarkets: async function printBtcmarkets() {
-        let btcmarkets = new ccxt.btcmarkets({
-            'enableRateLimit': true,
-        });
+        let btcmarkets = new ccxt.btcmarkets();
         await btcmarkets.loadMarkets();
         const symbols = btcmarkets.symbols;
         const prices = { 'id': btcmarkets.id };
@@ -276,9 +258,7 @@ module.exports = {
         //return await btcmarkets.fetch_markets();
     },
     btctradeim: async function printBtctradeim() {
-        let btctradeim = new ccxt.btctradeim({
-            'enableRateLimit': true,
-        });
+        let btctradeim = new ccxt.btctradeim();
         await btctradeim.loadMarkets();
         const symbols = btctradeim.symbols;
         const prices = { 'id': btctradeim.id };
@@ -301,9 +281,7 @@ module.exports = {
         //return await btctradeim.fetch_markets();
     },
     cex: async function printCex() {
-        let cex = new ccxt.cex({
-            'enableRateLimit': true,
-        });
+        let cex = new ccxt.cex();
         await cex.loadMarkets();
         const symbols = cex.symbols;
         const prices = { 'id': cex.id };
@@ -326,9 +304,7 @@ module.exports = {
         //return await cex.fetch_markets();
     },
     coinex: async function printCoinex() {
-        let coinex = new ccxt.coinex({
-            'enableRateLimit': true,
-        });
+        let coinex = new ccxt.coinex();
         await coinex.loadMarkets();
         const symbols = coinex.symbols;
         const prices = { 'id': coinex.id };
@@ -350,9 +326,7 @@ module.exports = {
         //return await coinex.fetch_markets();
     },
     coinexchange: async function printCoinexchange() { //has price data
-        let coinexchange = new ccxt.coinexchange({
-            'enableRateLimit': true,
-        });
+        let coinexchange = new ccxt.coinexchange();
         await coinexchange.loadMarkets();
         const symbols = coinexchange.symbols;
         const prices = { 'id': coinexchange.id };
@@ -373,9 +347,7 @@ module.exports = {
         return prices;
     },
     coinmate: async function printcoinmate() {
-        let coinmate = new ccxt.coinmate({
-            'enableRateLimit': true,
-        });
+        let coinmate = new ccxt.coinmate();
         await coinmate.loadMarkets();
         const symbols = coinmate.symbols;
         const prices = { 'id': coinmate.id };
@@ -397,9 +369,7 @@ module.exports = {
         //return await coinmate.fetch_markets();
     },
     exmo: async function printExmo() {
-        let exmo = new ccxt.exmo({
-            'enableRateLimit': true,
-        });
+        let exmo = new ccxt.exmo();
         await exmo.loadMarkets();
         const symbols = exmo.symbols;
         const prices = { 'id': exmo.id };
@@ -422,9 +392,7 @@ module.exports = {
         //return await exmo.fetch_markets();
     },
     gatecoin: async function printGatecoin() {
-        let gatecoin = new ccxt.gatecoin({
-            'enableRateLimit': true,
-        });
+        let gatecoin = new ccxt.gatecoin();
         await gatecoin.loadMarkets();
         const symbols = gatecoin.symbols;
         const prices = { 'id': gatecoin.id };
@@ -446,9 +414,7 @@ module.exports = {
         //return await gatecoin.fetch_markets();
     },
     gemini: async function printGemini() {
-        let gemini = new ccxt.gemini({
-            'enableRateLimit': true,
-        });
+        let gemini = new ccxt.gemini();
         await gemini.loadMarkets();
         const symbols = gemini.symbols;
         const prices = { 'id': gemini.id };
@@ -471,9 +437,7 @@ module.exports = {
         //return await gemini.fetch_markets();
     },
     hitbtc2: async function printHitbtc() {
-        let hitbtc2 = new ccxt.hitbtc2({
-            'enableRateLimit': true,
-        });
+        let hitbtc2 = new ccxt.hitbtc2();
         await hitbtc2.loadMarkets();
         const symbols = hitbtc2.symbols;
         const prices = { 'id': hitbtc2.id };
@@ -496,9 +460,7 @@ module.exports = {
         //return await hitbtc2.fetch_markets();
     },
     kraken: async function printKraken() {
-        let kraken = new ccxt.kraken({
-            'enableRateLimit': true,
-        });
+        let kraken = new ccxt.kraken();
         await kraken.loadMarkets();
         const symbols = kraken.symbols;
         const prices = { 'id': kraken.id };
@@ -520,9 +482,7 @@ module.exports = {
 
     },
     kucoin: async function printKucoin() {
-        let kucoin = new ccxt.kucoin({
-            'enableRateLimit': true,
-        });
+        let kucoin = new ccxt.kucoin();
         await kucoin.loadMarkets();
         const symbols = kucoin.symbols;
         const prices = { 'id': kucoin.id };
@@ -545,9 +505,7 @@ module.exports = {
         //return await kucoin.fetch_markets();
     },
     lakebtc: async function printLake() { // has price data
-        let lakebtc = new ccxt.lakebtc({
-            'enableRateLimit': true,
-        });
+        let lakebtc = new ccxt.lakebtc();
         await lakebtc.loadMarkets();
         const symbols = lakebtc.symbols;
         const prices = { 'id': lakebtc.id };
@@ -568,19 +526,12 @@ module.exports = {
         return prices;
     },
     livecoin: async function printLivecoin() { //has price data
-        let livecoin = new ccxt.livecoin({
-            'enableRateLimit': true,
-        });
+        let livecoin = new ccxt.livecoin();
         await livecoin.loadMarkets();
         const symbols = livecoin.symbols;
         const prices = { 'id': livecoin.id };
         const validpairs = [];
-        const pairs = ['BTC/BCH', 'DASH/BTC', 
-        
-        
-        
-        
-        'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XMR/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
+        const pairs = ['BTC/BCH', 'DASH/BTC', 'ETH/BTC', 'LTC/BTC', 'TRX/BTC', 'XMR/BTC', 'BCH/BTC', 'ETH/BCH', 'USDT/BCH', 'USDT/BTC', 'BTC/DASH', 'ETH/DASH', 'BTC/ETH', 'USDT/ETH', 'BTC/LTC', 'ETH/LTC', 'USDT/LTC', 'BTC/TRX', 'BTC/XLM', 'BTC/XMR', 'BTC/XRP', 'BTC/ZEC', 'ETH/ZEC'];
         for (let key of symbols) {
             for (let val of pairs) {
                 if (key == val) {
@@ -596,9 +547,7 @@ module.exports = {
         return prices;
     },
     liqui: async function printLiqui() {
-        let liqui = new ccxt.liqui({
-            'enableRateLimit': true,
-        });
+        let liqui = new ccxt.liqui();
         await liqui.loadMarkets();
         const symbols = liqui.symbols;
         const prices = { 'id': liqui.id };
@@ -642,9 +591,7 @@ module.exports = {
     //     return prices;
     // },
     qryptos: async function printQ() { //has price data
-        let qryptos = new ccxt.qryptos({
-            'enableRateLimit': true,
-        });
+        let qryptos = new ccxt.qryptos();
         await qryptos.loadMarkets();
         const symbols = qryptos.symbols;
         const validpairs = [];
@@ -665,9 +612,7 @@ module.exports = {
         return prices;
     },
     quadrigacx: async function printQuad() {
-        let quadrigacx = new ccxt.quadrigacx({
-            'enableRateLimit': true,
-        });
+        let quadrigacx = new ccxt.quadrigacx();
         await quadrigacx.loadMarkets();
         const symbols = quadrigacx.symbols;
         const prices = { 'id': quadrigacx.id };
@@ -690,9 +635,7 @@ module.exports = {
         //return await quadrigacx.fetch_markets();
     },
     therock: async function printRock() { //has last price
-        let therock = new ccxt.therock({
-            'enableRateLimit': true,
-        });
+        let therock = new ccxt.therock();
         await therock.loadMarkets();
         const symbols = therock.symbols;
         const prices = { 'id': therock.id };
@@ -713,9 +656,7 @@ module.exports = {
         return prices;
     },
     tidex: async function printTidex() {
-        let tidex = new ccxt.tidex({
-            'enableRateLimit': true,
-        });
+        let tidex = new ccxt.tidex();
         await tidex.loadMarkets();
         const symbols = tidex.symbols;
         const prices = { 'id': tidex.id };
@@ -738,9 +679,7 @@ module.exports = {
         //return await tidex.fetch_markets();
     },
     wex: async function printWex() {
-        let wex = new ccxt.wex({
-            'enableRateLimit': true,
-        });
+        let wex = new ccxt.wex();
         await wex.loadMarkets();
         const symbols = wex.symbols;
         const prices = { 'id': wex.id };
@@ -763,9 +702,7 @@ module.exports = {
         //return await wex.fetch_markets();
     },
     yobit: async function printYobit() {
-        let yobit = new ccxt.yobit({
-            'enableRateLimit': true,
-        });
+        let yobit = new ccxt.yobit();
         await yobit.loadMarkets();
         const symbols = yobit.symbols;
         const prices = { 'id': yobit.id };
@@ -787,9 +724,7 @@ module.exports = {
         //return await yobit.fetch_markets();
     },
     zaif: async function printZaif() {
-        let zaif = new ccxt.zaif({
-            'enableRateLimit': true,
-        });
+        let zaif = new ccxt.zaif();
         await zaif.loadMarkets();
         const symbols = zaif.symbols;
         const prices = { 'id': zaif.id };

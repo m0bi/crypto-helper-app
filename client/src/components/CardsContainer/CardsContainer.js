@@ -5,7 +5,7 @@ const CardsContainer = props => (
         {props.children.map((child, i) => {
             return (
                 <div className="col-4 card-container">
-                    key={i}>{child}
+                    {child}
                 </div>
             )
         })}
